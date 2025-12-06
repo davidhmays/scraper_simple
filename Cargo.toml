@@ -1,6 +1,12 @@
 [package]
 name = "scraper_simple"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
+astra = "0.4"
+rusqlite = { version = "0.31", features = ["bundled"] }
+maud = "0.26"
+rust_xlsxwriter = "0.39"
+mime = "0.3"
+time = "0.3"
