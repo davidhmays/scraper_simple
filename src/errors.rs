@@ -1,22 +1,29 @@
 use astra::Response;
+// errors.rs
 use std::fmt;
 
+/// Errors originating from either the server logic
+/// (routing, missing resources, etc.) or downstream layers (DB).
 #[derive(Debug)]
 pub enum ServerError {
     NotFound,
-    //Io(std::io::Error), //Adding later.
+    BadRequest(String),
+    DbError(String),
     InternalError,
 }
 
-//Type alias
+// Type alias commonly used by route handlers.
 pub type ResultResp = Result<Response, ServerError>;
 
 impl fmt::Display for ServerError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             ServerError::NotFound => write!(f, "Not Found"),
-            //ServerError::Io(e) => write!(f, "IO error: {e}"),
+            ServerError::BadRequest(msg) => write!(f, "Bad Request: {msg}"),
+            ServerError::DbError(msg) => write!(f, "Database Error: {msg}"),
             ServerError::InternalError => write!(f, "Internal Server Error"),
         }
     }
 }
+
+impl std::error::Error for ServerError {}
