@@ -1,7 +1,7 @@
+use crate::db::Database;
+use crate::router::handle;
 use astra::Server;
 use std::net::SocketAddr;
-
-use crate::router::handle;
 
 mod db;
 mod errors;
@@ -10,18 +10,25 @@ mod spreadsheet;
 mod templates;
 
 fn main() {
-    let addr: SocketAddr = "127.0.0.1:3000".parse().unwrap();
+    // Create the database handle
+    let db = Database::new("myapp.sqlite3");
 
+    // Run initialization
+    db.init().expect("DB init failed");
+
+    let addr: SocketAddr = "127.0.0.1:3000".parse().unwrap();
     println!("Starting server at http://{addr}");
 
-    // If the port is taken, this will panic.
-    // But once the server is running, Ctrl-C shuts it down cleanly.
+    // Build the server
     let server = Server::bind(&addr).max_workers(8);
 
-    if let Err(e) = server.serve(|req, _info| match handle(req) {
+    // Move db into the closure so each request can access it
+    let result = server.serve(move |req, _info| match handle(req, &db) {
         Ok(resp) => resp,
         Err(err) => templates::html_error_response(err),
-    }) {
+    });
+
+    if let Err(e) = result {
         eprintln!("Server ended with error: {e}");
     }
 
