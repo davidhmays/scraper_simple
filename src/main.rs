@@ -5,6 +5,7 @@ use std::net::SocketAddr;
 
 mod db;
 mod errors;
+mod responses;
 mod router;
 mod spreadsheet;
 mod templates;

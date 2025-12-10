@@ -1,5 +1,5 @@
 // db.rs
-use rusqlite::{Connection, Error as SqlError};
+use rusqlite::Connection;
 use std::cell::RefCell;
 
 use crate::errors::ServerError;

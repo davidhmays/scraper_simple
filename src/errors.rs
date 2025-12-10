@@ -1,9 +1,29 @@
-use astra::Response;
-// errors.rs
+// src/errors.rs
+use std::error::Error;
 use std::fmt;
 
-/// Errors originating from either the server logic
-/// (routing, missing resources, etc.) or downstream layers (DB).
+/// Domain-level errors (DB, config, validation, etc.)
+#[derive(Debug)]
+pub enum AppError {
+    DbError(String),
+    ConfigError(String),
+    ValidationError(String),
+    IoError(String),
+}
+
+impl fmt::Display for AppError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            AppError::DbError(msg) => write!(f, "Database error: {msg}"),
+            AppError::ConfigError(msg) => write!(f, "Configuration error: {msg}"),
+            AppError::ValidationError(msg) => write!(f, "Validation error: {msg}"),
+            AppError::IoError(msg) => write!(f, "I/O error: {msg}"),
+        }
+    }
+}
+impl Error for AppError {}
+
+/// HTTP-level errors (routing, request issues, DB issues surfaced to client)
 #[derive(Debug)]
 pub enum ServerError {
     NotFound,
@@ -11,9 +31,6 @@ pub enum ServerError {
     DbError(String),
     InternalError,
 }
-
-// Type alias commonly used by route handlers.
-pub type ResultResp = Result<Response, ServerError>;
 
 impl fmt::Display for ServerError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -26,4 +43,4 @@ impl fmt::Display for ServerError {
     }
 }
 
-impl std::error::Error for ServerError {}
+impl Error for ServerError {}
