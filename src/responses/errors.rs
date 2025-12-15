@@ -7,11 +7,8 @@ pub type ResultResp = Result<Response, ServerError>;
 pub fn error_to_response(err: ServerError) -> Response {
     match err {
         ServerError::NotFound => html_error_response(404, "Not Found"),
-
         ServerError::BadRequest(msg) => html_error_response(400, &msg),
-
         ServerError::DbError(msg) => html_error_response(500, &msg),
-
         ServerError::InternalError => html_error_response(500, "Internal Server Error"),
     }
 }

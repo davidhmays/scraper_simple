@@ -1,0 +1,47 @@
+.card {
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("/static/Lexend-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family:
+    "Lexend", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  height: 100%;
+  /*display: grid;*/
+  /*grid-template-rows: auto 1fr auto;*/
+}
+
+h1 {
+  font-size: 3rem;
+  /* font-family: Lexend; */
+  /* color: hsl(262, 69%, 31%) */
+}
+
+h2,
+h3 {
+  font-family: Lexend;
+}
+
+body > header {
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}

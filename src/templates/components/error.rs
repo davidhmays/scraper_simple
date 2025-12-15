@@ -2,6 +2,7 @@ use crate::errors::ServerError;
 use astra::{Body, Response, ResponseBuilder};
 use maud::{html, Markup};
 
+// TODO: Does this belong in "responses"?
 pub fn html_error_response(err: ServerError) -> Response {
     let markup: Markup = html! {
         h1 { "Error" }

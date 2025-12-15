@@ -2,15 +2,45 @@ use crate::db::Database;
 use crate::errors::ServerError;
 use crate::responses::html_response;
 use crate::responses::ResultResp;
+use crate::scraper::{RealtorScraper, ScraperError};
 use crate::templates;
-use astra::Request;
+use astra::{Body, Request, ResponseBuilder};
+use maud::html;
 
 pub fn handle(req: Request, db: &Database) -> ResultResp {
     let method = req.method().as_str();
     let path = req.uri().path();
 
     match (method, path) {
+        ("GET", path) if path.starts_with("/static") => serve_static(path),
         ("GET", "/") => html_response(templates::pages::home_page()),
+        ("GET", "/admin") => html_response(templates::pages::admin_page()),
+        ("GET", "/scrape-test") => {
+            let scraper = RealtorScraper::new().map_err(|e| {
+                eprintln!("Scraper init error: {e}");
+                ServerError::InternalError
+            })?;
+
+            let props = scraper
+                .fetch_properties("https://www.realtor.com/realestateandhomes-search/Utah")
+                .map_err(|e| {
+                    eprintln!("Scrape failed: {e:?}");
+
+                    if cfg!(debug_assertions) {
+                        ServerError::BadRequest(format!("Scrape failed: {e}"))
+                    } else {
+                        ServerError::InternalError
+                    }
+                })?;
+
+            let body = maud::html! {
+                h1 { "Scrape OK" }
+                p { "Found " (props.len()) " properties" }
+            };
+
+            html_response(body)
+        }
+
         // ("GET", "/about") => templates::html("<h1>About</h1>"),
         // ("GET", "/hello") => templates::html("<h1>Hello!</h1>"),
 
@@ -60,6 +90,57 @@ pub fn handle(req: Request, db: &Database) -> ResultResp {
     }
 }
 
+pub fn serve_static(path: &str) -> ResultResp {
+    // Strip the leading "/" so paths like "/static/main.css"
+    // become "static/main.css"
+    let fs_path = &path[1..];
+
+    // Very important: prevent paths like "/static/../../etc/passwd"
+    if fs_path.contains("..") {
+        return Err(crate::errors::ServerError::BadRequest(
+            "Invalid path".into(),
+        ));
+    }
+
+    // Read the file
+    let bytes = std::fs::read(fs_path).map_err(|_| crate::errors::ServerError::NotFound)?;
+
+    // Guess MIME from extension
+    let mime = mime_for(fs_path);
+
+    let resp = ResponseBuilder::new()
+        .status(200)
+        .header("Content-Type", mime)
+        .body(Body::from(bytes))
+        .unwrap();
+
+    Ok(resp)
+}
+
+fn mime_for(path: &str) -> &'static str {
+    if path.ends_with(".css") {
+        "text/css"
+    } else if path.ends_with(".js") {
+        "application/javascript"
+    } else if path.ends_with(".png") {
+        "image/png"
+    } else if path.ends_with(".jpg") || path.ends_with(".jpeg") {
+        "image/jpeg"
+    } else if path.ends_with(".gif") {
+        "image/gif"
+    } else if path.ends_with(".svg") {
+        "image/svg+xml"
+    } else if path.ends_with(".html") {
+        "text/html"
+    } else if path.ends_with(".txt") {
+        "text/plain"
+    } else if path.ends_with(".ttf") {
+        "font/ttf"
+    } else {
+        "application/octet-stream"
+    }
+}
+
 fn parse_query(req: &astra::Request) -> std::collections::HashMap<String, String> {
     let mut map = std::collections::HashMap::new();
 
@@ -73,4 +154,14 @@ fn parse_query(req: &astra::Request) -> std::collections::HashMap<String, String
     }
 
     map
+}
+
+fn map_scraper_error(err: ScraperError) -> ServerError {
+    match err {
+        ScraperError::Blocked(msg) => ServerError::BadRequest(format!("Scraper blocked: {msg}")),
+        ScraperError::Network(msg) => ServerError::BadRequest(format!("Network error: {msg}")),
+        ScraperError::MissingNextData => ServerError::InternalError,
+        ScraperError::UnexpectedShape(msg) => ServerError::InternalError,
+        _ => ServerError::InternalError,
+    }
 }

@@ -7,6 +7,7 @@ mod db;
 mod errors;
 mod responses;
 mod router;
+mod scraper;
 mod spreadsheet;
 mod templates;
 
