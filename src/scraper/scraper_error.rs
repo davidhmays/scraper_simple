@@ -9,6 +9,8 @@ pub enum ScraperError {
     MissingNextData,
     JsonParse(String),
     UnexpectedShape(String),
+    IoError(String),
+    Config(String),
 }
 
 impl fmt::Display for ScraperError {
@@ -20,6 +22,8 @@ impl fmt::Display for ScraperError {
             ScraperError::MissingNextData => write!(f, "__NEXT_DATA__ not found"),
             ScraperError::JsonParse(msg) => write!(f, "JSON parse error: {msg}"),
             ScraperError::UnexpectedShape(msg) => write!(f, "Unexpected data shape: {msg}"),
+            ScraperError::IoError(msg) => write!(f, "I/O error: {msg}"),
+            ScraperError::Config(msg) => write!(f, "Config error: {msg}"),
         }
     }
 }

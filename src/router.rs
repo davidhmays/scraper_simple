@@ -22,7 +22,8 @@ pub fn handle(req: Request, db: &Database) -> ResultResp {
             })?;
 
             let props = scraper
-                .fetch_properties("https://www.realtor.com/realestateandhomes-search/Utah")
+                .fetch_via_zenrows("https://www.realtor.com/realestateandhomes-search/Utah")
+                // .fetch_properties("https://www.realtor.com/realestateandhomes-search/Utah")
                 .map_err(|e| {
                     eprintln!("Scrape failed: {e:?}");
 
