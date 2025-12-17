@@ -22,16 +22,12 @@ pub fn handle(req: Request, db: &Database) -> ResultResp {
             })?;
 
             let props = scraper
-                .fetch_via_zenrows("https://www.realtor.com/realestateandhomes-search/Utah")
-                // .fetch_properties("https://www.realtor.com/realestateandhomes-search/Utah")
+                .fetch_properties_via_zenrows(
+                    "https://www.realtor.com/realestateandhomes-search/Utah",
+                )
                 .map_err(|e| {
                     eprintln!("Scrape failed: {e:?}");
-
-                    if cfg!(debug_assertions) {
-                        ServerError::BadRequest(format!("Scrape failed: {e}"))
-                    } else {
-                        ServerError::InternalError
-                    }
+                    ServerError::InternalError
                 })?;
 
             let body = maud::html! {
