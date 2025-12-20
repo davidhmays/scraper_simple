@@ -1,4 +1,4 @@
-use crate::db::Database;
+use crate::db::connection::Database;
 use crate::errors::ServerError;
 use crate::responses::html_response;
 use crate::responses::ResultResp;
@@ -21,8 +21,8 @@ pub fn handle(req: Request, db: &Database) -> ResultResp {
                 ServerError::InternalError
             })?;
 
-            let props = scraper
-                .fetch_properties_via_zenrows(
+            let result = scraper
+                .fetch_all_properties_paginated(
                     "https://www.realtor.com/realestateandhomes-search/Utah",
                 )
                 .map_err(|e| {
@@ -30,9 +30,25 @@ pub fn handle(req: Request, db: &Database) -> ResultResp {
                     ServerError::InternalError
                 })?;
 
+            let total_properties = result.properties.len();
+            let pages_fetched = result.pages_fetched;
+
+            let first_pretty = result
+                .properties
+                .get(0)
+                .and_then(|p| serde_json::to_string_pretty(p).ok())
+                .unwrap_or_else(|| "No properties".into());
+
             let body = maud::html! {
                 h1 { "Scrape OK" }
-                p { "Found " (props.len()) " properties" }
+
+                ul {
+                    li { "Pages fetched: " (pages_fetched) }
+                    li { "Total properties: " (total_properties) }
+                }
+
+                h2 { "First property (debug)" }
+                pre { (first_pretty) }
             };
 
             html_response(body)

@@ -1453,6 +1453,7 @@ dependencies = [
  "astra",
  "maud",
  "mime",
+ "rand",
  "reqwest",
  "rusqlite",
  "rust_xlsxwriter",

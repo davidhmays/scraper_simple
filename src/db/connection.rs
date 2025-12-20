@@ -1,6 +1,7 @@
-// db.rs
+// connection.rs
 use rusqlite::Connection;
 use std::cell::RefCell;
+use std::fs;
 
 use crate::errors::ServerError;
 
@@ -18,36 +19,26 @@ impl Database {
         Self { path: path.into() }
     }
 
-    /// Open or fetch the per-thread SQLite connection and run `f(conn)`
     pub fn with_conn<F, T>(&self, f: F) -> Result<T, ServerError>
     where
         F: FnOnce(&Connection) -> Result<T, ServerError>,
     {
-        // Step 1: run inside TLS
         let inner_result = DB_CONN
             .try_with(|cell| {
                 let mut slot = cell.borrow_mut();
-
-                // Initialize on first use in this thread
                 if slot.is_none() {
                     let conn = Connection::open(&self.path)
                         .map_err(|e| ServerError::DbError(format!("Open DB failed: {e}")))?;
                     *slot = Some(conn);
                 }
-
                 let conn = slot.as_ref().unwrap();
-
-                // Return the user function's Result<T, ServerError>
                 f(conn)
             })
-            // Step 2: Map TLS access failure (rare)
             .map_err(|_| ServerError::InternalError)?;
-
-        // Step 3: unwrap the inner Result<T,ServerError>
         inner_result
     }
 
-    /// Example: CREATE TABLE IF NOT EXISTS
+    /// Example: simple init
     pub fn init(&self) -> Result<(), ServerError> {
         self.with_conn(|conn| {
             conn.execute(
@@ -55,8 +46,22 @@ impl Database {
                 [],
             )
             .map_err(|e| ServerError::DbError(format!("Init failed: {e}")))?;
-
             Ok(())
         })
     }
+}
+
+/// Initialize database from a SQL schema file
+pub fn init_db(db: &Database, schema_path: &str) -> Result<(), ServerError> {
+    let schema_sql = fs::read_to_string(schema_path)
+        .map_err(|e| ServerError::DbError(format!("Failed to read schema file: {e}")))?;
+
+    db.with_conn(|conn| {
+        conn.execute_batch(&schema_sql)
+            .map_err(|e| ServerError::DbError(format!("Failed to apply schema: {e}")))?;
+        Ok(())
+    })?;
+
+    println!("✅ Database initialized successfully from {}", schema_path);
+    Ok(())
 }
