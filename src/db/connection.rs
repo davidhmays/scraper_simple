@@ -1,4 +1,3 @@
-// connection.rs
 use rusqlite::Connection;
 use std::cell::RefCell;
 use std::fs;
@@ -10,6 +9,7 @@ thread_local! {
     static DB_CONN: RefCell<Option<Connection>> = RefCell::new(None);
 }
 
+#[derive(Clone)]
 pub struct Database {
     path: String,
 }
@@ -19,9 +19,10 @@ impl Database {
         Self { path: path.into() }
     }
 
+    /// Provides a mutable connection to the closure.
     pub fn with_conn<F, T>(&self, f: F) -> Result<T, ServerError>
     where
-        F: FnOnce(&Connection) -> Result<T, ServerError>,
+        F: FnOnce(&mut Connection) -> Result<T, ServerError>,
     {
         let inner_result = DB_CONN
             .try_with(|cell| {
@@ -31,7 +32,7 @@ impl Database {
                         .map_err(|e| ServerError::DbError(format!("Open DB failed: {e}")))?;
                     *slot = Some(conn);
                 }
-                let conn = slot.as_ref().unwrap();
+                let conn = slot.as_mut().unwrap(); // ✅ mutable reference
                 f(conn)
             })
             .map_err(|_| ServerError::InternalError)?;
