@@ -34,9 +34,10 @@ impl RealtorScraper {
     }
 
     pub fn run_realtor_scrape(db: &Database) {
-        let db = db.clone(); // clone the path
+        let db = db.clone(); // cheap clone (path only)
+
         std::thread::spawn(move || {
-            eprintln!("🚀 Scrape job started");
+            eprintln!("🧵 Scraper thread started");
 
             let scraper = match RealtorScraper::new() {
                 Ok(s) => s,
@@ -48,105 +49,78 @@ impl RealtorScraper {
 
             let base_url = "https://www.realtor.com/realestateandhomes-search/Utah";
 
-            let result = match scraper.fetch_all_properties_paginated(base_url) {
-                Ok(r) => r,
-                Err(e) => {
-                    eprintln!("Scrape failed: {e:?}");
-                    return;
-                }
-            };
+            let result = scraper.fetch_all_properties_paginated(base_url, |properties| {
+                // 🧠 DB LOGIC LIVES HERE
+                save_properties(&db, &properties, base_url)
+                    .map_err(|e| ScraperError::Network(e.to_string()))?;
+                Ok(())
+            });
 
-            eprintln!(
-                "📊 Scrape complete: {} pages, {} properties",
-                result.pages_fetched,
-                result.properties.len()
-            );
-
-            if let Err(e) = save_properties(&db, &result.properties, base_url) {
-                eprintln!("❌ DB insert failed: {e}");
-                return;
+            if let Err(e) = result {
+                eprintln!("Scrape failed: {e}");
+            } else {
+                eprintln!("✅ Scrape complete");
             }
-
-            eprintln!("✅ Properties saved successfully");
         });
     }
 
-    pub fn fetch_all_properties_paginated(
+    pub fn fetch_all_properties_paginated<F>(
         &self,
         base_url: &str,
-    ) -> Result<PaginatedResult, ScraperError> {
-        let mut all_properties = Vec::new();
-        let mut seen_pages = HashSet::new();
+        mut on_page: F,
+    ) -> Result<(), ScraperError>
+    where
+        F: FnMut(Vec<Value>) -> Result<(), ScraperError>,
+    {
         let mut page = 1;
         let mut consecutive_failures = 0;
-
-        const MAX_CONSECUTIVE_FAILURES: usize = 3;
-        const MAX_PAGES: usize = 500; // safety cap
+        let mut seen_pages = HashSet::new();
 
         loop {
-            if page > MAX_PAGES {
-                eprintln!("Reached max page limit ({MAX_PAGES}), stopping");
-                break;
-            }
-
             let page_url = if page == 1 {
                 base_url.to_string()
             } else {
                 format!("{base_url}/pg-{page}")
             };
 
-            eprintln!("📄 Fetching page {page}: {page_url}");
+            eprintln!("📄 Scraping page {page}: {page_url}");
 
             match self.fetch_properties_via_zenrows(&page_url) {
                 Ok(properties) => {
-                    consecutive_failures = 0;
-
                     if properties.is_empty() {
-                        eprintln!("No properties found on page {page}, assuming end");
+                        eprintln!("🏁 No properties found, stopping");
                         break;
                     }
 
-                    // Avoid duplicate pages
                     if !seen_pages.insert(page) {
-                        eprintln!("Page {page} already seen, stopping");
+                        eprintln!("🔁 Page {page} already seen, stopping");
                         break;
                     }
 
-                    eprintln!("✅ Page {} fetched ({} properties)", page, properties.len());
+                    eprintln!("✅ Page {page} parsed ({} properties)", properties.len());
 
-                    all_properties.extend(properties);
+                    on_page(properties)?;
+
                     page += 1;
-
+                    consecutive_failures = 0;
                     std::thread::sleep(Duration::from_secs(2));
                 }
 
                 Err(e) => {
-                    eprintln!("❌ Page {page} failed: {e}");
                     consecutive_failures += 1;
+                    eprintln!("⚠️ Page {page} failed (attempt {consecutive_failures}): {e}");
 
-                    match &e {
-                        ScraperError::Network(_) | ScraperError::Blocked(_) => {
-                            if consecutive_failures >= MAX_CONSECUTIVE_FAILURES {
-                                eprintln!(
-                                    "Too many consecutive failures ({consecutive_failures}), stopping pagination"
-                                );
-                                break;
-                            }
-                            let base: u64 = std::cmp::min(2 * consecutive_failures as u64, 10);
-                            let jitter: u64 = rand::thread_rng().gen_range(0..=2) as u64;
-                            std::thread::sleep(Duration::from_secs(base + jitter));
-                            continue;
-                        }
-                        _ => return Err(e),
+                    if consecutive_failures >= 3 {
+                        eprintln!("❌ Too many failures, aborting scrape");
+                        break;
                     }
+
+                    std::thread::sleep(Duration::from_secs(2));
                 }
             }
         }
 
-        Ok(PaginatedResult {
-            pages_fetched: seen_pages.len(),
-            properties: all_properties,
-        })
+        Ok(())
     }
 
     pub fn fetch_properties_via_zenrows(&self, url: &str) -> Result<Vec<Value>, ScraperError> {
@@ -172,10 +146,25 @@ impl RealtorScraper {
         let mut last_err = None;
 
         for attempt in 1..=MAX_ATTEMPTS {
+            let start = std::time::Instant::now();
+
             match self.try_fetch_html_via_zenrows(url) {
-                Ok(html) => return Ok(html),
+                Ok(html) => {
+                    eprintln!(
+                        "✅ ZenRows success attempt {attempt} in {:?}",
+                        start.elapsed()
+                    );
+                    return Ok(html);
+                }
                 Err(e) => {
+                    eprintln!(
+                        "⚠️ ZenRows attempt {attempt} failed in {:?}: {e}",
+                        start.elapsed()
+                    );
+
                     last_err = Some(e);
+
+                    // backoff
                     let base = std::cmp::min(2 * attempt, MAX_BACKOFF_SECS);
                     let jitter = rand::thread_rng().gen_range(0..=JITTER_MAX_SECS);
                     std::thread::sleep(Duration::from_secs(base + jitter));
@@ -189,23 +178,26 @@ impl RealtorScraper {
     pub fn try_fetch_html_via_zenrows(&self, url: &str) -> Result<String, ScraperError> {
         use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, ACCEPT_LANGUAGE, REFERER};
 
-        let api_key = "e10b59e68b56271130e8a20721d14f14457806ae";
+        let api_key = "";
 
         let mut headers = HeaderMap::new();
         headers.insert(REFERER, HeaderValue::from_static("https://www.google.com/"));
-        headers.insert(
-            ACCEPT,
-            HeaderValue::from_static("text/html,application/xhtml+xml"),
-        );
-        headers.insert(ACCEPT_LANGUAGE, HeaderValue::from_static("en-US,en;q=0.9"));
+        // headers.insert(
+        //     ACCEPT,
+        //     HeaderValue::from_static("text/html,application/xhtml+xml"),
+        // );
+        // headers.insert(ACCEPT_LANGUAGE, HeaderValue::from_static("en-US,en;q=0.9"));
 
         let mut params = HashMap::new();
+        //params.insert("custom_headers", "true");
         params.insert("url", url);
-        params.insert("apikey", &api_key);
-        params.insert("js_render", "true");
-        params.insert("premium_proxy", "true");
-        params.insert("proxy_country", "us");
-        params.insert("wait", "2000");
+        params.insert("apikey", api_key);
+        // params.insert("js_render", "true");
+        // params.insert("premium_proxy", "true");
+        // params.insert("proxy_country", "us");
+        // params.insert("wait_for", "script#__NEXT_DATA__");
+        params.insert("original_status", "true");
+        params.insert("mode", "auto");
 
         let resp = self
             .client
@@ -215,23 +207,38 @@ impl RealtorScraper {
             .send()
             .map_err(|e| ScraperError::Network(e.to_string()))?;
 
+        // 1️⃣ ZenRows HTTP status
         let status = resp.status();
+
+        // 2️⃣ ORIGINAL STATUS (add THIS BLOCK)
+        let original_status = resp
+            .headers()
+            .iter()
+            .find(|(k, _)| k.as_str().to_ascii_lowercase().contains("original"))
+            .map(|(_, v)| v.to_str().unwrap_or("?").to_string())
+            .unwrap_or("<none>".to_string());
+
+        // 3️⃣ Now read the body
         let text = resp
             .text()
             .map_err(|e| ScraperError::Network(e.to_string()))?;
 
         if !status.is_success() {
             return Err(ScraperError::Network(format!(
-                "ZenRows HTTP {}: {}",
-                status, text
+                "ZenRows HTTP {} ({}) : {}",
+                status, original_status, text
             )));
         }
 
-        if text.starts_with('{') && text.contains("\"code\":\"RESP") {
-            return Err(ScraperError::Network(format!(
-                "ZenRows API error: {}",
-                text
-            )));
+        if text.starts_with('{') {
+            if let Ok(json) = serde_json::from_str::<serde_json::Value>(&text) {
+                if json.get("code").is_some() {
+                    return Err(ScraperError::Network(format!(
+                        "ZenRows API error ({}) : {}",
+                        original_status, text
+                    )));
+                }
+            }
         }
 
         Ok(text)

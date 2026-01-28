@@ -11,9 +11,11 @@ pub fn admin_page() -> Markup {
                 label for="state" { "Select State" }
 
                 select id="state" name="state" {
+
                     option value="AL" { "Alabama" }
                     option value="AK" { "Alaska" }
                     option value="AZ" { "Arizona" }
+                    option value="UT" { "Utah" }
                 }
 
                 button type="submit" { "Update Database" }

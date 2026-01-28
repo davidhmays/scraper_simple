@@ -2,7 +2,7 @@ use crate::errors::ServerError;
 use astra::{Body, Response, ResponseBuilder};
 
 pub type ResultResp = Result<Response, ServerError>;
-
+//TODO: Are these even used???
 /// Convert a ServerError into a proper HTML response
 pub fn error_to_response(err: ServerError) -> Response {
     match err {
@@ -10,6 +10,9 @@ pub fn error_to_response(err: ServerError) -> Response {
         ServerError::BadRequest(msg) => html_error_response(400, &msg),
         ServerError::DbError(msg) => html_error_response(500, &msg),
         ServerError::InternalError => html_error_response(500, "Internal Server Error"),
+        ServerError::XlsxError(msg) => {
+            html_error_response(500, &format!("SpreadsheetError: {msg}"))
+        }
     }
 }
 

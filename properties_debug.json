@@ -1,0 +1,5192 @@
+[
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "utahhomeguys@gmail.com",
+        "fulfillment_id": "1387673",
+        "name": "Mark Robison",
+        "office": {
+          "name": "Utah Real Estate"
+        },
+        "phones": [
+          {
+            "number": "8015544189"
+          },
+          {
+            "number": "8016743567"
+          }
+        ],
+        "type": "seller"
+      },
+      {
+        "builder": null,
+        "email": "utahhomeguyskw@gmail.com",
+        "fulfillment_id": "1519406",
+        "name": "David Rangasan",
+        "office": {
+          "name": "Utah Real Estate"
+        },
+        "phones": [
+          {
+            "number": "(801) 401-5530"
+          },
+          {
+            "number": "8016743537"
+          }
+        ],
+        "type": "co_seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Utah Real Estate",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 1,
+      "lot_sqft": 7841,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 2652,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1963
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-11T23:46:15.000000Z",
+    "list_price": 650000,
+    "listing_id": "2989384972",
+    "location": {
+      "address": {
+        "city": "Cottonwood Heights",
+        "coordinate": {
+          "lat": 40.62615,
+          "lon": -111.833598
+        },
+        "line": "6884 S Bella Vista Dr",
+        "postal_code": "84121",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49035",
+        "name": "Salt Lake"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=6884%20S%20Bella%20Vista%20Dr%2C%20Cottonwood%20Heights%2C%20UT%2084121&size=640x480&source=outdoor&signature=U-qGDt23xKhJ9fjwidzLPRMDmXk="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "6884-S-Bella-Vista-Dr_Cottonwood-Heights_UT_84121_M10778-36483",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/7736826c4ad5c6b646a80a6bbba49bc3l-m2049790460s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/7736826c4ad5c6b646a80a6bbba49bc3l-m138230683s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/7736826c4ad5c6b646a80a6bbba49bc3l-m4201696177s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/7736826c4ad5c6b646a80a6bbba49bc3l-m2049790460s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1077836483",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2126580",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "0",
+        "name": "Jenee Hutchinson",
+        "office": {
+          "name": "True North Realty"
+        },
+        "phones": [
+          {
+            "number": "(801) 836-8417"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "True North Realty",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 21780,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 4500,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2025
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-10-24T23:56:07.000000Z",
+    "list_price": 775506,
+    "listing_id": "2987695911",
+    "location": {
+      "address": {
+        "city": "Eagle Mountain",
+        "coordinate": {
+          "lat": 40.290365,
+          "lon": -111.989934
+        },
+        "line": "2833 E Liam Ln Unit 103",
+        "postal_code": "84005",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49049",
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=2833%20E%20Liam%20Ln%20Unit%20103%2C%20Eagle%20Mountain%2C%20UT%2084005&size=640x480&source=outdoor&signature=da5L8GuA8g-MunFoIQRMW2edh_o="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "2833-E-Liam-Ln_Eagle-Mountain_UT_84005_M92209-82040",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/f2335c990c087a236fedd2fc6ac8ab32l-m411018695s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f2335c990c087a236fedd2fc6ac8ab32l-m4182220274s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f2335c990c087a236fedd2fc6ac8ab32l-m871219041s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/f2335c990c087a236fedd2fc6ac8ab32l-m411018695s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "co_broke"
+      ]
+    },
+    "property_id": "9220982040",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2119550",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "mimidenton@wincre.com",
+        "fulfillment_id": "100570370",
+        "name": "Mimi Denton",
+        "office": {
+          "name": "Windermere RE Utah - Park City"
+        },
+        "phones": [
+          {
+            "number": "(435) 649-3000"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Windermere RE Utah - Park City",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "1",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 1,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": null,
+      "lot_sqft": 436,
+      "name": null,
+      "sold_date": "2004-02-13",
+      "sold_price": null,
+      "sqft": 500,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": "condo",
+      "type": "condos",
+      "year_built": 1978
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-23T23:11:29.000000Z",
+    "list_price": 360000,
+    "listing_id": "2990614656",
+    "location": {
+      "address": {
+        "city": "Park City",
+        "coordinate": {
+          "lat": 40.663971,
+          "lon": -111.492596
+        },
+        "line": "2235 Sidewinder Dr Unit 430",
+        "postal_code": "84060",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49043",
+        "name": "Summit"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=2235%20Sidewinder%20Dr%20Unit%20430%2C%20Park%20City%2C%20UT%2084060&size=640x480&source=outdoor&signature=VBH_28zeDexaWgNV0ovMpOBgl_w="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "2235-Sidewinder-Dr-430_Park-City_UT_84060_M10681-08147",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/f6e71e3ac5811e6f307e930c46e1424al-m2838875594s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f6e71e3ac5811e6f307e930c46e1424al-m3214208770s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f6e71e3ac5811e6f307e930c46e1424al-m3700125863s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/f6e71e3ac5811e6f307e930c46e1424al-m2838875594s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1068108147",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "PCUT",
+      "listing_id": "12600263",
+      "name": "ParkCity",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "100525887",
+        "name": "Cole Gibbons",
+        "office": {
+          "name": "KW WESTFIELD"
+        },
+        "phones": [
+          {
+            "number": "(801) 676-5700"
+          }
+        ],
+        "type": "seller"
+      },
+      {
+        "builder": null,
+        "email": "darlenebaltzell@gmail.com",
+        "fulfillment_id": "4381227",
+        "name": "Mike Gooch",
+        "office": {
+          "name": "KW WESTFIELD"
+        },
+        "phones": [
+          {
+            "number": "8182925665"
+          }
+        ],
+        "type": "co_seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "KW WESTFIELD",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 10890,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 4605,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2026
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": true,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "choice",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-09T17:56:29.000000Z",
+    "list_price": 659900,
+    "listing_id": "2990142551",
+    "location": {
+      "address": {
+        "city": "Spanish Fork",
+        "coordinate": null,
+        "line": "2138 E 200 N Unit MSF54",
+        "postal_code": "84660",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": null,
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=2138%20E%20200%20N%20Unit%20MSF54%2C%20Spanish%20Fork%2C%20UT%2084660&size=640x480&source=outdoor&signature=5Svu2VVfXFKYJxK8OfnpouZPQKU="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "2138-E-200-N-Unit-MSF54_Spanish-Fork_UT_84660_M98537-15286",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/7b6453fde7b8d7738e0cb2974edb5109l-m4261203020s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/7b6453fde7b8d7738e0cb2974edb5109l-m1746550447s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/7b6453fde7b8d7738e0cb2974edb5109l-m2536087324s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/7b6453fde7b8d7738e0cb2974edb5109l-m4261203020s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9853715286",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2129873",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "eddyortizjr@outlook.com",
+        "fulfillment_id": "3975327",
+        "name": "Eddy Ortiz",
+        "office": {
+          "name": "Summit Sotheby's International Realty (Auto Mall)"
+        },
+        "phones": [
+          {
+            "number": "4356491884"
+          },
+          {
+            "number": "4356251725"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Summit Sotheby's International Realty (Auto Mall)",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 17860,
+      "name": null,
+      "sold_date": "2022-08-19",
+      "sold_price": null,
+      "sqft": 3998,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2005
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-21T17:34:39.000000Z",
+    "list_price": 1097500,
+    "listing_id": "2990496805",
+    "location": {
+      "address": {
+        "city": "Cedar City",
+        "coordinate": {
+          "lat": 37.717311,
+          "lon": -113.038705
+        },
+        "line": "2204 N Bridgewater Rd",
+        "postal_code": "84721",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49021",
+        "name": "Iron"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=2204%20N%20Bridgewater%20Rd%2C%20Cedar%20City%2C%20UT%2084721&size=640x480&source=outdoor&signature=2CKwxWaJbKp5dbVzF0msMqM9Ib4="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "2204-Bridgewater-Rd_Cedar-City_UT_84721_M25258-38735",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/e3835471edaafa12fdb381483e94948fl-m3561878668s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e3835471edaafa12fdb381483e94948fl-m2718208890s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e3835471edaafa12fdb381483e94948fl-m2257633955s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/e3835471edaafa12fdb381483e94948fl-m3561878668s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "2525838735",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SGUT",
+      "listing_id": "26-268188",
+      "name": "StGeorge",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://u.listvt.com/mls/191735556"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "rmtiff@me.com",
+        "fulfillment_id": "3073057",
+        "name": "Tiffani Peterson",
+        "office": {
+          "name": "The Group Real Estate, LLC"
+        },
+        "phones": [
+          {
+            "number": "8014509420"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "The Group Real Estate, LLC",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 6,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 14375,
+      "name": null,
+      "sold_date": "2020-06-24",
+      "sold_price": null,
+      "sqft": 3815,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2002
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": true,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-09T17:05:42.000000Z",
+    "list_price": 729000,
+    "listing_id": "2990140193",
+    "location": {
+      "address": {
+        "city": "West Jordan",
+        "coordinate": {
+          "lat": 40.604192,
+          "lon": -112.005826
+        },
+        "line": "8089 S Red Castle Way",
+        "postal_code": "84081",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49035",
+        "name": "Salt Lake"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=8089%20S%20Red%20Castle%20Way%2C%20West%20Jordan%2C%20UT%2084081&size=640x480&source=outdoor&signature=XCSYZDyMCrfs_Kd9Th5iPKU6AZ8="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "8089-S-Red-Castle-Way_West-Jordan_UT_84081_M11036-44631",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/10ea0b0265d27c796b5b4b9801b5269fl-m2395223442s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/10ea0b0265d27c796b5b4b9801b5269fl-m1253110184s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/10ea0b0265d27c796b5b4b9801b5269fl-m1230865735s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/10ea0b0265d27c796b5b4b9801b5269fl-m2395223442s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1103644631",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2129855",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://www.relahq.com/mls/227268171"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "charlie@blueroof.com",
+        "fulfillment_id": "1216653",
+        "name": "Charlie Perry",
+        "office": {
+          "name": "BLUEROOF REAL ESTATE COMPANY"
+        },
+        "phones": [
+          {
+            "number": "8015994665"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "BLUEROOF REAL ESTATE COMPANY",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 3,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 4792,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 2630,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2022
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-07-09T01:56:02.000000Z",
+    "list_price": 400000,
+    "listing_id": "2984033521",
+    "location": {
+      "address": {
+        "city": "Grantsville",
+        "coordinate": {
+          "lat": 40.584038,
+          "lon": -112.478999
+        },
+        "line": "538 S Musk Ave W",
+        "postal_code": "84029",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49045",
+        "name": "Tooele"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=538%20S%20Musk%20Ave%20W%2C%20Grantsville%2C%20UT%2084029&size=640x480&source=outdoor&signature=Rc7eJjp0wsqRebCUhQ5dPyq5XZs="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "538-S-Musk-Ave_Grantsville_UT_84029_M98338-01791",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/fad430f53d3a638f6b18e5de86774240l-m4025277950s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/fad430f53d3a638f6b18e5de86774240l-m3088542699s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/fad430f53d3a638f6b18e5de86774240l-m3835738288s.jpg"
+      }
+    ],
+    "price_reduced_amount": 10000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/fad430f53d3a638f6b18e5de86774240l-m4025277950s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9833801791",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2097243",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://www.spotlighthometours.com/tours/tour.php?mls=2097243&state=UT"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "777585",
+        "name": "Matthew Williams",
+        "office": {
+          "name": "Rocky Mountain Realty"
+        },
+        "phones": [
+          {
+            "number": "(801) 573-2228"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Rocky Mountain Realty",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 6,
+      "lot_sqft": 20909,
+      "name": null,
+      "sold_date": "2011-12-16",
+      "sold_price": null,
+      "sqft": 3900,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2025
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-02T16:46:27.000000Z",
+    "list_price": 975000,
+    "listing_id": "2985943089",
+    "location": {
+      "address": {
+        "city": "North Logan",
+        "coordinate": {
+          "lat": 41.786722,
+          "lon": -111.77859
+        },
+        "line": "2275 E Meadowlark Ln N",
+        "postal_code": "84341",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49005",
+        "name": "Cache"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=2275%20E%20Meadowlark%20Ln%20N%2C%20North%20Logan%2C%20UT%2084341&size=640x480&source=outdoor&signature=0Kw8Cgb1zz9OK_VwCDrtLq6MKSw="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "2275-E-3025-N_Logan_UT_84341_M25441-19927",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/ab3d9e180f7a9160b7c34339b421fb93l-m318995081s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/ab3d9e180f7a9160b7c34339b421fb93l-m148728476s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/ab3d9e180f7a9160b7c34339b421fb93l-m2116056615s.jpg"
+      }
+    ],
+    "price_reduced_amount": 24900,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/ab3d9e180f7a9160b7c34339b421fb93l-m318995081s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "2544119927",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2108691",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://www.utahrealestate.com/report/display/report/photo/listno/2108691/type/1/pub/0"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "sarah@hindihometeam.com",
+        "fulfillment_id": "2877385",
+        "name": "Sarah Hindi - The Hindi Home Team",
+        "office": {
+          "name": "S HINDI REAL ESTATE INC"
+        },
+        "phones": [
+          {
+            "number": "4357733905"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "S HINDI REAL ESTATE INC",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 3,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 6970,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 2048,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2003
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-24T23:28:30.000000Z",
+    "list_price": 539900,
+    "listing_id": "2986724180",
+    "location": {
+      "address": {
+        "city": "Washington",
+        "coordinate": {
+          "lat": 37.147778,
+          "lon": -113.522964
+        },
+        "line": "761 W N Links Dr",
+        "postal_code": "84780",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49053",
+        "name": "Washington"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=761%20W%20N%20Links%20Dr%2C%20Washington%2C%20UT%2084780&size=640x480&source=outdoor&signature=kJcYa2mTyy0tw-76q1VGkD80S7s="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "761N-W-Links-Cir_Washington_UT_84780_M94028-73587",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/e9edf98db993b2577f64263c275e021bl-m2030129152s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e9edf98db993b2577f64263c275e021bl-m4267194680s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e9edf98db993b2577f64263c275e021bl-m1985995402s.jpg"
+      }
+    ],
+    "price_reduced_amount": 10100,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/e9edf98db993b2577f64263c275e021bl-m2030129152s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "9402873587",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SGUT",
+      "listing_id": "25-265398",
+      "name": "StGeorge",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "jake@peakpropertiesutah.com",
+        "fulfillment_id": "3947830",
+        "name": "Jake Graves",
+        "office": {
+          "name": "Realtypath LLC (South Valley)"
+        },
+        "phones": [
+          {
+            "number": "8016607843"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Realtypath LLC (South Valley)",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 13939,
+      "name": null,
+      "sold_date": "2022-10-11",
+      "sold_price": null,
+      "sqft": 5100,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2022
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-02-03T19:46:48.000000Z",
+    "list_price": 999900,
+    "listing_id": "2977904289",
+    "location": {
+      "address": {
+        "city": "Saratoga Springs",
+        "coordinate": {
+          "lat": 40.297321,
+          "lon": -111.881662
+        },
+        "line": "3582 S Garibaldi Way W",
+        "postal_code": "84045",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49049",
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=3582%20S%20Garibaldi%20Way%20W%2C%20Saratoga%20Springs%2C%20UT%2084045&size=640x480&source=outdoor&signature=2x9T8_Mpdewj3VHIPx89cyPwsFg="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "3582-S-Garibaldi-Way_Saratoga-Springs_UT_84045_M98563-64062",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/5a27dd33454314719af34055459d3ff0l-m3237112863s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/5a27dd33454314719af34055459d3ff0l-m2445376985s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/5a27dd33454314719af34055459d3ff0l-m2114526494s.jpg"
+      }
+    ],
+    "price_reduced_amount": 25000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/5a27dd33454314719af34055459d3ff0l-m3237112863s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9856364062",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2062254",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "scott@influencerealestate.com",
+        "fulfillment_id": "1621277",
+        "name": "The Maruri Group Real Estate",
+        "office": {
+          "name": "Windermere Real Estate-Utah (Salt Lake Branch)"
+        },
+        "phones": [
+          {
+            "number": "(801) 214-9944"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Windermere Real Estate-Utah (Salt Lake Branch)",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 6098,
+      "name": null,
+      "sold_date": "2021-04-14",
+      "sold_price": null,
+      "sqft": 2130,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1987
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "choice",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-15T00:35:59.000000Z",
+    "list_price": 559900,
+    "listing_id": "2990296895",
+    "location": {
+      "address": {
+        "city": "Taylorsville",
+        "coordinate": {
+          "lat": 40.63631,
+          "lon": -111.989144
+        },
+        "line": "6325 S Dry Wind Dr",
+        "postal_code": "84129",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49035",
+        "name": "Salt Lake"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=6325%20S%20Dry%20Wind%20Dr%2C%20Taylorsville%2C%20UT%2084129&size=640x480&source=outdoor&signature=rPZwQF-cXatfySf7qwPAwRlZDyE="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "6325-S-Dry-Wind-Dr_Taylorsville_UT_84129_M91793-58286",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/86c73f8efa43db596e0f0efb4c0e5babl-m4099148446s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/86c73f8efa43db596e0f0efb4c0e5babl-m1009593215s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/86c73f8efa43db596e0f0efb4c0e5babl-m1733235312s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/86c73f8efa43db596e0f0efb4c0e5babl-m4099148446s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9179358286",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2130831",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "tiffiny.schindler@woodsidehomes.com",
+        "fulfillment_id": "2757399",
+        "name": "Tiffiny Schindler",
+        "office": {
+          "name": "Woodside Homes"
+        },
+        "phones": [
+          {
+            "number": "3852377855"
+          }
+        ],
+        "type": "seller"
+      },
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "100740135",
+        "name": "Timothy Marshall",
+        "office": {
+          "name": "Woodside Homes"
+        },
+        "phones": [
+          {
+            "number": "(801) 869-4000"
+          }
+        ],
+        "type": "co_seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Woodside Homes",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 1742,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 2356,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": "townhouse",
+      "type": "townhomes",
+      "year_built": 2025
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-23T22:56:12.000000Z",
+    "list_price": 474990,
+    "listing_id": "2990614140",
+    "location": {
+      "address": {
+        "city": "West Jordan",
+        "coordinate": {
+          "lat": 40.625998,
+          "lon": -112.052163
+        },
+        "line": "6888 S Survey Peak Ln Unit 301",
+        "postal_code": "84081",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49035",
+        "name": "Salt Lake"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=6888%20S%20Survey%20Peak%20Ln%20Unit%20301%2C%20West%20Jordan%2C%20UT%2084081&size=640x480&source=outdoor&signature=0KVNEFjWcHh-NGjmjEZqW0cz2Y4="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "6888-S-Survey-Peak-Ln-301_West-Jordan_UT_84081_M93402-74918",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/09c28050dc8bec35c6f88f6934878212l-m1717689664s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/09c28050dc8bec35c6f88f6934878212l-m850142570s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/09c28050dc8bec35c6f88f6934878212l-m967695894s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/09c28050dc8bec35c6f88f6934878212l-m1717689664s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9340274918",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2132696",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "100439553",
+        "name": "Danna Bui-Negrete",
+        "office": {
+          "name": "LRG Collective"
+        },
+        "phones": [
+          {
+            "number": "(801) 503-1802"
+          }
+        ],
+        "type": "seller"
+      },
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "100530869",
+        "name": "Ernesto Negrete",
+        "office": {
+          "name": "LRG Collective"
+        },
+        "phones": [
+          {
+            "number": "(801) 382-9297"
+          }
+        ],
+        "type": "co_seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "LRG Collective",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 11326,
+      "name": null,
+      "sold_date": "2021-06-03",
+      "sold_price": null,
+      "sqft": 3720,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1999
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": true,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-10-17T18:25:53.000000Z",
+    "list_price": 599000,
+    "listing_id": "2987456782",
+    "location": {
+      "address": {
+        "city": "Clinton",
+        "coordinate": {
+          "lat": 41.135162,
+          "lon": -112.051725
+        },
+        "line": "1479 N 1320 W",
+        "postal_code": "84015",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49011",
+        "name": "Davis"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1479%20N%201320%20W%2C%20Clinton%2C%20UT%2084015&size=640x480&source=outdoor&signature=9DpzpTmD7DOJxYGVyws_xMuNDDg="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "1479-N-1320-W_Clinton_UT_84015_M11375-96534",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/04ccec5f41d5bd1f35b1f45e2be440a5l-m731348903s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/04ccec5f41d5bd1f35b1f45e2be440a5l-m3279861509s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/04ccec5f41d5bd1f35b1f45e2be440a5l-m1614035330s.jpg"
+      }
+    ],
+    "price_reduced_amount": 25900,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/04ccec5f41d5bd1f35b1f45e2be440a5l-m731348903s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "1137596534",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2118155",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "tylerlists@gmail.com",
+        "fulfillment_id": "1190000",
+        "name": "Tyler Brown",
+        "office": {
+          "name": "Cornerstone Real Estate Professionals/Idaho"
+        },
+        "phones": [
+          {
+            "number": "2083395481"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Cornerstone Real Estate Professionals/Idaho",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "4",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 6,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 14375,
+      "name": null,
+      "sold_date": "2024-09-20",
+      "sold_price": null,
+      "sqft": 3544,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2021
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-27T18:36:26.000000Z",
+    "list_price": 774900,
+    "listing_id": "2989745753",
+    "location": {
+      "address": {
+        "city": "Hyde Park",
+        "coordinate": {
+          "lat": 41.7975,
+          "lon": -111.795866
+        },
+        "line": "86 S 950 E",
+        "postal_code": "84318",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49005",
+        "name": "Cache"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=86%20S%20950%20E%2C%20Hyde%20Park%2C%20UT%2084318&size=640x480&source=outdoor&signature=q6IVeOQQ9byNwWcYKR1RjUxRsqg="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "86-S-950-E_Hyde-Park_UT_84318_M93898-08143",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/bc1ff9da6a84ee970f68e69b84e1c30cl-m3880694176s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/bc1ff9da6a84ee970f68e69b84e1c30cl-m883148674s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/bc1ff9da6a84ee970f68e69b84e1c30cl-m2547429507s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/bc1ff9da6a84ee970f68e69b84e1c30cl-m3880694176s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9389808143",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2128137",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "imsarmiento@yahoo.com",
+        "fulfillment_id": "0",
+        "name": "Nathan Murdock",
+        "office": {
+          "name": "Cornerstone Real Estate Professionals LLC"
+        },
+        "phones": [
+          {
+            "number": "4352305920"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Cornerstone Real Estate Professionals LLC",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 3,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 13068,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 3704,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2026
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": true,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "choice",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-18T02:06:18.000000Z",
+    "list_price": 680000,
+    "listing_id": "2989558123",
+    "location": {
+      "address": {
+        "city": "Hyde Park",
+        "coordinate": {
+          "lat": 41.801975,
+          "lon": -111.79039
+        },
+        "line": "1154 E 160 N",
+        "postal_code": "84318",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49005",
+        "name": "Cache"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1154%20E%20160%20N%2C%20Hyde%20Park%2C%20UT%2084318&size=640x480&source=outdoor&signature=3bfr1YDGNowLIxlZCreS0hukfz8="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "1154-E-160-N_Hyde-Park_UT_84318_M99178-71081",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/c620df17ac958e2263734b73de886950l-m2659719010s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/c620df17ac958e2263734b73de886950l-m67141130s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/c620df17ac958e2263734b73de886950l-m3476121840s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/c620df17ac958e2263734b73de886950l-m2659719010s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "co_broke"
+      ]
+    },
+    "property_id": "9917871081",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2127356",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "whijam@hotmail.com",
+        "fulfillment_id": "82079",
+        "name": "Jamie White",
+        "office": {
+          "name": "Realty ONE Group Signature"
+        },
+        "phones": [
+          {
+            "number": "8018596122"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Realty ONE Group Signature",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 2,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": null,
+      "lot_sqft": 436,
+      "name": null,
+      "sold_date": "1999-10-19",
+      "sold_price": null,
+      "sqft": 1124,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": "townhouse",
+      "type": "townhomes",
+      "year_built": 1999
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": true,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-17T16:15:57.000000Z",
+    "list_price": 370000,
+    "listing_id": "2986467616",
+    "location": {
+      "address": {
+        "city": "Draper",
+        "coordinate": {
+          "lat": 40.531892,
+          "lon": -111.884776
+        },
+        "line": "205 E Rockey Park Ln S",
+        "postal_code": "84020",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49035",
+        "name": "Salt Lake"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=205%20E%20Rockey%20Park%20Ln%20S%2C%20Draper%2C%20UT%2084020&size=640x480&source=outdoor&signature=mAKznQnGZ8l6nBEXJC_ljOnr53c="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "205-E-Rockey-Park-Ln_Draper_UT_84020_M11355-50056",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/10e26f1aeba7c1af65eba0400f9197eel-m141794249s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/10e26f1aeba7c1af65eba0400f9197eel-m4200104853s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/10e26f1aeba7c1af65eba0400f9197eel-m770245181s.jpg"
+      }
+    ],
+    "price_reduced_amount": 5000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/10e26f1aeba7c1af65eba0400f9197eel-m141794249s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1135550056",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2112029",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://www.spotlighthometours.com/tours/tour.php?mls=2112029&state=UT&contact"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "taylorknelson.re@gmail.com",
+        "fulfillment_id": "3761439",
+        "name": "Taylor K Nelson",
+        "office": {
+          "name": "Realty One Group Signature - South Davis"
+        },
+        "phones": [
+          {
+            "number": "3856269774"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Realty One Group Signature - South Davis",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": null,
+      "lot_sqft": 52272,
+      "name": null,
+      "sold_date": "2021-03-31",
+      "sold_price": null,
+      "sqft": 2016,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1980
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-20T00:15:56.000000Z",
+    "list_price": 520000,
+    "listing_id": "2986578015",
+    "location": {
+      "address": {
+        "city": "Hooper",
+        "coordinate": {
+          "lat": 41.17445,
+          "lon": -112.094034
+        },
+        "line": "4931 S 4700 W",
+        "postal_code": "84315",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49057",
+        "name": "Weber"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=4931%20S%204700%20W%2C%20Hooper%2C%20UT%2084315&size=640x480&source=outdoor&signature=Eacmlh4DOaYdzfwQa6jw80DQtzg="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "4931-S-4700-W_Hooper_UT_84315_M12765-53712",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/db43f148228bb6a56844cb4c1708dd78l-c2615173319s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/827380a45fc27b107d1530af9560e486l-c2512671390s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/5ea08caee1e3d8cf28158870342454b8l-c565580653s.jpg"
+      }
+    ],
+    "price_reduced_amount": 9900,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/db43f148228bb6a56844cb4c1708dd78l-c2615173319s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "1276553712",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2112831",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "brent@landmarkutah.com",
+        "fulfillment_id": "0",
+        "name": "David Simpson",
+        "office": {
+          "name": "LandMark Real Estate"
+        },
+        "phones": [
+          {
+            "number": "(801) 489-3211"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "LandMark Real Estate",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": null,
+      "baths_max": null,
+      "baths_min": null,
+      "beds": null,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": null,
+      "lot_sqft": 1742400,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": null,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "land",
+      "year_built": null
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-09T01:26:02.000000Z",
+    "list_price": 80000,
+    "listing_id": "2990122310",
+    "location": {
+      "address": {
+        "city": "Moroni",
+        "coordinate": null,
+        "line": null,
+        "postal_code": "84646",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": null,
+        "name": "Sanpete"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=undefined%2C%20Moroni%2C%20UT%2084646&size=640x480&source=outdoor&signature=HyuaQ6k1vD5Z51XPS4AdgVrihYw="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "Moroni_UT_84646_M91245-97204",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/e63078ddb16c3111e665fd7ebe5e8969l-m2662634605s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e63078ddb16c3111e665fd7ebe5e8969l-m1251237334s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e63078ddb16c3111e665fd7ebe5e8969l-m1640427893s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/e63078ddb16c3111e665fd7ebe5e8969l-m2662634605s.jpg"
+    },
+    "products": null,
+    "property_id": "9124597204",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2129783",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "info@genuineutah.com",
+        "fulfillment_id": "2283227",
+        "name": "JD Reese",
+        "office": {
+          "name": "RED ROCK REAL ESTATE"
+        },
+        "phones": [
+          {
+            "number": "4353754488"
+          },
+          {
+            "number": "4352295334"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "RED ROCK REAL ESTATE",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "4",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 13068,
+      "name": null,
+      "sold_date": "2017-03-28",
+      "sold_price": null,
+      "sqft": 4491,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2005
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-07T03:16:31.000000Z",
+    "list_price": 826000,
+    "listing_id": "2990044170",
+    "location": {
+      "address": {
+        "city": "Saint George",
+        "coordinate": {
+          "lat": 37.083731,
+          "lon": -113.545403
+        },
+        "line": "1839 E Boulder Springs Cir",
+        "postal_code": "84790",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49053",
+        "name": "Washington"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1839%20E%20Boulder%20Springs%20Cir%2C%20Saint%20George%2C%20UT%2084790&size=640x480&source=outdoor&signature=52kDs4OOp8EOpiIw0sNxUBoy05M="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "1839-Boulder-Springs-Cir_Saint-George_UT_84790_M10458-61602",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/6e6f0f5ba41aa97fbf7a34150acd8758l-m856650590s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/6e6f0f5ba41aa97fbf7a34150acd8758l-m3395687666s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/6e6f0f5ba41aa97fbf7a34150acd8758l-m3045511348s.jpg"
+      }
+    ],
+    "price_reduced_amount": 23000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/6e6f0f5ba41aa97fbf7a34150acd8758l-m856650590s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1045861602",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SGUT",
+      "listing_id": "25-267724",
+      "name": "StGeorge",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "bryce801@gmail.com",
+        "fulfillment_id": "0",
+        "name": "Bryce Anderson",
+        "office": {
+          "name": "Intermountain Properties"
+        },
+        "phones": [
+          {
+            "number": "(801) 896-7640"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Intermountain Properties",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 3,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 87556,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 1520,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2026
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": true,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "choice",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-14T21:45:53.000000Z",
+    "list_price": 474900,
+    "listing_id": "2990290022",
+    "location": {
+      "address": {
+        "city": "Portage",
+        "coordinate": null,
+        "line": "26135 N 8800 W",
+        "postal_code": "84331",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": null,
+        "name": "Box Elder"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=26135%20N%208800%20W%2C%20Portage%2C%20UT%2084331&size=640x480&source=outdoor&signature=h5mJUlmHFfn8GgYf2-CvIEbu-6c="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "26135-N-8800-W_Portage_UT_84331_M92006-99949",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/4cf44e32dabe93a6eefadae6161ec4e3l-m772600412s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/4cf44e32dabe93a6eefadae6161ec4e3l-m4001626498s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/4cf44e32dabe93a6eefadae6161ec4e3l-m3370793313s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/4cf44e32dabe93a6eefadae6161ec4e3l-m772600412s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "co_broke"
+      ]
+    },
+    "property_id": "9200699949",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2130777",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://www.utahrealestate.com/report/display/report/photo/listno/2130777/type/1/pub/0"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "gabbyschaef@gmail.com",
+        "fulfillment_id": "3781926",
+        "name": "Gabrielle Schaefer",
+        "office": {
+          "name": "Real Broker, LLC"
+        },
+        "phones": [
+          {
+            "number": "4352565506"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Real Broker, LLC",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 1,
+      "lot_sqft": 10454,
+      "name": null,
+      "sold_date": "2005-07-20",
+      "sold_price": null,
+      "sqft": 2925,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1947
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-12T22:36:00.000000Z",
+    "list_price": 499900,
+    "listing_id": "2989416054",
+    "location": {
+      "address": {
+        "city": "Kaysville",
+        "coordinate": {
+          "lat": 41.036754,
+          "lon": -111.943815
+        },
+        "line": "290 W 100 N",
+        "postal_code": "84037",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49011",
+        "name": "Davis"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=290%20W%20100%20N%2C%20Kaysville%2C%20UT%2084037&size=640x480&source=outdoor&signature=24lEm8V2bFoR3kElPJawbeqfvy8="
+    },
+    "matterport": true,
+    "open_houses": null,
+    "permalink": "290-W-100-N_Kaysville_UT_84037_M12262-85106",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/9e33d548f56ddcf658acef9180856b41l-m4040120911s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/9e33d548f56ddcf658acef9180856b41l-m3944317412s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/9e33d548f56ddcf658acef9180856b41l-m4020203075s.jpg"
+      }
+    ],
+    "price_reduced_amount": 10100,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/9e33d548f56ddcf658acef9180856b41l-m4040120911s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1226285106",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2126757",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "pho.lam@sothebysrealty.com",
+        "fulfillment_id": "2193106",
+        "name": "Pho T Lam",
+        "office": {
+          "name": "Utah Key Real Estate"
+        },
+        "phones": [
+          {
+            "number": "8015309837"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Utah Key Real Estate",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 1,
+      "lot_sqft": 9148,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 1924,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1958
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-13T07:05:53.000000Z",
+    "list_price": 420000,
+    "listing_id": "2986360325",
+    "location": {
+      "address": {
+        "city": "West Valley City",
+        "coordinate": {
+          "lat": 40.688156,
+          "lon": -112.002029
+        },
+        "line": "4646 W Huntington Rd",
+        "postal_code": "84120",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49035",
+        "name": "Salt Lake"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=4646%20W%20Huntington%20Rd%2C%20West%20Valley%20City%2C%20UT%2084120&size=640x480&source=outdoor&signature=9QQXqlOYx1Oyj2-Gfb47sy1h96c="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "4646-W-Huntington-Rd_West-Valley-City_UT_84120_M99165-59729",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/f9ad9a53fb58d0acf043db42d994d30dl-m3591909762s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f9ad9a53fb58d0acf043db42d994d30dl-m904039669s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f9ad9a53fb58d0acf043db42d994d30dl-m2238635899s.jpg"
+      }
+    ],
+    "price_reduced_amount": 30000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/f9ad9a53fb58d0acf043db42d994d30dl-m3591909762s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9916559729",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2111441",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "kim@lancegrouphomes.com",
+        "fulfillment_id": "100624463",
+        "name": "Jennifer Grimshaw",
+        "office": {
+          "name": "Bybee & Co Realty, LLC"
+        },
+        "phones": [
+          {
+            "number": "(435) 238-0397"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Bybee & Co Realty, LLC",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "8",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 12,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 4,
+      "lot_sqft": 6970,
+      "name": null,
+      "sold_date": "2019-12-12",
+      "sold_price": null,
+      "sqft": 4128,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "multi_family",
+      "year_built": 1980
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-11-25T16:46:03.000000Z",
+    "list_price": 1000000,
+    "listing_id": "2988989998",
+    "location": {
+      "address": {
+        "city": "Provo",
+        "coordinate": {
+          "lat": 40.242491,
+          "lon": -111.67765
+        },
+        "line": "630 N 1100 W",
+        "postal_code": "84601",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49049",
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=630%20N%201100%20W%2C%20Provo%2C%20UT%2084601&size=640x480&source=outdoor&signature=JBrPvnSkGDaL9lsz72nLDqbdB7g="
+    },
+    "matterport": true,
+    "open_houses": null,
+    "permalink": "630-N-1100-W_Provo_UT_84601_M10867-64566",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/9e2705959ea0a9a10113fdeba7f66a54l-m1504174451s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/9e2705959ea0a9a10113fdeba7f66a54l-m3671251004s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/9e2705959ea0a9a10113fdeba7f66a54l-m2309383996s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/9e2705959ea0a9a10113fdeba7f66a54l-m1504174451s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1086764566",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2124464",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "0",
+        "name": "Deanna Knight",
+        "office": {
+          "name": "Upper Country Realty"
+        },
+        "phones": [
+          {
+            "number": "(801) 598-1222"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Upper Country Realty",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "4.5+",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 52272,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 5459,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2026
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-21T01:17:38.000000Z",
+    "list_price": 1900000,
+    "listing_id": "2986611141",
+    "location": {
+      "address": {
+        "city": "Heber City",
+        "coordinate": {
+          "lat": 40.477934,
+          "lon": -111.258904
+        },
+        "line": "9855 E Clubhouse Rd Unit 1044",
+        "postal_code": "84032",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49051",
+        "name": "Wasatch"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=9855%20E%20Clubhouse%20Rd%20Unit%201044%2C%20Heber%20City%2C%20UT%2084032&size=640x480&source=outdoor&signature=69HIBzmCg9lqkcpmsE47h4qcVjg="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "9855-E-Clubhouse-Rd_Heber-City_UT_84032_M98431-67688",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/bbc30970c9e36e06b6639b21f2024958l-m922985513s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/bbc30970c9e36e06b6639b21f2024958l-m1847675836s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/bbc30970c9e36e06b6639b21f2024958l-m2517764263s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/bbc30970c9e36e06b6639b21f2024958l-m922985513s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "co_broke"
+      ]
+    },
+    "property_id": "9843167688",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2112946",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "cynthawright@gmail.com",
+        "fulfillment_id": "3772341",
+        "name": "Cyntha Wright",
+        "office": {
+          "name": "COLDWELL BANKER PREMIER"
+        },
+        "phones": [
+          {
+            "number": "4356806769"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "COLDWELL BANKER PREMIER",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": null,
+      "baths_max": null,
+      "baths_min": null,
+      "beds": null,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": null,
+      "lot_sqft": 20038,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 20018,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "land",
+      "year_built": null
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-23T17:07:33.000000Z",
+    "list_price": 628800,
+    "listing_id": "2990598034",
+    "location": {
+      "address": {
+        "city": "Springdale",
+        "coordinate": null,
+        "line": "Zuni",
+        "postal_code": "84767",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": null,
+        "name": "Washington"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=Zuni%2C%20Springdale%2C%20UT%2084767&size=640x480&source=outdoor&signature=Ul2YyA-QkyNh9JlfxgChk5RMrOU="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "Anasazi-Plateau-Lot-25_Springdale_UT_84767_M10388-07331",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/e245df83ce5a0cfd57ba1035dbb60626l-m1212657641s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e245df83ce5a0cfd57ba1035dbb60626l-m2519083818s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/e245df83ce5a0cfd57ba1035dbb60626l-m1600035898s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/e245df83ce5a0cfd57ba1035dbb60626l-m1212657641s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker"
+      ]
+    },
+    "property_id": "1038807331",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SGUT",
+      "listing_id": "26-268281",
+      "name": "StGeorge",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "0",
+        "name": "Cammy Telford",
+        "office": {
+          "name": "Boomerang Real Estate Services LLC"
+        },
+        "phones": [
+          {
+            "number": "(435) 770-7458"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Boomerang Real Estate Services LLC",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 6,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 12197,
+      "name": null,
+      "sold_date": "2025-04-24",
+      "sold_price": null,
+      "sqft": 2696,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2012
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-01T18:36:04.000000Z",
+    "list_price": 550000,
+    "listing_id": "2989097502",
+    "location": {
+      "address": {
+        "city": "Smithfield",
+        "coordinate": {
+          "lat": 41.841921,
+          "lon": -111.848489
+        },
+        "line": "581 W 230 N",
+        "postal_code": "84335",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49005",
+        "name": "Cache"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=581%20W%20230%20N%2C%20Smithfield%2C%20UT%2084335&size=640x480&source=outdoor&signature=UnqZXJgObWH91uWYGqn5mSMyA6A="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "581-W-230-N_Smithfield_UT_84335_M10412-26866",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/5266be65d6064c21fa540d603c3d83b0l-m258792736s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/5266be65d6064c21fa540d603c3d83b0l-m378084097s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/5266be65d6064c21fa540d603c3d83b0l-m1029675864s.jpg"
+      }
+    ],
+    "price_reduced_amount": 9000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/5266be65d6064c21fa540d603c3d83b0l-m258792736s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "co_broke"
+      ]
+    },
+    "property_id": "1041226866",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2125029",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "edwin@uvo.realestate",
+        "fulfillment_id": "99927251",
+        "name": "Edwin Ferevski",
+        "office": {
+          "name": "CENTURY 21 Everest"
+        },
+        "phones": [
+          {
+            "number": "8015506234"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "CENTURY 21 Everest",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 11326,
+      "name": null,
+      "sold_date": "2022-04-20",
+      "sold_price": null,
+      "sqft": 4476,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2000
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-23T05:45:45.000000Z",
+    "list_price": 999999,
+    "listing_id": "2990581076",
+    "location": {
+      "address": {
+        "city": "Cedar Hills",
+        "coordinate": {
+          "lat": 40.409902,
+          "lon": -111.767557
+        },
+        "line": "4552 W Windsor Cir N",
+        "postal_code": "84062",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49049",
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=4552%20W%20Windsor%20Cir%20N%2C%20Cedar%20Hills%2C%20UT%2084062&size=640x480&source=outdoor&signature=ucDS2KewloGuyTttf7-qOe-Nirk="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "4552-W-Windsor-Cir_Cedar-Hills_UT_84062_M25023-11879",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/d3f15afb474995773a84f5e3f17b1bc1l-b347330047s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/d3f15afb474995773a84f5e3f17b1bc1l-b1321694700s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/d3f15afb474995773a84f5e3f17b1bc1l-b3804804434s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/d3f15afb474995773a84f5e3f17b1bc1l-b347330047s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "2502311879",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2132532",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "ruthann@ruthannbales.com",
+        "fulfillment_id": "3620575",
+        "name": "Ruthann Bales",
+        "office": {
+          "name": "Equity Real Estate - Results"
+        },
+        "phones": [
+          {
+            "number": "8013724426"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Equity Real Estate - Results",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 6,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 304920,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 5100,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1998
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-10-01T21:26:25.000000Z",
+    "list_price": 1715000,
+    "listing_id": "2986939056",
+    "location": {
+      "address": {
+        "city": "Payson",
+        "coordinate": {
+          "lat": 40.023594,
+          "lon": -111.786095
+        },
+        "line": "11363 S 5600 W",
+        "postal_code": "84651",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49049",
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=11363%20S%205600%20W%2C%20Payson%2C%20UT%2084651&size=640x480&source=outdoor&signature=GsXUAZru2Jgs2V2A2hnahFeL96I="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "11363-S-5600-W_Payson_UT_84651_M97131-95073",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/3eff9d4532e436f4daf40850cd25186bl-m2581399502s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/3eff9d4532e436f4daf40850cd25186bl-m2639071319s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/3eff9d4532e436f4daf40850cd25186bl-m2657709064s.jpg"
+      }
+    ],
+    "price_reduced_amount": 25000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/3eff9d4532e436f4daf40850cd25186bl-m2581399502s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9713195073",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2114885",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "rand@buysouthernutah.com",
+        "fulfillment_id": "1555781",
+        "name": "Rand Lemmon",
+        "office": {
+          "name": "Kw St George Keller Williams Realty"
+        },
+        "phones": [
+          {
+            "number": "4356354547"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Kw St George Keller Williams Realty",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 17860,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 2187,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2025
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-19T19:07:32.000000Z",
+    "list_price": 599900,
+    "listing_id": "2986563397",
+    "location": {
+      "address": {
+        "city": "Hurricane",
+        "coordinate": {
+          "lat": 37.118904,
+          "lon": -113.310562
+        },
+        "line": "1007 W Rock View Dr",
+        "postal_code": "84737",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49053",
+        "name": "Washington"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1007%20W%20Rock%20View%20Dr%2C%20Hurricane%2C%20UT%2084737&size=640x480&source=outdoor&signature=H9-4nTQmkwtdCMdIN4FM_eyIAAc="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "1007-W-Rock-View-Dr_Hurricane_UT_84737_M91159-51460",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/d536e31820f7aa122fbc6419b1bb7a88l-m3510353610s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/d536e31820f7aa122fbc6419b1bb7a88l-m2037492404s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/d536e31820f7aa122fbc6419b1bb7a88l-m3598678202s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/d536e31820f7aa122fbc6419b1bb7a88l-m3510353610s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "9115951460",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SGUT",
+      "listing_id": "25-265272",
+      "name": "StGeorge",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "Heidi@heidiinghamrealestate.com",
+        "fulfillment_id": "706537",
+        "name": "Heidi Ingham",
+        "office": {
+          "name": "Berkshire Hathaway HomeServices Utah - Main"
+        },
+        "phones": [
+          {
+            "number": "4359019330"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Berkshire Hathaway HomeServices Utah - Main",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "4.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 4,
+      "lot_sqft": 436,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 4881,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": "condo",
+      "type": "condos",
+      "year_built": 2017
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-24T04:05:44.000000Z",
+    "list_price": 6995000,
+    "listing_id": "2990621784",
+    "location": {
+      "address": {
+        "city": "Park City",
+        "coordinate": {
+          "lat": 40.645279,
+          "lon": -111.493815
+        },
+        "line": "300 Deer Valley Dr Unit Resa",
+        "postal_code": "84060",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49043",
+        "name": "Summit"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=300%20Deer%20Valley%20Dr%20Unit%20Resa%2C%20Park%20City%2C%20UT%2084060&size=640x480&source=outdoor&signature=W8zd0w8mfiw2lGawmhUmFysODJ4="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "300-Deer-Valley-Dr-Unit-A_Park-City_UT_84060_M12162-15228",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/fce6dd4bc884b8f21b984915eb4f8fb1l-m365765823s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/fce6dd4bc884b8f21b984915eb4f8fb1l-m2574374408s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/fce6dd4bc884b8f21b984915eb4f8fb1l-m1981844420s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/fce6dd4bc884b8f21b984915eb4f8fb1l-m365765823s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1216215228",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2132748",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://www.spotlighthometours.com/tours/tour.php?mls=2132748&state=UT"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "4658138",
+        "name": "Kim Orlandini",
+        "office": {
+          "name": "KW Utah Realtors Keller Williams"
+        },
+        "phones": null,
+        "type": "seller"
+      },
+      {
+        "builder": null,
+        "email": "flavioorlandini@hotmail.com",
+        "fulfillment_id": "3865847",
+        "name": "Flavio Orlandini",
+        "office": {
+          "name": "KW Utah Realtors Keller Williams"
+        },
+        "phones": [
+          {
+            "number": "8014493000"
+          },
+          {
+            "number": "8016474041"
+          }
+        ],
+        "type": "co_seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "KW Utah Realtors Keller Williams",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": null,
+      "baths_max": null,
+      "baths_min": null,
+      "beds": null,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": null,
+      "lot_sqft": 435600,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": null,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "land",
+      "year_built": null
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-09T22:35:54.000000Z",
+    "list_price": 95000,
+    "listing_id": "2989328055",
+    "location": {
+      "address": {
+        "city": "Duchesne",
+        "coordinate": null,
+        "line": "122 Sundance W Unit 61",
+        "postal_code": "84021",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": null,
+        "name": "Duchesne"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=122%20Sundance%20W%20Unit%2061%2C%20Duchesne%2C%20UT%2084021&size=640x480&source=outdoor&signature=gn_Qdzl16jS-DvB8lXQmW6ICftM="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "122-Sundance-W-Unit-61_Duchesne_UT_84021_M98776-77518",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/c63ddaa9dd0dea55938e3e4f7f294ca4l-m3170489020s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/c63ddaa9dd0dea55938e3e4f7f294ca4l-m4187376295s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/c63ddaa9dd0dea55938e3e4f7f294ca4l-m341005963s.jpg"
+      }
+    ],
+    "price_reduced_amount": 5000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/c63ddaa9dd0dea55938e3e4f7f294ca4l-m3170489020s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker"
+      ]
+    },
+    "property_id": "9877677518",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2126191",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "angiekaybrandt@gmail.com",
+        "fulfillment_id": "0",
+        "name": "Angie Brandt",
+        "office": {
+          "name": "Freedom Realty Corp."
+        },
+        "phones": [
+          {
+            "number": "(435) 738-3000"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Freedom Realty Corp.",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": null,
+      "baths_max": null,
+      "baths_min": null,
+      "beds": null,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": null,
+      "lot_sqft": 435600,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": null,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "land",
+      "year_built": null
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-07-16T13:01:50.000000Z",
+    "list_price": 19000,
+    "listing_id": "2984321736",
+    "location": {
+      "address": {
+        "city": "Bluebell",
+        "coordinate": null,
+        "line": null,
+        "postal_code": "84007",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": null,
+        "name": "Duchesne"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=undefined%2C%20Bluebell%2C%20UT%2084007&size=640x480&source=outdoor&signature=coK3N2_qbKcoMYgBDJ3vjsUGnwM="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "Bluebell_UT_84007_M97972-77396",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/d2d14b9259da5e51d739349162dc4eeal-m3850592192s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/d2d14b9259da5e51d739349162dc4eeal-m2025194044s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/d2d14b9259da5e51d739349162dc4eeal-m3081033073s.jpg"
+      }
+    ],
+    "price_reduced_amount": 5979,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/d2d14b9259da5e51d739349162dc4eeal-m3850592192s.jpg"
+    },
+    "products": null,
+    "property_id": "9797277396",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2095194",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "4539382",
+        "name": "Katherine J. Vilchez",
+        "office": {
+          "name": "Utah Key Real Estate"
+        },
+        "phones": [
+          {
+            "number": "8016080633"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Utah Key Real Estate",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 2,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 6970,
+      "name": null,
+      "sold_date": "2024-10-01",
+      "sold_price": null,
+      "sqft": 2530,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2023
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": true,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-06T21:45:57.000000Z",
+    "list_price": 395000,
+    "listing_id": "2990034331",
+    "location": {
+      "address": {
+        "city": "Grantsville",
+        "coordinate": {
+          "lat": 40.614839,
+          "lon": -112.503299
+        },
+        "line": "1163 W Rocky Way N",
+        "postal_code": "84029",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49045",
+        "name": "Tooele"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1163%20W%20Rocky%20Way%20N%2C%20Grantsville%2C%20UT%2084029&size=640x480&source=outdoor&signature=eShO4VIuwCgghe73BUpen8HYsUc="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "1163-W-Rocky-Way_Grantsville_UT_84029_M93572-12440",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/a29841cf8a18c39447799aff6f60b4e5l-m3407188853s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/a29841cf8a18c39447799aff6f60b4e5l-m655676491s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/a29841cf8a18c39447799aff6f60b4e5l-m2609414332s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/a29841cf8a18c39447799aff6f60b4e5l-m3407188853s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9357212440",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2129144",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "homes@amandajorgensen.com",
+        "fulfillment_id": "1722410",
+        "name": "Amanda Allen-Jorgensen",
+        "office": {
+          "name": "Launch Real Estate"
+        },
+        "phones": [
+          {
+            "number": "(801) 597-5656"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Launch Real Estate",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 3,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 4,
+      "lot_sqft": 60984,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 1891,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2006
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-08-01T14:35:50.000000Z",
+    "list_price": 775000,
+    "listing_id": "2984910467",
+    "location": {
+      "address": {
+        "city": "Heber City",
+        "coordinate": {
+          "lat": 40.490997,
+          "lon": -111.281769
+        },
+        "line": "8510 E Lake Pines Dr Unit 264",
+        "postal_code": "84032",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49051",
+        "name": "Wasatch"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=8510%20E%20Lake%20Pines%20Dr%20Unit%20264%2C%20Heber%20City%2C%20UT%2084032&size=640x480&source=outdoor&signature=JqSK-GyPqTwK6TDN4uc2vDFQZs4="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "8510-E-Lake-Pines-Dr-264_Heber-City_UT_84032_M91293-53250",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/2fcb77d92532d303545f601d1ce32095l-m885914905s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/2fcb77d92532d303545f601d1ce32095l-m1325812849s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/2fcb77d92532d303545f601d1ce32095l-m1865653205s.jpg"
+      }
+    ],
+    "price_reduced_amount": 24999,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/2fcb77d92532d303545f601d1ce32095l-m885914905s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "9129353250",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2102434",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://iframe.videodelivery.net/edbffbb6e5a164f580e3971801e7b564"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "0",
+        "name": "Danny Tencza",
+        "office": {
+          "name": "Richmond American Homes of Utah, Inc"
+        },
+        "phones": [
+          {
+            "number": "8015453422"
+          }
+        ],
+        "type": "seller"
+      },
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "2529289",
+        "name": "Keri KRONEBERGER",
+        "office": {
+          "name": "Richmond American Homes of Utah, Inc"
+        },
+        "phones": null,
+        "type": "co_seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Richmond American Homes of Utah, Inc",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 3,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 11761,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 4289,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2026
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-11-07T20:15:55.000000Z",
+    "list_price": 684990,
+    "listing_id": "2988227550",
+    "location": {
+      "address": {
+        "city": "Saratoga Springs",
+        "coordinate": {
+          "lat": 40.336361,
+          "lon": -111.936681
+        },
+        "line": "877 W Sika Cir S Unit 203",
+        "postal_code": "84045",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49049",
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=877%20W%20Sika%20Cir%20S%20Unit%20203%2C%20Saratoga%20Springs%2C%20UT%2084045&size=640x480&source=outdoor&signature=ZK-YgpapVwan4_nqUHkdi_fAtE4="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "877-W-Sika-Cir-203_Saratoga-Springs_UT_84045_M99162-29836",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/f86c81196ff08ea2f23e2505c299a9b0l-m2092190486s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f86c81196ff08ea2f23e2505c299a9b0l-m2576796106s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/f86c81196ff08ea2f23e2505c299a9b0l-m1529028068s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/f86c81196ff08ea2f23e2505c299a9b0l-m2092190486s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "co_broke"
+      ]
+    },
+    "property_id": "9916229836",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2121855",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "info@genuineutah.com",
+        "fulfillment_id": "2283227",
+        "name": "JD Reese",
+        "office": {
+          "name": "RED ROCK REAL ESTATE"
+        },
+        "phones": [
+          {
+            "number": "4353754488"
+          },
+          {
+            "number": "4352295334"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "RED ROCK REAL ESTATE",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 3,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 10019,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 1797,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2024
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-10-13T23:55:57.000000Z",
+    "list_price": 570000,
+    "listing_id": "2987317572",
+    "location": {
+      "address": {
+        "city": "Hurricane",
+        "coordinate": {
+          "lat": 37.165424,
+          "lon": -113.311241
+        },
+        "line": "723 S 1220 W",
+        "postal_code": "84737",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49053",
+        "name": "Washington"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=723%20S%201220%20W%2C%20Hurricane%2C%20UT%2084737&size=640x480&source=outdoor&signature=sIA9KixpA2Iw2BHb5j2WtyO-_Bo="
+    },
+    "matterport": false,
+    "open_houses": [
+      {
+        "description": null,
+        "dst": true,
+        "end_date": "2026-01-29T17:00:00",
+        "start_date": "2026-01-29T13:00:00",
+        "time_zone": "MST"
+      }
+    ],
+    "permalink": "723-S-1220-W_Hurricane_UT_84737_M97819-87047",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/ab0b1c418f6e2b1b41e7a05a65a79e10l-m2339236908s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/ab0b1c418f6e2b1b41e7a05a65a79e10l-m3606772343s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/ab0b1c418f6e2b1b41e7a05a65a79e10l-m1006527960s.jpg"
+      }
+    ],
+    "price_reduced_amount": 10000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/ab0b1c418f6e2b1b41e7a05a65a79e10l-m2339236908s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "9781987047",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SGUT",
+      "listing_id": "25-265964",
+      "name": "StGeorge",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "100661279",
+        "name": "Linda Andrews-larson",
+        "office": {
+          "name": "Berkshire Hathaway HomeServices Utah Properties (St George)"
+        },
+        "phones": [
+          {
+            "number": "(435) 525-2501"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Berkshire Hathaway HomeServices Utah Properties (St George)",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 2,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 3049,
+      "name": null,
+      "sold_date": "2011-09-09",
+      "sold_price": null,
+      "sqft": 1094,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1990
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-21T21:36:13.000000Z",
+    "list_price": 317900,
+    "listing_id": "2990509971",
+    "location": {
+      "address": {
+        "city": "Saint George",
+        "coordinate": {
+          "lat": 37.093296,
+          "lon": -113.559207
+        },
+        "line": "1055 E 900 S Unit 30",
+        "postal_code": "84790",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49053",
+        "name": "Washington"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=1055%20E%20900%20S%20Unit%2030%2C%20Saint%20George%2C%20UT%2084790&size=640x480&source=outdoor&signature=EpIa1ZmRz0jx5Bb30Qng0oZPjBg="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "1055-E-900-S-Unit-30_St-George_UT_84790_M27352-00664",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/a76dd5d715e36a61c467a939c4d21685l-m3997185767s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/a76dd5d715e36a61c467a939c4d21685l-m2623851926s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/a76dd5d715e36a61c467a939c4d21685l-m145766560s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/a76dd5d715e36a61c467a939c4d21685l-m3997185767s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "2735200664",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2132116",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "0",
+        "name": "Jaicee L Bagley",
+        "office": {
+          "name": "Red Rock Real Estate (Central)"
+        },
+        "phones": [
+          {
+            "number": "4352752793"
+          }
+        ],
+        "type": "seller"
+      },
+      {
+        "builder": null,
+        "email": "soldbyjjhonson@gmail.com",
+        "fulfillment_id": "0",
+        "name": "Jeramy Johnson",
+        "office": {
+          "name": "Red Rock Real Estate (Central)"
+        },
+        "phones": [
+          {
+            "number": "4352752793"
+          }
+        ],
+        "type": "co_seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Red Rock Real Estate (Central)",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "2",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 4,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 130680,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 1428,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1996
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": true,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-09-08T21:17:12.000000Z",
+    "list_price": 361900,
+    "listing_id": "2986159917",
+    "location": {
+      "address": {
+        "city": "Joseph",
+        "coordinate": {
+          "lat": 38.609631,
+          "lon": -112.225974
+        },
+        "line": "850 S Sevier Hwy",
+        "postal_code": "84739",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49041",
+        "name": "Sevier"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=850%20S%20Sevier%20Hwy%2C%20Joseph%2C%20UT%2084739&size=640x480&source=outdoor&signature=f6s9DTct7irVTFdSO_BnEOH-nlU="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "850-S-Sevier-Hwy_Joseph_UT_84739_M97659-00520",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/07decf8a92cf02a3487779386580b508l-m954560691s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/07decf8a92cf02a3487779386580b508l-m3187343141s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/07decf8a92cf02a3487779386580b508l-m4051913151s.jpg"
+      }
+    ],
+    "price_reduced_amount": 1100,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/07decf8a92cf02a3487779386580b508l-m954560691s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "co_broke"
+      ]
+    },
+    "property_id": "9765900520",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2110258",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "0",
+        "name": "Angie Erickson",
+        "office": {
+          "name": "Besst Realty Group"
+        },
+        "phones": [
+          {
+            "number": "(801) 645-1381"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Besst Realty Group",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 6,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 2,
+      "lot_sqft": 11761,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 3312,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 1978
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": true,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2026-01-22T20:46:30.000000Z",
+    "list_price": 659900,
+    "listing_id": "2990545995",
+    "location": {
+      "address": {
+        "city": "North Ogden",
+        "coordinate": {
+          "lat": 41.319924,
+          "lon": -111.947655
+        },
+        "line": "3251 N 1050 E",
+        "postal_code": "84414",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49057",
+        "name": "Weber"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=3251%20N%201050%20E%2C%20North%20Ogden%2C%20UT%2084414&size=640x480&source=outdoor&signature=pq7x7AqebZS9iGx5Dvm3h6-F-zo="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "3251-N-1050-E_North-Ogden_UT_84414_M11740-07286",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/3538575adbf4a722051fbdda56a77173l-m304497313s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/3538575adbf4a722051fbdda56a77173l-m636616076s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/3538575adbf4a722051fbdda56a77173l-m3019161076s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/3538575adbf4a722051fbdda56a77173l-m304497313s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1174007286",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2132365",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://www.utahrealestate.com/report/display/report/photo/listno/2132365/type/1/pub/0"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "kristy@kristyowens.com",
+        "fulfillment_id": "100111607",
+        "name": "Kristy Owens",
+        "office": {
+          "name": "Bravo Realty Services Llc"
+        },
+        "phones": [
+          {
+            "number": "8014672100"
+          },
+          {
+            "number": "8015974266"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Bravo Realty Services Llc",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "3.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 3,
+      "lot_sqft": 20473,
+      "name": null,
+      "sold_date": null,
+      "sold_price": null,
+      "sqft": 5688,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2025
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-02T19:06:41.000000Z",
+    "list_price": 2099900,
+    "listing_id": "2989136727",
+    "location": {
+      "address": {
+        "city": "Lehi",
+        "coordinate": null,
+        "line": "68 W 1630 S",
+        "postal_code": "84043",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": null,
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=68%20W%201630%20S%2C%20Lehi%2C%20UT%2084043&size=640x480&source=outdoor&signature=0KtHPWEms48ZHmv0u_AhCrpuLaY="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "68-W-1630-S_Lehi_UT_84043_M92288-81954",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/7fe590cda7bd46c0315f380c38cbc31cl-m623361971s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/7fe590cda7bd46c0315f380c38cbc31cl-m4215188768s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/7fe590cda7bd46c0315f380c38cbc31cl-m3048705677s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/7fe590cda7bd46c0315f380c38cbc31cl-m623361971s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "9228881954",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2125168",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": "lezleeshaw@kw.com",
+        "fulfillment_id": "2793108",
+        "name": "Lezlee Shaw",
+        "office": {
+          "name": "Kw St George Keller Williams Realty"
+        },
+        "phones": [
+          {
+            "number": "4356692689"
+          },
+          {
+            "number": "4356692689"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Kw St George Keller Williams Realty",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 6,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 4,
+      "lot_sqft": 13504,
+      "name": null,
+      "sold_date": "2023-10-31",
+      "sold_price": null,
+      "sqft": 4700,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2024
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "pure",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-07-31T23:58:44.000000Z",
+    "list_price": 1495000,
+    "listing_id": "2984890036",
+    "location": {
+      "address": {
+        "city": "Saint George",
+        "coordinate": {
+          "lat": 37.090787,
+          "lon": -113.526699
+        },
+        "line": "2799 E Stonedale Dr",
+        "postal_code": "84790",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49053",
+        "name": "Washington"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=2799%20E%20Stonedale%20Dr%2C%20Saint%20George%2C%20UT%2084790&size=640x480&source=outdoor&signature=oLz1qnpDVL4c7a2Vmlf2vYVFWks="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "2799-E-Stonedale-Dr_Saint-George_UT_84790_M98659-60420",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/b6a8df6dc73aefb9ff4421e2a7e30d4fl-m911879040s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/b6a8df6dc73aefb9ff4421e2a7e30d4fl-m510994566s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/b6a8df6dc73aefb9ff4421e2a7e30d4fl-m2232031633s.jpg"
+      }
+    ],
+    "price_reduced_amount": 94000,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/b6a8df6dc73aefb9ff4421e2a7e30d4fl-m911879040s.jpg"
+    },
+    "products": {
+      "brand_name": "basic_opt_in",
+      "products": [
+        "core.agent",
+        "co_broke"
+      ]
+    },
+    "property_id": "9865960420",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SGUT",
+      "listing_id": "25-263626",
+      "name": "StGeorge",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": [
+      {
+        "href": "https://listings.anyspacemedia.com/videos/019862ab-6771-7204-9664-7fdec230b81c"
+      }
+    ]
+  },
+  {
+    "advertisers": [
+      {
+        "builder": null,
+        "email": null,
+        "fulfillment_id": "100573327",
+        "name": "Jenny Mecham",
+        "office": {
+          "name": "Equity Real Estate - Premier Elite Branch"
+        },
+        "phones": [
+          {
+            "number": "(801) 747-1758"
+          }
+        ],
+        "type": "seller"
+      }
+    ],
+    "branding": [
+      {
+        "name": "Equity Real Estate - Premier Elite Branch",
+        "photo": null,
+        "type": "Office"
+      }
+    ],
+    "community": null,
+    "description": {
+      "baths_consolidated": "5.5",
+      "baths_max": null,
+      "baths_min": null,
+      "beds": 5,
+      "beds_max": null,
+      "beds_min": null,
+      "garage": 4,
+      "lot_sqft": 20038,
+      "name": null,
+      "sold_date": "2016-08-23",
+      "sold_price": null,
+      "sqft": 5957,
+      "sqft_max": null,
+      "sqft_min": null,
+      "sub_type": null,
+      "type": "single_family",
+      "year_built": 2025
+    },
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "lead_attributes": {
+      "is_veterans_united_eligible": false,
+      "lead_type": "co_broke",
+      "market_type": "unity",
+      "show_contact_an_agent": true
+    },
+    "list_date": "2025-12-05T06:05:55.000000Z",
+    "list_price": 7500000,
+    "listing_id": "2989222461",
+    "location": {
+      "address": {
+        "city": "Sundance",
+        "coordinate": {
+          "lat": 40.399825,
+          "lon": -111.596117
+        },
+        "line": "9271 N Mile 23 Ln",
+        "postal_code": "84604",
+        "state": "Utah",
+        "state_code": "UT"
+      },
+      "county": {
+        "fips_code": "49049",
+        "name": "Utah"
+      },
+      "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview&client=gme-movesalesinc&location=9271%20N%20Mile%2023%20Ln%2C%20Sundance%2C%20UT%2084604&size=640x480&source=outdoor&signature=voYiX_eCmV-voTaXT6xyhtsjSM8="
+    },
+    "matterport": false,
+    "open_houses": null,
+    "permalink": "9271-N-Mile-23-Rd_Sundance_UT_84604_M12309-72236",
+    "photos": [
+      {
+        "href": "https://ap.rdcpix.com/048a99b414c91ce9061d82a299dec0c8l-m51199576s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/048a99b414c91ce9061d82a299dec0c8l-m1657260341s.jpg"
+      },
+      {
+        "href": "https://ap.rdcpix.com/048a99b414c91ce9061d82a299dec0c8l-m755944937s.jpg"
+      }
+    ],
+    "price_reduced_amount": null,
+    "primary_photo": {
+      "href": "https://ap.rdcpix.com/048a99b414c91ce9061d82a299dec0c8l-m51199576s.jpg"
+    },
+    "products": {
+      "brand_name": "essentials",
+      "products": [
+        "core.agent",
+        "core.broker",
+        "co_broke"
+      ]
+    },
+    "property_id": "1230972236",
+    "rmn_listing_attribution": false,
+    "search_promotions": null,
+    "source": {
+      "id": "SAUT",
+      "listing_id": "2125684",
+      "name": "UtahRealEstate",
+      "plan_id": null,
+      "spec_id": null,
+      "type": "mls"
+    },
+    "status": "for_sale",
+    "virtual_tours": null
+  }
+]

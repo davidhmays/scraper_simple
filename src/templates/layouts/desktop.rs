@@ -23,6 +23,7 @@ pub fn desktop_layout(title: &str, content: Markup) -> Markup {
                           li { a href="/admin" { "Admin" }
                             //li { a href="/about" class="hover:text-blue-600" { "About" }
                           }
+                          li { a href="/campaigns" { "Campaigns" } }
                       }
                   }
 

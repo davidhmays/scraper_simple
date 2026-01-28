@@ -4,11 +4,14 @@ use astra::Server;
 use std::net::SocketAddr;
 
 mod db;
+mod domain;
 mod errors;
+mod geos;
+mod mailings;
 mod responses;
 mod router;
 mod scraper;
-mod spreadsheet;
+mod spreadsheets;
 mod templates;
 
 fn main() {
