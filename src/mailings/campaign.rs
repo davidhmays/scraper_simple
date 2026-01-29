@@ -72,6 +72,8 @@ pub struct NewCampaign {
     /// OR semantics: match if ANY of these types match `listings.property_type`
     pub any_of_types: Vec<PropertyType>,
 
+    pub any_of_counties: Vec<String>,
+
     /// AND semantics guardrail.
     pub state_abbr: String,
 
@@ -82,8 +84,8 @@ pub struct NewCampaign {
 /// Generate one mailing per *property* that matches:
 ///   state_abbr
 ///   AND (flag OR flag OR ...)
-///   AND postal_code IN (zips...)
-///   AND property_type IN (types...)
+///   AND multiiple property_types IN (types...)
+///   AND optional postal_code IN (zips...)
 pub fn generate_mailings_for_campaign(
     db: &Database,
     campaign: &NewCampaign,
@@ -115,30 +117,48 @@ pub fn generate_mailings_for_campaign(
         .collect::<Vec<_>>()
         .join(" OR ");
 
-    // Build SQL (placeholder order matters!)
-    // ? = state, then N zip placeholders, then M type placeholders
+    // Build optional clauses + bind vector in the exact same order.
+    // Build optional clauses + bind vector in the exact same order.
+    let mut bind: Vec<String> = Vec::new();
+    bind.push(campaign.state_abbr.clone());
+
+    let mut where_extra = String::new();
+
+    // Optional: counties (multi-select)
+    if !campaign.any_of_counties.is_empty() {
+        where_extra.push_str(&format!(
+            " AND l.county_name IN ({})",
+            placeholders(campaign.any_of_counties.len())
+        ));
+        bind.extend(campaign.any_of_counties.iter().cloned());
+    }
+
+    // Optional: ZIPs
+    if !campaign.zip_codes.is_empty() {
+        where_extra.push_str(&format!(
+            " AND l.postal_code IN ({})",
+            placeholders(campaign.zip_codes.len())
+        ));
+        bind.extend(campaign.zip_codes.iter().cloned());
+    }
+
+    // Required: types
+    where_extra.push_str(&format!(
+        " AND l.property_type IN ({})",
+        placeholders(campaign.any_of_types.len())
+    ));
+    bind.extend(campaign.any_of_types.iter().map(|t| t.as_str().to_string()));
+
     let sql = format!(
         r#"
         SELECT DISTINCT l.property_id
         FROM listings l
         WHERE l.state_abbr = ?
           AND ({flags_or_clause})
-          AND l.postal_code IN ({zip_ph})
-          AND l.property_type IN ({type_ph})
+          {where_extra}
         ORDER BY l.property_id
-        "#,
-        zip_ph = placeholders(campaign.zip_codes.len()),
-        type_ph = placeholders(campaign.any_of_types.len()),
+        "#
     );
-
-    // Bind in EXACT same order:
-    // state, zips..., types...
-    let mut bind: Vec<String> =
-        Vec::with_capacity(1 + campaign.zip_codes.len() + campaign.any_of_types.len());
-
-    bind.push(campaign.state_abbr.clone());
-    bind.extend(campaign.zip_codes.iter().cloned());
-    bind.extend(campaign.any_of_types.iter().map(|t| t.as_str().to_string()));
 
     let property_ids: Vec<String> = db.with_conn(|conn| {
         let mut stmt = conn
@@ -337,8 +357,9 @@ mod tests {
             pub description: Option<String>,
             pub media_type: MediaType,
             pub media_size: String,
-            pub any_of_flags: Vec<ListingFlag>,
             pub state_abbr: String,
+            pub any_of_flags: Vec<ListingFlag>,
+            pub any_of_counties: Vec<String>,
             pub zip_codes: Vec<String>, // required, non-empty
         }
 

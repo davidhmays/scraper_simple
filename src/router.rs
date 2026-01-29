@@ -128,7 +128,15 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 .unwrap_or_else(|| "UT".to_string())
                 .to_uppercase();
 
-            let county = form_first(&pairs, "county").unwrap_or_default(); // optional, not used yet
+            let county_strs = form_all(&pairs, "counties");
+            let mut any_of_counties: Vec<String> = county_strs
+                .into_iter()
+                .map(|s| s.trim().to_string())
+                .filter(|s| !s.is_empty())
+                .collect();
+
+            any_of_counties.sort();
+            any_of_counties.dedup();
 
             let flag_strs = form_all(&pairs, "flags");
             let any_of_flags: Vec<ListingFlag> =
@@ -148,10 +156,12 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 return Err(ServerError::BadRequest("types must not be empty".into()));
             }
 
-            let campaign_name = if county.trim().is_empty() {
+            let campaign_name = if any_of_counties.is_empty() {
                 format!("{} UI Campaign", state)
+            } else if any_of_counties.len() == 1 {
+                format!("{} {} UI Campaign", state, any_of_counties[0])
             } else {
-                format!("{} {} UI Campaign", state, county)
+                format!("{} {} Counties UI Campaign", state, any_of_counties.len())
             };
 
             let campaign = NewCampaign {
@@ -162,6 +172,7 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 media_size: "6x9".to_string(),
                 any_of_flags,
                 any_of_types,
+                any_of_counties,
                 state_abbr: state.clone(),
                 zip_codes: vec![], // ✅ statewide mode now that campaign.rs allows it
             };

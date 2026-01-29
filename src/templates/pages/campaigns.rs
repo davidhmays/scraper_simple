@@ -23,15 +23,15 @@ pub fn campaigns_page(selected_state: &str, counties: &[(String, i64)]) -> Marku
                 }
 
                 // --- County ---
-                label for="county" { "County (optional)" }
-                select id="county" name="county" {
-                    option value="" { "All counties" }
+                label for="counties" { "County (optional)" }
+                label for="counties" { "Counties (optional; multi-select)" }
+                select id="counties" name="counties" multiple size="10" {
                     @for (county_name, n) in counties {
-                        option value=(county_name) {
-                            (county_name) " (" (n) ")"
-                        }
+                        option value=(county_name) { (county_name) " (" (n) ")" }
                     }
                 }
+
+
 
                 // --- Listing flags (OR) ---
                 fieldset {
