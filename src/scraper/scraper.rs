@@ -178,7 +178,7 @@ impl RealtorScraper {
     pub fn try_fetch_html_via_zenrows(&self, url: &str) -> Result<String, ScraperError> {
         use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, ACCEPT_LANGUAGE, REFERER};
 
-        let api_key = "";
+        let api_key = " ";
 
         let mut headers = HeaderMap::new();
         headers.insert(REFERER, HeaderValue::from_static("https://www.google.com/"));

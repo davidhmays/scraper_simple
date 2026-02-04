@@ -214,3 +214,74 @@ create table if not exists  mailing_events (
 
 create index if not exists idx_mailing_events_mailing_id on mailing_events(mailing_id);
 create index if not exists idx_mailing_events_occurred_at on mailing_events(occurred_at);
+
+
+
+create table if not exists users (
+  id            integer primary key,
+  email         text not null unique,
+  created_at    integer not null,
+  last_login_at integer
+);
+
+create table if not exists magic_links (
+  id          integer primary key,
+  user_id     integer not null,
+  token_hash  blob not null,
+  created_at  integer not null,
+  expires_at  integer not null,
+  used_at     integer,
+  foreign key(user_id) references users(id) on delete cascade
+);
+
+create index if not exists idx_magic_links_hash on magic_links(token_hash);
+create index if not exists idx_magic_links_user on magic_links(user_id);
+
+create table if not exists plans (
+  id             integer primary key,
+  code           text not null unique,
+  name           text not null,
+  price_cents    integer not null default 0,
+  download_limit integer,
+  trial_days     integer not null default 0,
+  limit_window   text not null default 'month'
+);
+
+create table if not exists entitlements (
+  id         integer primary key,
+  user_id    integer not null unique,
+  plan_code  text not null,          -- 'free' or 'lifetime'
+  granted_at integer not null,
+  foreign key(user_id) references users(id) on delete cascade,
+  foreign key(plan_code) references plans(code)
+);
+
+create index if not exists idx_entitlements_user on entitlements(user_id);
+create index if not exists idx_entitlements_plan on entitlements(plan_code);
+
+create table if not exists download_events (
+  id         integer primary key,
+  user_id    integer not null,
+  state      text not null,
+  format     text not null,     -- 'csv', 'xlsx'
+  created_at integer not null,
+  foreign key(user_id) references users(id) on delete cascade
+);
+
+create index if not exists idx_download_events_user_time
+  on download_events(user_id, created_at);
+
+create table if not exists purchases (
+  id                  integer primary key,
+  user_id              integer not null,
+  product_code         text not null,     -- 'lifetime'
+  amount_cents         integer not null,
+  currency             text not null,
+  provider             text,              -- 'stripe'
+  provider_payment_id  text unique,
+  created_at           integer not null,
+  foreign key(user_id) references users(id) on delete cascade
+);
+
+create index if not exists idx_purchases_user on purchases(user_id);
+create index if not exists idx_purchases_provider_payment on purchases(provider_payment_id);

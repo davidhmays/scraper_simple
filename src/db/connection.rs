@@ -28,10 +28,21 @@ impl Database {
             .try_with(|cell| {
                 let mut slot = cell.borrow_mut();
                 if slot.is_none() {
-                    let conn = Connection::open(&self.path)
+                    let mut conn = Connection::open(&self.path)
                         .map_err(|e| ServerError::DbError(format!("Open DB failed: {e}")))?;
+
+                    conn.execute_batch(
+                        "PRAGMA foreign_keys = ON;
+                       PRAGMA journal_mode = WAL;
+                       PRAGMA synchronous = NORMAL;",
+                    )
+                    .map_err(|e| {
+                        ServerError::DbError(format!("Failed to enable foreign keys: {e}"))
+                    })?;
+
                     *slot = Some(conn);
                 }
+
                 let conn = slot.as_mut().unwrap(); // ✅ mutable reference
                 f(conn)
             })
