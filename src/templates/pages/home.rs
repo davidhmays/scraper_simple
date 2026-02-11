@@ -1,12 +1,12 @@
 use crate::templates::{
-    components::{button, card},
+    components::{card, email_cta_form},
     desktop_layout,
 };
 use maud::{html, Markup};
 
 pub fn home_page() -> Markup {
     desktop_layout(
-        "Home",
+        "Download Listings",
         html! {
             main class="container" {
                 // HERO
@@ -83,23 +83,4 @@ pub fn home_page() -> Markup {
             }
         },
     )
-}
-
-fn email_cta_form() -> Markup {
-    html! {
-        form method="post" action="/auth/request-link" class="email-cta" {
-            label class="sr-only" for="email" { "Email address" }
-            input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@domain.com"
-                autocomplete="email"
-                required;
-
-            button type="submit" class="primary" { "Get access" }
-
-            p class="microcopy" { "We’ll email you a secure sign-in link. No password needed." }
-        }
-    }
 }

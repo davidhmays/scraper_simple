@@ -9,6 +9,7 @@ use std::fmt;
 pub enum ServerError {
     NotFound,
     BadRequest(String),
+    Unauthorized(String),
     DbError(String),
     InternalError,
     XlsxError(String),
@@ -19,6 +20,7 @@ impl fmt::Display for ServerError {
         match self {
             ServerError::NotFound => write!(f, "Not Found"),
             ServerError::BadRequest(msg) => write!(f, "Bad Request: {msg}"),
+            ServerError::Unauthorized(msg) => write!(f, "Unauthorized: {msg}"),
             ServerError::DbError(msg) => write!(f, "Database Error: {msg}"),
             ServerError::InternalError => write!(f, "Internal Server Error"),
             ServerError::XlsxError(msg) => write!(f, "XLSX Error: {msg}"),

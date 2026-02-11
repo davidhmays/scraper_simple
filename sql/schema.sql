@@ -285,3 +285,24 @@ create table if not exists purchases (
 
 create index if not exists idx_purchases_user on purchases(user_id);
 create index if not exists idx_purchases_provider_payment on purchases(provider_payment_id);
+
+
+create table if not exists sessions (
+  id          integer primary key,
+  user_id     integer not null,
+  token_hash  blob not null unique,
+  created_at  integer not null,
+  expires_at  integer not null,
+  revoked_at  integer,
+  foreign key(user_id) references users(id) on delete cascade
+);
+
+create index if not exists idx_sessions_user on sessions(user_id);
+create index if not exists idx_sessions_expires on sessions(expires_at);
+
+
+-- Seed plans (idempotent)
+insert or ignore into plans (code, name, price_cents, download_limit, trial_days, limit_window)
+values
+  ('free', 'Free', 0, 4, 0, 'month'),
+  ('lifetime', 'Lifetime', 1900, null, 0, 'month');

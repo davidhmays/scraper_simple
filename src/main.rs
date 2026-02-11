@@ -3,6 +3,7 @@ use crate::router::handle;
 use astra::Server;
 use std::net::SocketAddr;
 
+mod auth;
 mod db;
 mod domain;
 mod errors;
@@ -13,6 +14,9 @@ mod router;
 mod scraper;
 mod spreadsheets;
 mod templates;
+
+#[cfg(test)]
+mod tests;
 
 fn main() {
     // 1️⃣ Create the database handle

@@ -13,6 +13,7 @@ pub fn desktop_layout(title: &str, content: Markup) -> Markup {
                 link rel="icon" type="image/svg+xml" href="/static/favicon/favicon.svg";
                 link rel="shortcut icon" href="/static/favicon/favicon.ico";
                 link rel="stylesheet" href="/static/main.css";
+                script src="/static/htmx.js" defer {};
             }
             body {
               header class="flex items-center justify-between px-6 py-3 shadow" {
