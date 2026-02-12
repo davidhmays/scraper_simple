@@ -82,3 +82,33 @@ impl BrevoMailer {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::env;
+
+    #[test]
+    #[ignore] // Run with `cargo test -- --ignored`
+    fn test_send_real_email_via_brevo() {
+        // Requires BREVO_API_KEY and SENDER_EMAIL to be set in the environment
+        let api_key = env::var("BREVO_API_KEY").expect("BREVO_API_KEY must be set for this test");
+        let sender_email =
+            env::var("SENDER_EMAIL").expect("SENDER_EMAIL must be set for this test");
+
+        // Send to self for testing
+        let recipient = sender_email.clone();
+
+        let mailer = BrevoMailer::new(api_key, sender_email, "Test Sender".to_string());
+
+        let result = mailer.send_magic_link(
+            &recipient,
+            "http://localhost:3000/auth/magic?token=TEST_TOKEN_FROM_INTEGRATION_TEST",
+        );
+
+        match result {
+            Ok(_) => println!("Email sent successfully to {}", recipient),
+            Err(e) => panic!("Failed to send email: {:?}", e),
+        }
+    }
+}

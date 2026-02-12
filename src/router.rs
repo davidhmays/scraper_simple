@@ -3,22 +3,17 @@ use crate::db::listings::get_counties_by_state;
 use crate::db::listings::get_listings_by_state;
 
 use crate::errors::ServerError;
-use crate::mailings::{
-    generate_mailings_for_campaign, BrevoMailer, ListingFlag, MediaType, NewCampaign, PropertyType,
-};
-use crate::responses::{html_response, xlsx_response, ResultResp};
+use crate::mailings::{BrevoMailer, ListingFlag, PropertyType};
+use crate::responses::{html_response, ResultResp};
 use crate::scraper::RealtorScraper;
-use crate::spreadsheets::{
-    export_listings_xlsx, export_mailings_xlsx, get_mailings_export_rows, MailingExportRow,
-};
+use crate::spreadsheets::export_listings_xlsx;
 
 use crate::templates;
+use crate::templates::pages::admin::AdminVm;
 use crate::templates::pages::dashboard::DashboardVm;
 
 use astra::{Body, Request, ResponseBuilder};
 use maud::html;
-use rust_xlsxwriter::Workbook;
-use std::collections::HashMap;
 use std::io::Read;
 use url::form_urlencoded; // for read_to_end
 
@@ -32,6 +27,22 @@ fn now_unix() -> i64 {
         .duration_since(UNIX_EPOCH)
         .unwrap_or_default()
         .as_secs() as i64
+}
+
+fn get_cookie(req: &Request, name: &str) -> Option<String> {
+    let cookie = req
+        .headers()
+        .get("Cookie")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("");
+
+    cookie
+        .split(';')
+        .find_map(|part| {
+            let part = part.trim();
+            part.strip_prefix(&format!("{}=", name))
+        })
+        .map(|s| s.to_string())
 }
 
 fn current_user(
@@ -111,6 +122,33 @@ fn parse_type(s: &str) -> Option<PropertyType> {
     }
 }
 
+fn fetch_dashboard_vm(
+    conn: &rusqlite::Connection,
+    user_id: i64,
+    email: String,
+    now: i64,
+    last_state: Option<String>,
+) -> Result<DashboardVm, ServerError> {
+    let plan_info = crate::db::plans::get_user_plan(conn, user_id)
+        .map_err(|e| ServerError::DbError(e.to_string()))?;
+
+    let usage = crate::db::downloads::count_downloads_this_month(conn, user_id, now)
+        .map_err(|e| ServerError::DbError(e.to_string()))?;
+
+    let is_admin = crate::db::users::is_user_admin(conn, user_id)
+        .map_err(|e| ServerError::DbError(e.to_string()))?;
+
+    Ok(DashboardVm {
+        email,
+        plan_code: plan_info.code,
+        plan_name: plan_info.name,
+        download_limit: plan_info.download_limit,
+        usage,
+        is_admin,
+        last_state,
+    })
+}
+
 //TODO: look at making only post/campaigns mutable.
 pub fn handle(mut req: Request, db: &Database) -> ResultResp {
     let method = req.method().as_str();
@@ -119,7 +157,71 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
     match (method, path) {
         ("GET", path) if path.starts_with("/static") => serve_static(path),
         ("GET", "/") => html_response(templates::pages::home_page()),
-        ("GET", "/admin") => html_response(templates::pages::admin_page()),
+        ("GET", "/login") => html_response(templates::pages::login::login_page()),
+        ("GET", "/admin") => {
+            let now = now_unix();
+
+            // 1. Authenticate
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            // 2. Check Admin
+            let is_admin = db.with_conn(|conn| crate::db::users::is_user_admin(conn, user_id))?;
+
+            if !is_admin {
+                return Err(ServerError::Unauthorized("Admin access required".into()));
+            }
+
+            // 3. Fetch Users
+            let users =
+                db.with_conn(|conn| crate::db::users::get_all_users_with_stats(conn, now))?;
+
+            html_response(templates::pages::admin_page(&AdminVm { users }))
+        }
+
+        ("POST", path) if path.starts_with("/admin/users/") && path.ends_with("/reset-usage") => {
+            let now = now_unix();
+
+            // 1. Authenticate
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            // 2. Check Admin
+            let is_admin = db.with_conn(|conn| crate::db::users::is_user_admin(conn, user_id))?;
+
+            if !is_admin {
+                return Err(ServerError::Unauthorized("Admin access required".into()));
+            }
+
+            // 3. Parse Target User ID
+            let parts: Vec<&str> = path.split('/').collect();
+            let target_id = parts
+                .get(3)
+                .and_then(|s| s.parse::<i64>().ok())
+                .ok_or(ServerError::BadRequest("Invalid user id".into()))?;
+
+            // 4. Reset Usage
+            db.with_conn(|conn| crate::db::downloads::reset_user_downloads(conn, target_id, now))?;
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", "/admin")
+                .body(Body::empty())
+                .unwrap())
+        }
+
         ("GET", "/campaigns") => {
             // Default state if not provided in query string
             let mut state = "UT".to_string();
@@ -163,6 +265,61 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             export_listings_xlsx(&listings, &state)
         }
 
+        ("GET", "/export") => {
+            let now = now_unix();
+
+            // 1. Authenticate
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            // 2. Check limits
+            let allowed = db.with_conn(|conn| {
+                let plan = crate::db::plans::get_user_plan(conn, user_id)?;
+                if let Some(limit) = plan.download_limit {
+                    let usage =
+                        crate::db::downloads::count_downloads_this_month(conn, user_id, now)?;
+                    if usage >= limit {
+                        return Ok(false);
+                    }
+                }
+                Ok(true)
+            })?;
+
+            if !allowed {
+                return Err(ServerError::BadRequest(
+                    "Download limit reached for this month.".into(),
+                ));
+            }
+
+            let state = query_param(&req, "state")
+                .ok_or_else(|| ServerError::BadRequest("state is required".into()))?
+                .to_uppercase();
+
+            let listings = get_listings_by_state(db, &state)?;
+            let mut resp = export_listings_xlsx(&listings, &state)?;
+
+            // 3. Record Download
+            db.with_conn(|conn| crate::db::downloads::record_download(conn, user_id, &state, now))?;
+
+            resp.headers_mut().insert(
+                "Set-Cookie",
+                format!(
+                    "last_state={}; Max-Age=31536000; SameSite=Lax; Path=/",
+                    state
+                )
+                .parse()
+                .unwrap(),
+            );
+
+            Ok(resp)
+        }
+
         ("GET", "/dashboard") => {
             let now = now_unix();
 
@@ -178,25 +335,42 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                     .unwrap());
             };
 
+            let last_state = get_cookie(&req, "last_state");
+
             // Step 2: fetch dashboard info
-            let dashboard_vm = db.with_conn(|conn| {
-                let plan_info = crate::db::plans::get_user_plan(conn, user_id)
-                    .map_err(|e| ServerError::DbError(e.to_string()))?;
-
-                let is_admin = crate::db::users::is_user_admin(conn, user_id)
-                    .map_err(|e| ServerError::DbError(e.to_string()))?;
-
-                Ok(DashboardVm {
-                    email,
-                    plan_code: plan_info.code,
-                    plan_name: plan_info.name,
-                    download_limit: plan_info.download_limit,
-                    is_admin,
-                })
-            })?;
+            let dashboard_vm =
+                db.with_conn(|conn| fetch_dashboard_vm(conn, user_id, email, now, last_state))?;
 
             // Step 3: render template
             html_response(templates::pages::dashboard_page(&dashboard_vm))
+        }
+
+        ("GET", "/dashboard/export-card") => {
+            let now = now_unix();
+
+            // Step 1: get the logged-in user
+            let user = current_user(&req, db, now)?;
+
+            let Some((user_id, email)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let last_state = get_cookie(&req, "last_state");
+
+            // Step 2: fetch dashboard info
+            let dashboard_vm =
+                db.with_conn(|conn| fetch_dashboard_vm(conn, user_id, email, now, last_state))?;
+
+            // Step 3: render partial template
+            let mut resp =
+                html_response(templates::pages::dashboard::export_card(&dashboard_vm)).unwrap();
+            resp.headers_mut()
+                .insert("Cache-Control", "no-store".parse().unwrap());
+            Ok(resp)
         }
 
         ("GET", "/auth/magic") => {
@@ -263,14 +437,7 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 eprintln!("⚠️ BREVO_API_KEY not set. Email not sent.");
             }
 
-            let body = html! {
-                div class="p-4 rounded border" {
-                    h3 { "Check your email" }
-                    p { "If that address exists, we sent a sign-in link." }
-                    p class="text-sm opacity-70" { "Dev mode: link was logged to server output." }
-                }
-            };
-            html_response(body)
+            html_response(templates::pages::check_email_content(&email))
         }
 
         _ => Err(ServerError::NotFound),

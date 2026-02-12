@@ -221,7 +221,8 @@ create table if not exists users (
   id            integer primary key,
   email         text not null unique,
   created_at    integer not null,
-  last_login_at integer
+  last_login_at integer,
+  is_admin      integer not null default 0
 );
 
 create table if not exists magic_links (

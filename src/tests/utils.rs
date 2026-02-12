@@ -1,15 +1,17 @@
-use crate::db::connection::init_db; // <-- correct path to init_db
-use crate::db::connection::Database; // <-- your Database type
-use astra::Request;
-use std::env;
-use std::path::PathBuf;
+use crate::db::connection::{init_db, Database};
+use std::time::{SystemTime, UNIX_EPOCH};
 
-/// Initialize a fresh test DB using your production schema
 pub fn init_test_db() -> Database {
-    let db = Database::new("test_db.sqlite"); // simple &str path
+    let mut path = std::env::temp_dir();
+    let nanos = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    path.push(format!("test_db_{}.sqlite", nanos));
 
-    init_db(&db, "sql/schema.sql")
-        .unwrap_or_else(|e| panic!("Database initialization failed: {e}"));
+    let db = Database::new(path.to_string_lossy().to_string());
+
+    init_db(&db, "sql/schema.sql").expect("Failed to initialize test DB");
 
     db
 }

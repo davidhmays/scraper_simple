@@ -1,83 +1,92 @@
-// src/tests/dashboard_test.rs
+// src/tests/router_tests/dashboard_tests.rs
 
-use crate::auth::magic::{MagicLinkConfig, MagicLinkService};
-use crate::db::connection::Database;
-use crate::handle;
-use crate::init_db;
-use astra::{Body, Request};
-use http::Method;
+use crate::auth::sessions;
+use crate::db::connection::{init_db, Database};
+use crate::db::magic_auth::{redeem_magic_link, request_magic_link};
+use crate::router::handle;
+use astra::Body;
+use http::{Method, Request};
+use std::io::Read;
 use std::time::{SystemTime, UNIX_EPOCH};
 
-/// Returns a fresh test database using your production schema
+fn tmp_db_path(name: &str) -> String {
+    let mut p = std::env::temp_dir();
+    let nanos = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    p.push(format!("{}_{}.sqlite", name, nanos));
+    p.to_string_lossy().to_string()
+}
+
 fn make_db() -> Database {
-    let path = std::env::temp_dir().join(format!(
-        "dashboard_test_{}.sqlite",
-        SystemTime::now()
-            .duration_since(UNIX_EPOCH)
-            .unwrap()
-            .as_nanos()
-    ));
+    let path = tmp_db_path("dashboard_test");
     let db = Database::new(path);
     init_db(&db, "sql/schema.sql").expect("Failed to initialize DB");
     db
 }
 
-/// Issue a magic link and return the token
-fn issue_magic_token(db: &Database, email: &str) -> String {
-    db.with_conn(|conn| {
-        let svc = MagicLinkService::new(MagicLinkConfig::default());
-        let issued = svc.request_link(conn, email, now_unix())?;
-        Ok::<_, crate::errors::ServerError>(issued.token)
-    })
-    .unwrap()
-}
-
-/// Get current unix timestamp
 fn now_unix() -> i64 {
     SystemTime::now()
         .duration_since(UNIX_EPOCH)
-        .unwrap()
+        .unwrap_or_default()
         .as_secs() as i64
 }
 
 #[test]
-fn dashboard_requires_login() {
+fn dashboard_accessible_with_valid_session() {
+    let db = make_db();
+    let email = "dashboard_user@example.com";
+    let now = now_unix();
+
+    // 1. Request magic link (creates user & entitlement)
+    let issued = request_magic_link(&db, email, now).expect("Failed to request link");
+
+    // 2. Redeem magic link (updates last_login_at)
+    let redeemed = redeem_magic_link(&db, &issued.token, now).expect("Failed to redeem link");
+
+    // 3. Create session manually (simulating router behavior)
+    let session_token = db
+        .with_conn(|conn| sessions::create_session(conn, redeemed.user_id, now))
+        .expect("Failed to create session");
+
+    // 4. Make request to /dashboard with cookie
+    let req = Request::builder()
+        .method(Method::GET)
+        .uri("/dashboard")
+        .header("Cookie", format!("session={}", session_token))
+        .body(Body::empty())
+        .unwrap();
+
+    let mut resp = handle(req, &db).expect("Handler failed");
+
+    // 5. Verify response
+    assert_eq!(resp.status(), 200, "Dashboard should return 200 OK");
+
+    let mut body = String::new();
+    resp.body_mut().reader().read_to_string(&mut body).unwrap();
+
+    // Check for user email in the dashboard (it's usually displayed)
+    assert!(body.contains(email), "Dashboard should contain user email");
+}
+
+#[test]
+fn dashboard_redirects_without_session() {
     let db = make_db();
 
-    // Step 1: create user via magic link
-    let email = "dash@example.com";
-    let token = issue_magic_token(&db, email);
-
-    // Step 2: redeem token -> creates session
-    let session_token = db
-        .with_conn(|conn| crate::auth::magic::redeem_magic_link(&db, &token, now_unix()))
-        .unwrap()
-        .session_token;
-
-    // Step 3: make GET request to /dashboard with session cookie
-    let mut req_dashboard = Request::new(Method::GET, "/dashboard");
-    req_dashboard.headers_mut().insert(
-        "Cookie",
-        format!("session={}", session_token).parse().unwrap(),
-    );
-
-    let resp_dashboard = handle(req_dashboard, &db).unwrap();
-
-    // Step 4: assert redirect for unauthenticated fails
-    assert_eq!(resp_dashboard.status(), 200);
-
-    // Step 5: read body
-    let mut body_bytes = Vec::new();
-    resp_dashboard
-        .body_mut()
-        .reader()
-        .read_to_end(&mut body_bytes)
+    let req = Request::builder()
+        .method(Method::GET)
+        .uri("/dashboard")
+        .body(Body::empty())
         .unwrap();
-    let body_str = std::str::from_utf8(&body_bytes).unwrap();
 
-    // Step 6: check that user's email appears in dashboard
-    assert!(
-        body_str.contains(email),
-        "Dashboard body did not contain expected email"
+    let resp = handle(req, &db).expect("Handler failed");
+
+    assert_eq!(
+        resp.status(),
+        302,
+        "Dashboard should redirect if not logged in"
     );
+    let location = resp.headers().get("Location").unwrap().to_str().unwrap();
+    assert_eq!(location, "/", "Should redirect to home");
 }

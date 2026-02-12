@@ -178,7 +178,9 @@ impl RealtorScraper {
     pub fn try_fetch_html_via_zenrows(&self, url: &str) -> Result<String, ScraperError> {
         use reqwest::header::{HeaderMap, HeaderValue, ACCEPT, ACCEPT_LANGUAGE, REFERER};
 
-        let api_key = " ";
+        let api_key = std::env::var("ZENROWS_API_KEY").map_err(|_| {
+            ScraperError::Config("ZENROWS_API_KEY environment variable not set".into())
+        })?;
 
         let mut headers = HeaderMap::new();
         headers.insert(REFERER, HeaderValue::from_static("https://www.google.com/"));
@@ -189,15 +191,15 @@ impl RealtorScraper {
         // headers.insert(ACCEPT_LANGUAGE, HeaderValue::from_static("en-US,en;q=0.9"));
 
         let mut params = HashMap::new();
-        //params.insert("custom_headers", "true");
-        params.insert("url", url);
+        //params.insert("custom_headers", "true".to_string());
+        params.insert("url", url.to_string());
         params.insert("apikey", api_key);
-        // params.insert("js_render", "true");
-        // params.insert("premium_proxy", "true");
-        // params.insert("proxy_country", "us");
-        // params.insert("wait_for", "script#__NEXT_DATA__");
-        params.insert("original_status", "true");
-        params.insert("mode", "auto");
+        // params.insert("js_render", "true".to_string());
+        // params.insert("premium_proxy", "true".to_string());
+        // params.insert("proxy_country", "us".to_string());
+        // params.insert("wait_for", "script#__NEXT_DATA__".to_string());
+        params.insert("original_status", "true".to_string());
+        params.insert("mode", "auto".to_string());
 
         let resp = self
             .client

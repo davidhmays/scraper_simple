@@ -7,8 +7,8 @@ pub fn email_cta_form() -> Markup {
                 method="post"
                 action="/auth/request-link"
                 hx-post="/auth/request-link"
-                hx-target="#auth-result"
-                hx-swap="innerHTML"
+                hx-target="closest .email-cta-wrapper"
+                hx-swap="outerHTML"
                 hx-disabled-elt="button"
                 class="email-cta"
             {
