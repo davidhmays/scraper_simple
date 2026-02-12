@@ -71,6 +71,11 @@ pub fn export_card(vm: &DashboardVm) -> Markup {
                     p { "Used this month: " strong { (vm.usage) } " / " (limit) }
                     @if limit_reached {
                         p style="color: #dc2626; font-weight: bold;" { "Limit reached." }
+                        form action="/checkout" method="post" {
+                            button type="submit" style="margin-top: 5px; background-color: #10b981; color: white; padding: 4px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9em;" {
+                                "Upgrade to Lifetime"
+                            }
+                        }
                     }
                 }
             }

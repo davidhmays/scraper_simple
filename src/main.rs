@@ -30,7 +30,11 @@ fn main() {
     }
 
     // 3️⃣ Start the server
-    let addr: SocketAddr = "127.0.0.1:3000".parse().unwrap();
+    let host = std::env::var("HOST").unwrap_or_else(|_| "127.0.0.1".to_string());
+    let port = std::env::var("PORT").unwrap_or_else(|_| "3000".to_string());
+    let addr: SocketAddr = format!("{}:{}", host, port)
+        .parse()
+        .expect("Invalid address format");
     println!("Starting server at http://{addr}");
 
     let server = Server::bind(&addr).max_workers(8);

@@ -7,6 +7,7 @@ use crate::mailings::{BrevoMailer, ListingFlag, PropertyType};
 use crate::responses::{html_response, ResultResp};
 use crate::scraper::RealtorScraper;
 use crate::spreadsheets::export_listings_xlsx;
+use rusqlite::params;
 
 use crate::templates;
 use crate::templates::pages::admin::AdminVm;
@@ -438,6 +439,126 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             }
 
             html_response(templates::pages::check_email_content(&email))
+        }
+
+        ("POST", "/checkout") => {
+            let now = now_unix();
+            let user = current_user(&req, db, now)?;
+            let Some((_, email)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let secret_key = std::env::var("STRIPE_SECRET_KEY").map_err(|_| {
+                eprintln!("Missing STRIPE_SECRET_KEY");
+                ServerError::InternalError
+            })?;
+            let price_id = std::env::var("STRIPE_PRICE_ID").map_err(|_| {
+                eprintln!("Missing STRIPE_PRICE_ID");
+                ServerError::InternalError
+            })?;
+            let base_url =
+                std::env::var("BASE_URL").unwrap_or_else(|_| "http://localhost:3000".to_string());
+
+            let client = reqwest::blocking::Client::new();
+            let params = [
+                ("mode", "payment"),
+                ("payment_method_types[0]", "card"),
+                ("line_items[0][price]", &price_id),
+                ("line_items[0][quantity]", "1"),
+                ("customer_email", &email),
+                (
+                    "success_url",
+                    &format!(
+                        "{}/checkout/success?session_id={{CHECKOUT_SESSION_ID}}",
+                        base_url
+                    ),
+                ),
+                ("cancel_url", &format!("{}/dashboard", base_url)),
+            ];
+
+            let resp = client
+                .post("https://api.stripe.com/v1/checkout/sessions")
+                .basic_auth(&secret_key, None::<&str>)
+                .form(&params)
+                .send()
+                .map_err(|e| ServerError::BadRequest(format!("Stripe request failed: {e}")))?;
+
+            if !resp.status().is_success() {
+                let text = resp.text().unwrap_or_default();
+                eprintln!("Stripe error: {}", text);
+                return Err(ServerError::BadRequest("Stripe checkout failed".into()));
+            }
+
+            let json: serde_json::Value = resp
+                .json()
+                .map_err(|e| ServerError::BadRequest(format!("Bad response from Stripe: {e}")))?;
+
+            let url = json["url"]
+                .as_str()
+                .ok_or_else(|| ServerError::BadRequest("No checkout URL returned".into()))?;
+
+            Ok(ResponseBuilder::new()
+                .status(303)
+                .header("Location", url)
+                .body(Body::empty())
+                .unwrap())
+        }
+
+        ("GET", "/checkout/success") => {
+            let now = now_unix();
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let session_id = query_param(&req, "session_id")
+                .ok_or_else(|| ServerError::BadRequest("Missing session_id".into()))?;
+
+            let secret_key = std::env::var("STRIPE_SECRET_KEY").map_err(|_| {
+                eprintln!("Missing STRIPE_SECRET_KEY");
+                ServerError::InternalError
+            })?;
+
+            // Verify payment
+            let client = reqwest::blocking::Client::new();
+            let url = format!("https://api.stripe.com/v1/checkout/sessions/{}", session_id);
+
+            let resp = client
+                .get(&url)
+                .basic_auth(&secret_key, None::<&str>)
+                .send()
+                .map_err(|e| ServerError::BadRequest(format!("Stripe verify failed: {e}")))?;
+
+            let json: serde_json::Value = resp
+                .json()
+                .map_err(|_| ServerError::BadRequest("Bad json from Stripe".into()))?;
+
+            if json.get("payment_status").and_then(|s| s.as_str()) == Some("paid") {
+                // Upgrade User
+                db.with_conn(|conn| {
+                    conn.execute(
+                        "insert or replace into entitlements (user_id, plan_code, granted_at) values (?, ?, ?)",
+                        params![user_id, "lifetime", now],
+                    )
+                    .map_err(|e| ServerError::DbError(format!("upgrade plan failed: {e}")))
+                })?;
+            } else {
+                return Err(ServerError::BadRequest("Payment not verified".into()));
+            }
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", "/dashboard")
+                .body(Body::empty())
+                .unwrap())
         }
 
         _ => Err(ServerError::NotFound),
