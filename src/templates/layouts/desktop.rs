@@ -1,7 +1,7 @@
 // use crate::templates::components::navbar;
 use maud::{html, Markup, DOCTYPE};
 
-pub fn desktop_layout(title: &str, content: Markup) -> Markup {
+pub fn desktop_layout(title: &str, is_admin: bool, content: Markup) -> Markup {
     html! {
         (DOCTYPE)
         html {
@@ -39,10 +39,10 @@ pub fn desktop_layout(title: &str, content: Markup) -> Markup {
                   nav {
                       ul {
                           li { a href="/" { "Home" } }
-                          li { a href="/admin" { "Admin" }
-                            //li { a href="/about" class="hover:text-blue-600" { "About" }
+                          @if is_admin {
+                              li { a href="/admin" { "Admin" } }
                           }
-                          li { a href="/campaigns" { "Campaigns" } }
+                          // li { a href="/campaigns" { "Campaigns" } }
                       }
                   }
 

@@ -36,9 +36,10 @@ pub fn check_email_content(email: &str) -> Markup {
 
 /// Returns the full page layout with the check email message.
 /// Used for direct navigation or redirects.
-pub fn check_email_page(email: &str) -> Markup {
+pub fn check_email_page(email: &str, is_admin: bool) -> Markup {
     desktop_layout(
         "Check your email",
+        is_admin,
         html! {
             main class="container mx-auto mt-12 p-4 max-w-lg" {
                 div class="bg-white p-8 rounded-lg shadow-sm border border-gray-200" {

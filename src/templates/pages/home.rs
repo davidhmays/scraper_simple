@@ -4,9 +4,10 @@ use crate::templates::{
 };
 use maud::{html, Markup};
 
-pub fn home_page() -> Markup {
+pub fn home_page(is_admin: bool) -> Markup {
     desktop_layout(
         "Download Listings",
+        is_admin,
         html! {
             main class="container" {
                 // HERO

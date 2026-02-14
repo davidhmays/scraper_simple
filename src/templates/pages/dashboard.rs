@@ -14,6 +14,7 @@ pub struct DashboardVm {
 pub fn dashboard_page(vm: &DashboardVm) -> Markup {
     desktop_layout(
         "Dashboard",
+        vm.is_admin,
         html! {
             main class="container" {
                 h1 { "Dashboard" }

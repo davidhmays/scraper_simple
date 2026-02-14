@@ -1,3 +1,4 @@
+mod models;
 mod scraper;
 mod scraper_error;
 

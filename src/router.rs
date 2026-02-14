@@ -126,15 +126,20 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
     // Clone path parts to avoid borrow checker issues with mutable body reading
     let method = req.method().as_str().to_string();
     let path = req.uri().path().to_string();
+    let now = now_unix();
+
+    // Determine admin status for layout-using routes
+    let is_admin = current_user(&req, db, now)?
+        .map(|(user_id, _)| db.with_conn(|conn| crate::db::users::is_user_admin(conn, user_id)))
+        .transpose()?
+        .unwrap_or(false);
 
     match (method.as_str(), path.as_str()) {
         ("GET", path) if path.starts_with("/static") => serve_static(path),
-        ("GET", "/") => html_response(templates::pages::home_page()),
-        ("GET", "/login") => html_response(templates::pages::login::login_page()),
+        ("GET", "/") => html_response(templates::pages::home_page(is_admin)),
+        ("GET", "/login") => html_response(templates::pages::login::login_page(is_admin)),
 
         ("GET", "/admin") => {
-            let now = now_unix();
-
             // 1. Authenticate
             let user = current_user(&req, db, now)?;
             let Some((user_id, _)) = user else {
@@ -213,8 +218,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
         }
 
         ("POST", path) if path.starts_with("/admin/users/") && path.ends_with("/reset-usage") => {
-            let now = now_unix();
-
             let user = current_user(&req, db, now)?;
             let Some((user_id, _)) = user else {
                 return Ok(ResponseBuilder::new()
@@ -245,8 +248,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
         }
 
         ("POST", path) if path.starts_with("/admin/plans/") && path.ends_with("/limit") => {
-            let now = now_unix();
-
             let user = current_user(&req, db, now)?;
             let Some((user_id, _)) = user else {
                 return Ok(ResponseBuilder::new()
@@ -292,13 +293,13 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 }
             }
             let counties = get_counties_by_state(db, &state)?;
-            html_response(templates::pages::campaigns_page(&state, &counties))
+            html_response(templates::pages::campaigns_page(
+                &state, &counties, is_admin,
+            ))
         }
 
         // Support for /export?state=XX (Form submission)
         ("GET", "/export") => {
-            let now = now_unix();
-
             // 1. Authenticate
             let user = current_user(&req, db, now)?;
             let Some((user_id, _)) = user else {
@@ -359,7 +360,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
         }
 
         ("GET", "/dashboard") => {
-            let now = now_unix();
             let user = current_user(&req, db, now)?;
             let Some((user_id, email)) = user else {
                 return Ok(ResponseBuilder::new()
@@ -377,7 +377,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
         }
 
         ("GET", "/dashboard/export-card") => {
-            let now = now_unix();
             let user = current_user(&req, db, now)?;
             let Some((user_id, email)) = user else {
                 return Ok(ResponseBuilder::new()
@@ -399,7 +398,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
         }
 
         ("GET", "/dashboard/preview") => {
-            let now = now_unix();
             let user = current_user(&req, db, now)?;
             let Some((user_id, _)) = user else {
                 return Ok(ResponseBuilder::new()
@@ -431,7 +429,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             let token = query_param(&req, "token")
                 .ok_or_else(|| ServerError::BadRequest("missing token".into()))?;
 
-            let now = now_unix();
             let redeemed = redeem_magic_link(db, &token, now)?;
             let session_token =
                 db.with_conn(|conn| sessions::create_session(conn, redeemed.user_id, now))?;
@@ -457,7 +454,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             let email = form_first(&pairs, "email")
                 .ok_or_else(|| ServerError::BadRequest("email is required".into()))?;
 
-            let now = now_unix();
             let issued = request_magic_link(db, &email, now)?;
 
             eprintln!("🔐 MAGIC LINK for {} => {}", issued.email, issued.link);
@@ -491,7 +487,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
         }
 
         ("POST", "/checkout") => {
-            let now = now_unix();
             let user = current_user(&req, db, now)?;
             let Some((_, email)) = user else {
                 return Ok(ResponseBuilder::new()
@@ -558,7 +553,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
         }
 
         ("GET", "/checkout/success") => {
-            let now = now_unix();
             let user = current_user(&req, db, now)?;
             let Some((user_id, _)) = user else {
                 return Ok(ResponseBuilder::new()

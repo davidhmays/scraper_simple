@@ -1,9 +1,10 @@
 use crate::templates::{components::button, desktop_layout};
 use maud::{html, Markup};
 
-pub fn campaigns_page(selected_state: &str, counties: &[(String, i64)]) -> Markup {
+pub fn campaigns_page(selected_state: &str, counties: &[(String, i64)], is_admin: bool) -> Markup {
     desktop_layout(
         "Campaigns",
+        is_admin,
         html! {
             h1 { "Campaigns & QR Codes" }
 

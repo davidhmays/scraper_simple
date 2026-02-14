@@ -10,6 +10,7 @@ pub struct AdminVm {
 pub fn admin_page(vm: &AdminVm) -> Markup {
     desktop_layout(
         "Admin Dashboard",
+        true,
         html! {
             main class="container" {
                 h1 { "Admin Dashboard" }
