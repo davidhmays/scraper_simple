@@ -27,3 +27,12 @@ pub struct ListingWithProperty {
     pub is_contingent: bool,
     pub is_pending: bool,
 }
+
+impl ListingWithProperty {
+    pub fn redacted_address(&self) -> String {
+        self.address_line
+            .chars()
+            .map(|c| if c.is_numeric() { '*' } else { c })
+            .collect()
+    }
+}

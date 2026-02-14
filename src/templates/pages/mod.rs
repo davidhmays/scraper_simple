@@ -4,6 +4,7 @@ pub mod check_email;
 pub mod dashboard;
 pub mod home;
 pub mod login;
+pub mod preview;
 
 pub use admin::admin_page;
 pub use campaigns::campaigns_page;

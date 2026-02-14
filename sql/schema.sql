@@ -305,5 +305,5 @@ create index if not exists idx_sessions_expires on sessions(expires_at);
 -- Seed plans (idempotent)
 insert or ignore into plans (code, name, price_cents, download_limit, trial_days, limit_window)
 values
-  ('free', 'Free', 0, 4, 0, 'month'),
+  ('free', 'Free', 0, 0, 0, 'month'),
   ('lifetime', 'Lifetime', 1900, null, 0, 'month');

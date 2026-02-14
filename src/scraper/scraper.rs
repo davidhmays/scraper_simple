@@ -33,33 +33,81 @@ impl RealtorScraper {
         Ok(Self { client })
     }
 
-    pub fn run_realtor_scrape(db: &Database) {
+    pub fn run_realtor_scrape(db: &Database, state_name: String, state_abbr: String) {
         let db = db.clone(); // cheap clone (path only)
 
         std::thread::spawn(move || {
-            eprintln!("🧵 Scraper thread started");
+            let now_start = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_secs() as i64;
+
+            // Record start
+            let run_id = db
+                .with_conn(|conn| {
+                    crate::db::scrapes::start_scrape_run(conn, &state_abbr, now_start)
+                })
+                .unwrap_or(0);
+
+            eprintln!("🧵 Scraper thread started for {}", state_name);
 
             let scraper = match RealtorScraper::new() {
                 Ok(s) => s,
                 Err(e) => {
                     eprintln!("Scraper init failed: {e}");
+                    // Could update DB here with error
                     return;
                 }
             };
 
-            let base_url = "https://www.realtor.com/realestateandhomes-search/Utah";
+            let base_url = format!(
+                "https://www.realtor.com/realestateandhomes-search/{}",
+                state_name
+            );
 
-            let result = scraper.fetch_all_properties_paginated(base_url, |properties| {
+            let mut total_props = 0;
+            let mut pages = 0;
+
+            let result = scraper.fetch_all_properties_paginated(&base_url, |properties| {
+                total_props += properties.len();
+                pages += 1;
                 // 🧠 DB LOGIC LIVES HERE
-                save_properties(&db, &properties, base_url)
+                save_properties(&db, &properties, &base_url)
                     .map_err(|e| ScraperError::Network(e.to_string()))?;
                 Ok(())
             });
 
+            let now_end = std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_secs() as i64;
+
             if let Err(e) = result {
                 eprintln!("Scrape failed: {e}");
+                let _ = db.with_conn(|conn| {
+                    crate::db::scrapes::end_scrape_run(
+                        conn,
+                        run_id,
+                        now_end,
+                        pages,
+                        total_props,
+                        false,
+                        Some(e.to_string()),
+                    )
+                });
             } else {
                 eprintln!("✅ Scrape complete");
+                let _ = db.with_conn(|conn| {
+                    crate::db::scrapes::end_scrape_run(
+                        conn,
+                        run_id,
+                        now_end,
+                        pages,
+                        total_props,
+                        true,
+                        None,
+                    )
+                });
             }
         });
     }

@@ -3,20 +3,21 @@ use crate::db::listings::get_counties_by_state;
 use crate::db::listings::get_listings_by_state;
 
 use crate::errors::ServerError;
-use crate::mailings::{BrevoMailer, ListingFlag, PropertyType};
+use crate::mailings::BrevoMailer;
 use crate::responses::{html_response, ResultResp};
 use crate::scraper::RealtorScraper;
 use crate::spreadsheets::export_listings_xlsx;
-use rusqlite::params;
 
 use crate::templates;
 use crate::templates::pages::admin::AdminVm;
 use crate::templates::pages::dashboard::DashboardVm;
+use crate::templates::pages::preview::preview_table;
 
 use astra::{Body, Request, ResponseBuilder};
 use maud::html;
+use rusqlite::params;
 use std::io::Read;
-use url::form_urlencoded; // for read_to_end
+use url::form_urlencoded;
 
 use crate::auth::sessions;
 use crate::db::magic_auth::{redeem_magic_link, request_magic_link};
@@ -67,6 +68,7 @@ fn current_user(
     };
 
     db.with_conn(|conn| crate::auth::sessions::load_user_from_session(conn, raw_token, now))
+        .map_err(|e| ServerError::DbError(e.to_string()))
 }
 
 fn query_param(req: &Request, key: &str) -> Option<String> {
@@ -82,45 +84,15 @@ fn query_param(req: &Request, key: &str) -> Option<String> {
 
 fn body_to_bytes(req: &mut Request) -> Result<Vec<u8>, ServerError> {
     let mut out = Vec::new();
-
-    // Option A: use the BodyReader (implements std::io::Read)
     req.body_mut()
         .reader()
         .read_to_end(&mut out)
         .map_err(|e| ServerError::BadRequest(format!("Failed to read request body: {e}")))?;
-
     Ok(out)
-
-    // Option B (equivalent): iterate over chunks
-    // for chunk in req.body_mut() {
-    //     let chunk = chunk.map_err(|e| ServerError::BadRequest(format!("Body chunk error: {e}")))?;
-    //     out.extend_from_slice(&chunk);
-    // }
-    // Ok(out)
 }
 
-fn parse_flag(s: &str) -> Option<ListingFlag> {
-    match s.trim().to_lowercase().as_str() {
-        "coming_soon" => Some(ListingFlag::ComingSoon),
-        "contingent" => Some(ListingFlag::Contingent),
-        "foreclosure" => Some(ListingFlag::Foreclosure),
-        "new_construction" => Some(ListingFlag::NewConstruction),
-        "new_listing" => Some(ListingFlag::NewListing),
-        "pending" => Some(ListingFlag::Pending),
-        _ => None,
-    }
-}
-
-fn parse_type(s: &str) -> Option<PropertyType> {
-    match s.trim().to_lowercase().as_str() {
-        "single_family" => Some(PropertyType::SingleFamily),
-        "townhomes" => Some(PropertyType::Townhomes),
-        "land" => Some(PropertyType::Land),
-        "multi_family" => Some(PropertyType::MultiFamily),
-        "farm" => Some(PropertyType::Farm),
-        "condos" => Some(PropertyType::Condos),
-        _ => None,
-    }
+fn form_first(pairs: &[(String, String)], key: &str) -> Option<String> {
+    pairs.iter().find(|(k, _)| k == key).map(|(_, v)| v.clone())
 }
 
 fn fetch_dashboard_vm(
@@ -150,15 +122,16 @@ fn fetch_dashboard_vm(
     })
 }
 
-//TODO: look at making only post/campaigns mutable.
 pub fn handle(mut req: Request, db: &Database) -> ResultResp {
-    let method = req.method().as_str();
-    let path = req.uri().path();
+    // Clone path parts to avoid borrow checker issues with mutable body reading
+    let method = req.method().as_str().to_string();
+    let path = req.uri().path().to_string();
 
-    match (method, path) {
+    match (method.as_str(), path.as_str()) {
         ("GET", path) if path.starts_with("/static") => serve_static(path),
         ("GET", "/") => html_response(templates::pages::home_page()),
         ("GET", "/login") => html_response(templates::pages::login::login_page()),
+
         ("GET", "/admin") => {
             let now = now_unix();
 
@@ -179,14 +152,20 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 return Err(ServerError::Unauthorized("Admin access required".into()));
             }
 
-            // 3. Fetch Users
+            // 3. Fetch Data
             let users =
                 db.with_conn(|conn| crate::db::users::get_all_users_with_stats(conn, now))?;
+            let plans = db.with_conn(|conn| crate::db::plans::get_all_plans(conn))?;
+            let scrapes = db.with_conn(|conn| crate::db::scrapes::get_recent_scrapes(conn))?;
 
-            html_response(templates::pages::admin_page(&AdminVm { users }))
+            html_response(templates::pages::admin_page(&AdminVm {
+                users,
+                plans,
+                scrapes,
+            }))
         }
 
-        ("POST", path) if path.starts_with("/admin/users/") && path.ends_with("/reset-usage") => {
+        ("POST", "/admin/scrape") => {
             let now = now_unix();
 
             // 1. Authenticate
@@ -206,14 +185,56 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 return Err(ServerError::Unauthorized("Admin access required".into()));
             }
 
-            // 3. Parse Target User ID
+            // 3. Parse State
+            let body_bytes = body_to_bytes(&mut req)?;
+            let pairs: Vec<(String, String)> =
+                form_urlencoded::parse(&body_bytes).into_owned().collect();
+            let state_abbr = form_first(&pairs, "state")
+                .ok_or_else(|| ServerError::BadRequest("state is required".into()))?;
+
+            // 4. Lookup Full Name
+            let state_name = crate::geos::US_STATES
+                .iter()
+                .find(|(abbr, _)| *abbr == state_abbr)
+                .map(|(_, name)| name.to_string())
+                .ok_or_else(|| ServerError::BadRequest("Invalid state".into()))?;
+
+            // 5. Start Scrape
+            let db_clone = db.clone();
+            std::thread::spawn(move || {
+                RealtorScraper::run_realtor_scrape(&db_clone, state_name, state_abbr);
+            });
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", "/admin")
+                .body(Body::empty())
+                .unwrap())
+        }
+
+        ("POST", path) if path.starts_with("/admin/users/") && path.ends_with("/reset-usage") => {
+            let now = now_unix();
+
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let is_admin = db.with_conn(|conn| crate::db::users::is_user_admin(conn, user_id))?;
+            if !is_admin {
+                return Err(ServerError::Unauthorized("Admin access required".into()));
+            }
+
             let parts: Vec<&str> = path.split('/').collect();
             let target_id = parts
                 .get(3)
                 .and_then(|s| s.parse::<i64>().ok())
                 .ok_or(ServerError::BadRequest("Invalid user id".into()))?;
 
-            // 4. Reset Usage
             db.with_conn(|conn| crate::db::downloads::reset_user_downloads(conn, target_id, now))?;
 
             Ok(ResponseBuilder::new()
@@ -223,11 +244,46 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 .unwrap())
         }
 
-        ("GET", "/campaigns") => {
-            // Default state if not provided in query string
-            let mut state = "UT".to_string();
+        ("POST", path) if path.starts_with("/admin/plans/") && path.ends_with("/limit") => {
+            let now = now_unix();
 
-            // Optional: support /campaigns?state=UT
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let is_admin = db.with_conn(|conn| crate::db::users::is_user_admin(conn, user_id))?;
+            if !is_admin {
+                return Err(ServerError::Unauthorized("Admin access required".into()));
+            }
+
+            let parts: Vec<&str> = path.split('/').collect();
+            let code = parts.get(3).unwrap_or(&"");
+
+            let body_bytes = body_to_bytes(&mut req)?;
+            let pairs: Vec<(String, String)> =
+                form_urlencoded::parse(&body_bytes).into_owned().collect();
+            let limit_str = form_first(&pairs, "limit")
+                .ok_or_else(|| ServerError::BadRequest("limit is required".into()))?;
+            let limit = limit_str
+                .parse::<i64>()
+                .map_err(|_| ServerError::BadRequest("invalid limit".into()))?;
+
+            db.with_conn(|conn| crate::db::plans::update_plan_limit(conn, code, Some(limit)))?;
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", "/admin")
+                .body(Body::empty())
+                .unwrap())
+        }
+
+        ("GET", "/campaigns") => {
+            let mut state = "UT".to_string();
             if let Some(q) = req.uri().query() {
                 for (k, v) in url::form_urlencoded::parse(q.as_bytes()) {
                     if k == "state" {
@@ -235,37 +291,11 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                     }
                 }
             }
-
             let counties = get_counties_by_state(db, &state)?;
             html_response(templates::pages::campaigns_page(&state, &counties))
         }
 
-        // Spawn scraper background job
-        ("GET", "/scrape-test") => {
-            let db_clone = db.clone(); // Clone the Database for the thread
-
-            // Spawn background thread
-            std::thread::spawn(move || {
-                eprintln!("🚀 Background scrape job started");
-                RealtorScraper::run_realtor_scrape(&db_clone);
-            });
-
-            // Immediately return OK response to browser
-            let body = html! {
-                h1 { "Scraper triggered in background" }
-                p { "Check logs for progress." }
-            };
-            html_response(body)
-        }
-
-        //TODO: Should state_abbr be a reference?
-        ("GET", path) if path.starts_with("/export/") => {
-            let state = path.trim_start_matches("/export/").to_uppercase();
-
-            let listings = get_listings_by_state(db, &state)?;
-            export_listings_xlsx(&listings, &state)
-        }
-
+        // Support for /export?state=XX (Form submission)
         ("GET", "/export") => {
             let now = now_unix();
 
@@ -321,14 +351,17 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             Ok(resp)
         }
 
+        // Legacy /export/UT support (can share logic but keeping separate for now to minimize churn)
+        ("GET", path) if path.starts_with("/export/") => {
+            let state = path.trim_start_matches("/export/").to_uppercase();
+            let listings = get_listings_by_state(db, &state)?;
+            export_listings_xlsx(&listings, &state)
+        }
+
         ("GET", "/dashboard") => {
             let now = now_unix();
-
-            // Step 1: get the logged-in user
             let user = current_user(&req, db, now)?;
-
             let Some((user_id, email)) = user else {
-                // Not logged in, redirect to home
                 return Ok(ResponseBuilder::new()
                     .status(302)
                     .header("Location", "/")
@@ -337,21 +370,15 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             };
 
             let last_state = get_cookie(&req, "last_state");
-
-            // Step 2: fetch dashboard info
             let dashboard_vm =
                 db.with_conn(|conn| fetch_dashboard_vm(conn, user_id, email, now, last_state))?;
 
-            // Step 3: render template
             html_response(templates::pages::dashboard_page(&dashboard_vm))
         }
 
         ("GET", "/dashboard/export-card") => {
             let now = now_unix();
-
-            // Step 1: get the logged-in user
             let user = current_user(&req, db, now)?;
-
             let Some((user_id, email)) = user else {
                 return Ok(ResponseBuilder::new()
                     .status(302)
@@ -361,12 +388,9 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             };
 
             let last_state = get_cookie(&req, "last_state");
-
-            // Step 2: fetch dashboard info
             let dashboard_vm =
                 db.with_conn(|conn| fetch_dashboard_vm(conn, user_id, email, now, last_state))?;
 
-            // Step 3: render partial template
             let mut resp =
                 html_response(templates::pages::dashboard::export_card(&dashboard_vm)).unwrap();
             resp.headers_mut()
@@ -374,14 +398,41 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             Ok(resp)
         }
 
+        ("GET", "/dashboard/preview") => {
+            let now = now_unix();
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let state = query_param(&req, "state")
+                .unwrap_or_default()
+                .to_uppercase();
+            if state.is_empty() {
+                return html_response(html! {});
+            }
+
+            let listings = get_listings_by_state(db, &state)?;
+            let total_count = listings.len();
+
+            let is_paid = db.with_conn(|conn| {
+                let plan = crate::db::plans::get_user_plan(conn, user_id)?;
+                Ok(plan.download_limit.is_none())
+            })?;
+
+            html_response(preview_table(&listings, total_count, is_paid))
+        }
+
         ("GET", "/auth/magic") => {
             let token = query_param(&req, "token")
                 .ok_or_else(|| ServerError::BadRequest("missing token".into()))?;
 
             let now = now_unix();
-
             let redeemed = redeem_magic_link(db, &token, now)?;
-
             let session_token =
                 db.with_conn(|conn| sessions::create_session(conn, redeemed.user_id, now))?;
 
@@ -396,7 +447,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 .unwrap())
         }
 
-        // WARN: Has some hard-coded values!
         ("POST", "/auth/request-link") => {
             eprintln!("POST /auth/request-link");
 
@@ -408,7 +458,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 .ok_or_else(|| ServerError::BadRequest("email is required".into()))?;
 
             let now = now_unix();
-
             let issued = request_magic_link(db, &email, now)?;
 
             eprintln!("🔐 MAGIC LINK for {} => {}", issued.email, issued.link);
@@ -544,11 +593,7 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
             if json.get("payment_status").and_then(|s| s.as_str()) == Some("paid") {
                 // Upgrade User
                 db.with_conn(|conn| {
-                    conn.execute(
-                        "insert or replace into entitlements (user_id, plan_code, granted_at) values (?, ?, ?)",
-                        params![user_id, "lifetime", now],
-                    )
-                    .map_err(|e| ServerError::DbError(format!("upgrade plan failed: {e}")))
+                    crate::db::plans::upgrade_user_plan(conn, user_id, "lifetime", now)
                 })?;
             } else {
                 return Err(ServerError::BadRequest("Payment not verified".into()));
@@ -563,26 +608,6 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
 
         _ => Err(ServerError::NotFound),
     }
-}
-
-fn form_first(pairs: &[(String, String)], key: &str) -> Option<String> {
-    pairs.iter().find(|(k, _)| k == key).map(|(_, v)| v.clone())
-}
-
-fn form_all(pairs: &[(String, String)], key: &str) -> Vec<String> {
-    pairs
-        .iter()
-        .filter(|(k, _)| k == key)
-        .map(|(_, v)| v.clone())
-        .collect()
-}
-
-fn parse_zip_codes(raw: &str) -> Vec<String> {
-    raw.split(|c: char| c == ',' || c.is_whitespace())
-        .map(|s| s.trim())
-        .filter(|s| !s.is_empty())
-        .map(|s| s.to_string())
-        .collect()
 }
 
 pub fn serve_static(path: &str) -> ResultResp {
@@ -630,8 +655,9 @@ fn mime_for(path: &str) -> &'static str {
 #[cfg(test)]
 mod router_auth_tests {
     use super::*;
-    use crate::db::connection::Database;
-    use crate::init_db;
+    use crate::auth::magic::{MagicLinkConfig, MagicLinkService};
+    use crate::db::connection::Database; // Ensure import
+
     use astra::{Body, Request};
     use http::{Method, Request as HttpRequest};
 
@@ -651,7 +677,58 @@ mod router_auth_tests {
         let path = tmp_db_path("router_auth");
         let db = Database::new(path);
 
-        init_db(&db, "sql/schema.sql").expect("Failed to initialize DB");
+        db.with_conn(|conn| {
+            conn.execute_batch(
+                r#"
+                PRAGMA foreign_keys = ON;
+
+                create table if not exists users (
+                  id            integer primary key,
+                  email         text not null unique,
+                  created_at    integer not null,
+                  last_login_at integer,
+                  is_admin      integer not null default 0
+                );
+
+                create table if not exists magic_links (
+                  id          integer primary key,
+                  user_id     integer not null,
+                  token_hash  blob not null,
+                  created_at  integer not null,
+                  expires_at  integer not null,
+                  used_at     integer,
+                  foreign key(user_id) references users(id) on delete cascade
+                );
+
+                create index if not exists idx_magic_links_hash on magic_links(token_hash);
+
+                create table if not exists plans (
+                  id             integer primary key,
+                  code           text not null unique,
+                  name           text not null,
+                  price_cents    integer not null default 0,
+                  download_limit integer,
+                  trial_days     integer not null default 0,
+                  limit_window   text not null default 'month'
+                );
+
+                create table if not exists entitlements (
+                  id         integer primary key,
+                  user_id    integer not null unique,
+                  plan_code  text not null,
+                  granted_at integer not null,
+                  foreign key(user_id) references users(id) on delete cascade,
+                  foreign key(plan_code) references plans(code)
+                );
+
+                insert or ignore into plans (code, name, price_cents, download_limit, trial_days, limit_window)
+                values ('free', 'Free', 0, 4, 0, 'month');
+                "#,
+            )
+            .unwrap();
+            Ok(())
+        })
+        .unwrap();
 
         db
     }
@@ -712,21 +789,20 @@ mod router_auth_tests {
     }
 
     #[test]
-    fn get_magic_consumes_link_and_redirects() -> Result<(), ServerError> {
+    fn get_magic_consumes_link_and_redirects() {
         let db = make_db_with_schema();
 
-        // Step 1: issue a token via the MagicLinkService
-        let token = db.with_conn(|conn| {
-            let svc = crate::auth::magic::MagicLinkService::new(
-                crate::auth::magic::MagicLinkConfig::default(),
-            );
-            let issued = svc.request_link(conn, "c@d.com", now_unix())?;
-            Ok::<_, ServerError>(issued.token)
-        })?;
+        // Issue a token directly (raw tokens are not stored in DB)
+        let token = db
+            .with_conn(|conn| {
+                let svc = MagicLinkService::new(MagicLinkConfig::default());
+                let issued = svc.request_link(conn, "c@d.com", now_unix())?;
+                Ok(issued.token)
+            })
+            .unwrap();
 
-        // Step 2: hit the /auth/magic endpoint
         let req = req_get(&format!("/auth/magic?token={}", token));
-        let resp = handle(req, &db)?;
+        let resp = handle(req, &db).unwrap();
 
         assert_eq!(resp.status(), 302);
 
@@ -737,7 +813,6 @@ mod router_auth_tests {
             .unwrap_or("");
         assert_eq!(loc, "/dashboard");
 
-        // Step 3: verify DB state using production-style error handling
         db.with_conn(|conn| {
             let used_count: i64 = conn
                 .query_row(
@@ -745,7 +820,7 @@ mod router_auth_tests {
                     [],
                     |r| r.get(0),
                 )
-                .map_err(|e| ServerError::DbError(format!("query magic_links failed: {e}")))?;
+                .unwrap();
             assert!(used_count >= 1);
 
             let last_login_set: i64 = conn
@@ -754,12 +829,11 @@ mod router_auth_tests {
                     [],
                     |r| r.get(0),
                 )
-                .map_err(|e| ServerError::DbError(format!("query users failed: {e}")))?;
+                .unwrap();
             assert!(last_login_set >= 1);
 
             Ok(())
-        })?;
-
-        Ok(())
+        })
+        .unwrap();
     }
 }

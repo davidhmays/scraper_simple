@@ -31,6 +31,11 @@ impl Database {
                     let mut conn = Connection::open(&self.path)
                         .map_err(|e| ServerError::DbError(format!("Open DB failed: {e}")))?;
 
+                    conn.busy_timeout(std::time::Duration::from_secs(5))
+                        .map_err(|e| {
+                            ServerError::DbError(format!("Failed to set busy timeout: {e}"))
+                        })?;
+
                     conn.execute_batch(
                         "PRAGMA foreign_keys = ON;
                        PRAGMA journal_mode = WAL;

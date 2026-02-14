@@ -87,16 +87,31 @@ pub fn export_card(vm: &DashboardVm) -> Markup {
                 style="display: flex; gap: 10px; align-items: center; margin-top: 10px;"
             {
                 label for="state" class="sr-only" { "Select State" }
-                select name="state" id="state" required style="padding: 8px; font-size: 16px;" {
+                select
+                    name="state"
+                    id="state"
+                    required
+                    style="padding: 8px; font-size: 16px;"
+                    hx-get="/dashboard/preview"
+                    hx-target="#preview-area"
+                    hx-swap="innerHTML"
+                    hx-trigger="change"
+                {
                     option value="" disabled selected[vm.last_state.is_none()] { "Select a State..." }
                     @for (abbr, name) in crate::geos::US_STATES {
                         option value=(abbr) selected[vm.last_state.as_deref() == Some(*abbr)] { (name) }
                     }
                 }
-                @if limit_reached {
-                    button type="button" disabled style="padding: 8px 16px; font-size: 16px; cursor: not-allowed; opacity: 0.6; background-color: #9ca3af; color: white; border: none; border-radius: 4px;" { "Limit Reached" }
-                } @else {
+                @if vm.download_limit.is_none() {
                     button type="submit" style="padding: 8px 16px; font-size: 16px; cursor: pointer;" { "Download" }
+                } @else if !limit_reached {
+                    button type="submit" style="padding: 8px 16px; font-size: 16px; cursor: pointer;" { "Download" }
+                }
+            }
+
+            div id="preview-area" {
+                @if let Some(state) = &vm.last_state {
+                    div hx-get=(format!("/dashboard/preview?state={}", state)) hx-trigger="load" hx-swap="outerHTML" {}
                 }
             }
         }
