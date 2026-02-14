@@ -1,6 +1,7 @@
 use crate::db::connection::Database;
 use crate::domain::listing::ListingWithProperty;
 use crate::errors::ServerError;
+use crate::scraper::models::Property;
 use chrono::Utc;
 use rusqlite::{params, OptionalExtension};
 use serde_json::Value;
@@ -9,7 +10,7 @@ use std::io::BufWriter;
 
 const SQL_COUNTIES_BY_STATE: &str = include_str!("../../sql/counties_by_state_alpha.sql");
 
-pub fn save_properties_debug(properties: &[Value], filename: &str) -> std::io::Result<()> {
+pub fn save_properties_debug(properties: &[Property], filename: &str) -> std::io::Result<()> {
     let file = File::create(filename)?;
     let writer = BufWriter::new(file);
     serde_json::to_writer_pretty(writer, properties)?;
@@ -73,7 +74,7 @@ fn choose_property_scoped_id(source: &str, prop: &Value, listing_scoped_id: &str
 
 pub fn save_properties(
     db: &Database,
-    properties: &[Value],
+    properties: &[Property],
     page_url: &str,
 ) -> Result<(), ServerError> {
     let now = Utc::now().naive_utc();

@@ -1,4 +1,4 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 // prop
 //  ├── source
@@ -24,7 +24,7 @@ use serde::Deserialize;
 //       ├── lot_sqft
 //       └── type
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Property {
     pub source: Source,
     pub location: Location,
@@ -38,7 +38,7 @@ pub struct Property {
     pub flags: Option<Flags>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Source {
     pub name: Option<String>,
     pub id: Option<String>,
@@ -46,14 +46,14 @@ pub struct Source {
     pub listing_id: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Location {
     pub address: Option<Address>,
     pub county: Option<County>,
     pub coordinate: Option<Coordinate>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Address {
     pub line: Option<String>,
     pub city: Option<String>,
@@ -64,20 +64,20 @@ pub struct Address {
     pub country: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct County {
     pub name: Option<String>,
     #[serde(rename = "fips_code")]
     pub fips_code: Option<i64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Coordinate {
     pub lat: Option<f64>,
     pub lon: Option<f64>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Description {
     pub beds: Option<i64>,
     pub baths: Option<i64>,
@@ -87,7 +87,7 @@ pub struct Description {
     pub property_type: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Flags {
     pub is_coming_soon: Option<bool>,
     pub is_contingent: Option<bool>,

@@ -1,13 +1,14 @@
 // scraper.rs
 use crate::db::connection::Database;
 use crate::db::listings::save_properties;
+use crate::scraper::Property;
 use crate::scraper::ScraperError;
 use rand::Rng;
 use reqwest::blocking::Client;
 use scraper::{Html, Selector};
 use serde_json::Value;
 use std::collections::{HashMap, HashSet};
-use std::sync::Arc;
+// use std::sync::Arc;
 use std::time::Duration;
 
 const USER_AGENT: &str =
@@ -118,7 +119,7 @@ impl RealtorScraper {
         mut on_page: F,
     ) -> Result<(), ScraperError>
     where
-        F: FnMut(Vec<Value>) -> Result<(), ScraperError>,
+        F: FnMut(Vec<Property>) -> Result<(), ScraperError>, // <- updated
     {
         let mut page = 1;
         let mut consecutive_failures = 0;
@@ -147,7 +148,7 @@ impl RealtorScraper {
 
                     eprintln!("✅ Page {page} parsed ({} properties)", properties.len());
 
-                    on_page(properties)?;
+                    on_page(properties)?; // now matches Vec<Property>
 
                     page += 1;
                     consecutive_failures = 0;
@@ -171,7 +172,7 @@ impl RealtorScraper {
         Ok(())
     }
 
-    pub fn fetch_properties_via_zenrows(&self, url: &str) -> Result<Vec<Value>, ScraperError> {
+    pub fn fetch_properties_via_zenrows(&self, url: &str) -> Result<Vec<Property>, ScraperError> {
         let html = self.fetch_html_via_zenrows(url)?;
 
         #[cfg(debug_assertions)]
@@ -181,7 +182,7 @@ impl RealtorScraper {
         }
 
         let data = Self::extract_next_data(&html)?;
-        let properties = Self::extract_properties(&data)?;
+        let properties = Self::extract_properties(&data)?; // returns Vec<Property>
 
         Ok(properties)
     }
@@ -310,14 +311,16 @@ impl RealtorScraper {
         Ok(data)
     }
 
-    fn extract_properties(data: &Value) -> Result<Vec<Value>, ScraperError> {
-        let properties = data["props"]["pageProps"]["properties"]
+    fn extract_properties(data: &Value) -> Result<Vec<Property>, ScraperError> {
+        let arr = data["props"]["pageProps"]["properties"]
             .as_array()
-            .ok_or_else(|| {
-                ScraperError::UnexpectedShape(
-                    "props.pageProps.properties missing or not array".into(),
-                )
-            })?;
-        Ok(properties.clone())
+            .ok_or(ScraperError::UnexpectedShape("properties missing"))?;
+
+        let properties = arr
+            .iter()
+            .filter_map(|v| serde_json::from_value(v.clone()).ok())
+            .collect();
+
+        Ok(properties)
     }
 }
