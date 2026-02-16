@@ -312,15 +312,15 @@ impl RealtorScraper {
     }
 
     fn extract_properties(data: &Value) -> Result<Vec<Property>, ScraperError> {
-        let arr = data["props"]["pageProps"]["properties"]
-            .as_array()
-            .ok_or(ScraperError::UnexpectedShape("properties missing"))?;
+        let arr = data["props"]["pageProps"]["properties"].as_array().ok_or(
+            ScraperError::UnexpectedShape("properties missing".to_string()),
+        )?;
 
-        let properties = arr
+        let properties: Result<Vec<_>, _> = arr
             .iter()
-            .filter_map(|v| serde_json::from_value(v.clone()).ok())
+            .map(|v| serde_json::from_value(v.clone()))
             .collect();
 
-        Ok(properties)
+        properties.map_err(|e| ScraperError::Deserialize(e.to_string()))
     }
 }

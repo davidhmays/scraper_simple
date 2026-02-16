@@ -3,6 +3,7 @@
 -- Mirror source IDs into internal IDs using TEXT primary keys.
 -- ===============================
 
+
 -- PRAGMA foreign_keys = OFF;
 
 -- DROP TABLE IF EXISTS scrape_run_pages;
@@ -12,9 +13,10 @@
 -- DROP TABLE IF EXISTS listings;
 -- DROP TABLE IF EXISTS properties;
 -- DROP TABLE IF EXISTS mailings;
+-- DROP TABLE IF EXISTS states;
 
--- if you had old indexes with different names, they’ll disappear with the tables,
--- but dropping explicitly is harmless if you prefer:
+-- -- if you had old indexes with different names, they’ll disappear with the tables,
+-- -- but dropping explicitly is harmless if you prefer:
 -- DROP INDEX IF EXISTS idx_properties_address_key;
 -- DROP INDEX IF EXISTS idx_properties_source_property_id;
 -- DROP INDEX IF EXISTS idx_listings_property_id;
@@ -24,10 +26,74 @@
 -- DROP INDEX IF EXISTS idx_listing_observations_listing_id;
 -- DROP INDEX IF EXISTS idx_listing_observations_observed_at;
 
+
+
 ---- Disable above after testing.
 
 
+-- TODO: move to separate "counties" table to reduce data duplication.
 PRAGMA foreign_keys = ON;
+-- ===============================
+-- States Table
+-- ===============================
+create table if not exists states (
+  abbr text primary key,
+  name text not null
+);
+
+insert or ignore into states (abbr, name) values
+('AL','Alabama'),
+('AK','Alaska'),
+('AZ','Arizona'),
+('AR','Arkansas'),
+('CA','California'),
+('CO','Colorado'),
+('CT','Connecticut'),
+('DE','Delaware'),
+('FL','Florida'),
+('GA','Georgia'),
+('HI','Hawaii'),
+('ID','Idaho'),
+('IL','Illinois'),
+('IN','Indiana'),
+('IA','Iowa'),
+('KS','Kansas'),
+('KY','Kentucky'),
+('LA','Louisiana'),
+('ME','Maine'),
+('MD','Maryland'),
+('MA','Massachusetts'),
+('MI','Michigan'),
+('MN','Minnesota'),
+('MS','Mississippi'),
+('MO','Missouri'),
+('MT','Montana'),
+('NE','Nebraska'),
+('NV','Nevada'),
+('NH','New Hampshire'),
+('NJ','New Jersey'),
+('NM','New Mexico'),
+('NY','New York'),
+('NC','North Carolina'),
+('ND','North Dakota'),
+('OH','Ohio'),
+('OK','Oklahoma'),
+('OR','Oregon'),
+('PA','Pennsylvania'),
+('RI','Rhode Island'),
+('SC','South Carolina'),
+('SD','South Dakota'),
+('TN','Tennessee'),
+('TX','Texas'),
+('UT','Utah'),
+('VT','Vermont'),
+('VA','Virginia'),
+('WA','Washington'),
+('WV','West Virginia'),
+('WI','Wisconsin'),
+('WY','Wyoming');
+
+
 
 -- ===============================
 -- Properties Table
@@ -140,16 +206,19 @@ CREATE TABLE IF NOT EXISTS scrape_runs (
 -- ===============================
 -- Scrape Run Pages
 -- ===============================
+-- TODO: link to states?
 CREATE TABLE IF NOT EXISTS scrape_run_pages (
   id INTEGER PRIMARY KEY,
 
   scrape_run_id INTEGER NOT NULL,
   page_number INTEGER NOT NULL,
   page_url TEXT NOT NULL,
+  -- state text not null,
 
   success INTEGER,
   properties_found INTEGER,
 
+  --foreign key (state) references states(abbr),
   FOREIGN KEY (scrape_run_id) REFERENCES scrape_runs(id),
   UNIQUE (scrape_run_id, page_number)
 );
@@ -179,6 +248,7 @@ create table if not exists mailings (
   city text not null,
   state_abbr text not null,
   postal_code text not null,
+  country text not null,
 
   -- QR tracking
   qr_token text not null unique,
@@ -193,9 +263,14 @@ create table if not exists mailings (
 
   status text not null default 'created', --created|exported|printed|sent|canceled
 
+  check (state_abbr = upper(state_abbr) and length(state_abbr) = 2),
+
+  foreign key (state_abbr) references states(abbr),
   foreign key (property_id) references properties(id),
-  foreign key (listing_id)  references listings(id)
+  foreign key (listing_id) references listings(id)
 );
+
+
 CREATE UNIQUE INDEX IF NOT EXISTS idx_mailings_property_campaign_variant ON mailings(property_id, campaign, variant);
 create index if not exists idx_mailings_property_id on mailings(property_id);
 create index if not exists idx_mailings_campaign_variant on mailings(campaign, variant);

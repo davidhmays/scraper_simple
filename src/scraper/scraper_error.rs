@@ -11,6 +11,7 @@ pub enum ScraperError {
     UnexpectedShape(String),
     IoError(String),
     Config(String),
+    Deserialize(String),
 }
 
 impl fmt::Display for ScraperError {
@@ -24,6 +25,7 @@ impl fmt::Display for ScraperError {
             ScraperError::UnexpectedShape(msg) => write!(f, "Unexpected data shape: {msg}"),
             ScraperError::IoError(msg) => write!(f, "I/O error: {msg}"),
             ScraperError::Config(msg) => write!(f, "Config error: {msg}"),
+            ScraperError::Deserialize(msg) => write!(f, "Deserialization error: {msg}"),
         }
     }
 }

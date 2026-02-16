@@ -57,19 +57,18 @@ fn make_scoped_id(source: &str, raw_id: &str) -> String {
 /// `property_id = listing_id`, but you'll lose the ability to model multiple
 /// listings per property later. Recommended is to use a real source property id
 /// if the payload has it; otherwise fall back to listing id.
-fn choose_property_scoped_id(source: &str, prop: &Value, listing_scoped_id: &str) -> String {
-    // Try common places a property id might live. Adjust to match your payload.
-    // If none exists, fall back to listing id.
-    let candidate = prop["source"]["property_id"]
-        .as_str()
-        .or_else(|| prop["property_id"].as_str())
-        .unwrap_or("");
+fn choose_property_scoped_id(source: &str, prop: &Property, listing_scoped_id: &str) -> String {
+    // Use source.id as the property id
+    let candidate = prop.source.id.as_deref();
 
-    if !candidate.is_empty() {
-        make_scoped_id(source, candidate)
-    } else {
-        listing_scoped_id.to_string()
+    if let Some(id) = candidate {
+        if !id.is_empty() {
+            return make_scoped_id(source, id);
+        }
     }
+
+    // fallback if no source.id
+    listing_scoped_id.to_string()
 }
 
 pub fn save_properties(
@@ -88,55 +87,99 @@ pub fn save_properties(
             .map_err(|e| ServerError::DbError(e.to_string()))?;
 
         for prop in properties {
-            // ------------------------
-            // ----- Source IDs -----
-            // ------------------------
-            let source = prop["source"]["name"].as_str().unwrap_or("unknown");
-            let source_id = prop["source"]["id"].as_str().unwrap_or("unknown");
-            let source_listing_id_raw = prop["source"]["listing_id"].as_str().unwrap_or("");
+          let source = prop.source.name.as_deref().unwrap_or("unknown");
+          let source_id = prop.source.id.as_deref().unwrap_or("unknown");
+          let source_listing_id_raw = prop.source.listing_id.as_deref().unwrap_or("unknown");
 
-            if source_listing_id_raw.is_empty() {
-                eprintln!("Skipping record: missing source_listing_id");
-                continue;
-            }
+          if source_listing_id_raw.is_empty() {
+              eprintln!("Skipping record: missing source_listing_id");
+              continue;
+          }
 
-            let listing_id = make_scoped_id(source, source_listing_id_raw);
-            let property_id = choose_property_scoped_id(source, prop, &listing_id);
+          // generate IDs first
+          let listing_id = make_scoped_id(source, source_listing_id_raw);
+          let property_id = choose_property_scoped_id(source, prop, &listing_id);
 
-            // ------------------------
-            // ----- Address / Facts (now on listings) -----
-            // ------------------------
-            let address_line = prop["location"]["address"]["line"].as_str().unwrap_or("");
-            let city = prop["location"]["address"]["city"].as_str().unwrap_or("");
-            let state_abbr = prop["location"]["address"]["state_code"].as_str().unwrap_or("");
-            let postal_code = prop["location"]["address"]["postal_code"].as_str().unwrap_or("");
-            let county_name = prop["location"]["county"]["name"].as_str();
-            let county_fips = prop["location"]["county"]["fips_code"].as_i64();
-            let country = prop["location"]["address"]["country"].as_str().unwrap_or("US");
-            let latitude = prop["location"]["coordinate"]["lat"].as_f64();
-            let longitude = prop["location"]["coordinate"]["lon"].as_f64();
+          // now property_id is in scope, safe to use
+          tx.execute(
+              r#"
+              INSERT INTO properties (id, source_property_id, created_at)
+              VALUES (?1, ?2, ?3)
+              ON CONFLICT(id) DO UPDATE SET
+                  source_property_id = excluded.source_property_id
+              "#,
+              params![property_id, property_id, now],
+          )
+          .map_err(|e| ServerError::DbError(e.to_string()))?;
 
-            let bedrooms = prop["description"]["beds"].as_i64();
-            let bathrooms = prop["description"]["baths"].as_i64();
-            let lot_sqft = prop["description"]["lot_sqft"].as_i64();
-            let property_type = prop["description"]["type"].as_str();
 
-            // Guard against missing address basics (still a good idea for downstream UX)
+          // TODO: move to separate "counties" table to reduce data duplication.
 
-            // TODO: allow missing addresses, just NOT in the mailings.
-            if address_line.is_empty() || city.is_empty() || state_abbr.is_empty() || postal_code.is_empty() {
+            // Pull nested structs ONCE
+            let address = prop.location.address.as_ref();
+            let county = prop.location.county.as_ref();
+            let coordinate = prop.location.coordinate.as_ref();
+            let flags = prop.flags.as_ref();
+            let description = prop.description.as_ref(); // Option<&Description>
+
+            // ----- Address -----
+            let address_line = address.and_then(|a| a.line.as_deref()).unwrap_or("");
+            let city = address.and_then(|a| a.city.as_deref()).unwrap_or("");
+            let state_abbr = address.and_then(|a| a.state_code.as_deref()).unwrap_or("");
+            let postal_code = address.and_then(|a| a.postal_code.as_deref()).unwrap_or("");
+            let country = address.and_then(|a| a.country.as_deref()).unwrap_or("US");
+
+            // ----- County -----
+            let county_name = county.and_then(|c| c.name.as_deref()).unwrap_or("");
+            let county_fips = county.and_then(|c| c.fips_code);
+
+            // ----- Coordinate -----
+            let latitude = coordinate.and_then(|c| c.lat);
+            let longitude = coordinate.and_then(|c| c.lon);
+
+            // ----- Description -----
+            let bedrooms = description.and_then(|d| d.beds);
+            let bathrooms = description.and_then(|d| d.baths);
+            let lot_sqft = description.and_then(|d| d.lot_sqft);
+            let property_type = description.and_then(|d| d.property_type.as_deref());
+
+            // ----- Flags -----
+            let is_coming_soon = flags.and_then(|f| f.is_coming_soon).unwrap_or(false) as i32;
+            let is_contingent = flags.and_then(|f| f.is_contingent).unwrap_or(false) as i32;
+            let is_foreclosure = flags.and_then(|f| f.is_foreclosure).unwrap_or(false) as i32;
+            let is_new_construction = flags.and_then(|f| f.is_new_construction).unwrap_or(false) as i32;
+            let is_new_listing = flags.and_then(|f| f.is_new_listing).unwrap_or(false) as i32;
+            let is_pending = flags.and_then(|f| f.is_pending).unwrap_or(false) as i32;
+            let is_price_reduced = flags.and_then(|f| f.is_price_reduced).unwrap_or(false) as i32;
+
+            // ----- Other top-level fields -----
+            let status = prop.status.as_deref().unwrap_or("unknown");
+            let list_price = prop.list_price.unwrap_or(0);
+            let price_reduced = prop.price_reduced.unwrap_or(0);
+            let sold_price = prop.sold_price;
+            let currency = prop.currency.as_deref().unwrap_or("USD"); // fallback to USD if missing
+
+            // ----- Normalize state -----
+            let state_abbr = state_abbr.to_uppercase();
+            if state_abbr.is_empty() {
                 eprintln!(
-                    "Skipping listing with missing address: address='{}', city='{}', state='{}', zip='{}'",
+                    "Skipping listing with missing state: address='{}', city='{}', state='{}', zip='{}'",
                     address_line, city, state_abbr, postal_code
                 );
                 continue;
             }
+
+
+
 
             // ------------------------
             // ----- Properties (TEMP: id == source_property_id) -----
             // ------------------------
             // Here: properties.id is the internal id (TEXT) and mirrors source_property_id (TEXT)
             // We store both columns even if redundant; later you can decouple them.
+            // ------------------------
+
+            // ----- Properties table -----
             tx.execute(
                 r#"
                 INSERT INTO properties (id, source_property_id, created_at)
@@ -147,55 +190,34 @@ pub fn save_properties(
                 params![property_id, property_id, now],
             )
             .map_err(|e| ServerError::DbError(e.to_string()))?;
-
             // ------------------------
-            // ----- Listings -----
-            // ------------------------
-            let status = prop["status"].as_str().unwrap_or("unknown");
-            let list_price = prop["list_price"].as_i64().unwrap_or(0);
-            let price_reduced = prop["price_reduced"].as_i64().unwrap_or(0);
-            let sold_price = prop["sold_price"].as_i64();
 
-            let is_coming_soon = prop["flags"]["is_coming_soon"].as_bool().unwrap_or(false) as i32;
-            let is_contingent = prop["flags"]["is_contingent"].as_bool().unwrap_or(false) as i32;
-            let is_foreclosure = prop["flags"]["is_foreclosure"].as_bool().unwrap_or(false) as i32;
-            let is_new_construction = prop["flags"]["is_new_construction"].as_bool().unwrap_or(false) as i32;
-            let is_new_listing = prop["flags"]["is_new_listing"].as_bool().unwrap_or(false) as i32;
-            let is_pending = prop["flags"]["is_pending"].as_bool().unwrap_or(false) as i32;
-            let is_price_reduced = prop["is_price_reduced"].as_bool().unwrap_or(false) as i32;
-
+            // ----- Listings table -----
             tx.execute(
                 r#"
                 INSERT INTO listings (
                     id, property_id,
                     source, source_id, source_listing_id,
-
                     address_line, city, state_abbr, postal_code, county_name, county_fips, country,
                     latitude, longitude,
                     bedrooms, bathrooms, lot_sqft, property_type,
-
                     first_seen_at, last_seen_at, status,
                     list_price, price_reduced, is_price_reduced, sold_price, currency,
-
                     is_coming_soon, is_contingent, is_foreclosure, is_new_construction,
                     is_new_listing, is_pending
                 ) VALUES (
                     ?1, ?2,
                     ?3, ?4, ?5,
-
                     ?6, ?7, ?8, ?9, ?10, ?11, ?12,
                     ?13, ?14,
                     ?15, ?16, ?17, ?18,
-
                     ?19, ?20, ?21,
-                    ?22, ?23, ?24, ?25, COALESCE(?26, 'USD'),
-
+                    ?22, ?23, ?24, ?25, ?26,
                     ?27, ?28, ?29, ?30,
                     ?31, ?32
                 )
                 ON CONFLICT(source, source_listing_id) DO UPDATE SET
                     property_id = excluded.property_id,
-
                     address_line = excluded.address_line,
                     city = excluded.city,
                     state_abbr = excluded.state_abbr,
@@ -205,26 +227,23 @@ pub fn save_properties(
                     country = excluded.country,
                     latitude = excluded.latitude,
                     longitude = excluded.longitude,
-
                     bedrooms = excluded.bedrooms,
                     bathrooms = excluded.bathrooms,
                     lot_sqft = excluded.lot_sqft,
                     property_type = excluded.property_type,
-
                     last_seen_at = excluded.last_seen_at,
                     status = excluded.status,
-
                     list_price = excluded.list_price,
                     price_reduced = excluded.price_reduced,
                     is_price_reduced = excluded.is_price_reduced,
                     sold_price = excluded.sold_price,
-
                     is_coming_soon = excluded.is_coming_soon,
                     is_contingent = excluded.is_contingent,
                     is_foreclosure = excluded.is_foreclosure,
                     is_new_construction = excluded.is_new_construction,
                     is_new_listing = excluded.is_new_listing,
-                    is_pending = excluded.is_pending
+                    is_pending = excluded.is_pending,
+                    currency = excluded.currency
                 "#,
                 params![
                     // ids
@@ -237,7 +256,7 @@ pub fn save_properties(
                     // address/geo
                     address_line,
                     city,
-                    state_abbr,
+                    &state_abbr, // borrow String as &str
                     postal_code,
                     county_name,
                     county_fips,
@@ -258,8 +277,8 @@ pub fn save_properties(
                     price_reduced,
                     is_price_reduced,
                     sold_price,
-                    // currency (if present)
-                    prop["currency"].as_str(),
+                    // currency
+                    currency,
                     // flags
                     is_coming_soon,
                     is_contingent,
@@ -271,18 +290,19 @@ pub fn save_properties(
             )
             .map_err(|e| ServerError::DbError(e.to_string()))?;
 
-            // ------------------------
             // ----- Observations -----
-            // ------------------------
-            // With Option A, we already know listing_id (TEXT PK), no need to re-query.
+            let raw_json = serde_json::to_string(&prop)
+                .map_err(|e| ServerError::DbError(e.to_string()))?;
+
             tx.execute(
                 r#"
                 INSERT INTO listing_observations (listing_id, observed_at, page_url, raw_json)
                 VALUES (?1, ?2, ?3, ?4)
                 "#,
-                params![listing_id, now, page_url, prop.to_string()],
+                params![listing_id, now, page_url, raw_json],
             )
             .map_err(|e| ServerError::DbError(e.to_string()))?;
+
         }
 
         tx.commit()
@@ -368,37 +388,5 @@ pub fn get_listings_by_state(
         }
 
         Ok(results)
-    })
-}
-
-// HARD CODED FLAGS for testing.
-pub fn get_target_zips_for_state_pending_or_contingent(
-    db: &Database,
-    state_abbr: &str,
-) -> Result<Vec<String>, ServerError> {
-    db.with_conn(|conn| {
-        let mut stmt = conn
-            .prepare(
-                r#"
-                SELECT DISTINCT postal_code
-                FROM listings
-                WHERE state_abbr = ?1
-                  AND (is_pending = 1 OR is_contingent = 1)
-                  AND postal_code IS NOT NULL
-                  AND postal_code <> ''
-                ORDER BY postal_code
-                "#,
-            )
-            .map_err(|e| ServerError::DbError(e.to_string()))?;
-
-        let rows = stmt
-            .query_map(params![state_abbr], |r| r.get::<_, String>(0))
-            .map_err(|e| ServerError::DbError(e.to_string()))?;
-
-        let mut out = Vec::new();
-        for r in rows {
-            out.push(r.map_err(|e| ServerError::DbError(e.to_string()))?);
-        }
-        Ok(out)
     })
 }

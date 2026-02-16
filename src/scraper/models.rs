@@ -24,18 +24,34 @@ use serde::{Deserialize, Serialize};
 //       ├── lot_sqft
 //       └── type
 
+fn string_or_int<'de, D>(deserializer: D) -> Result<Option<i64>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    use serde::de::Error;
+    let value = serde_json::Value::deserialize(deserializer)?;
+    match value {
+        serde_json::Value::Number(n) => Ok(n.as_i64()),
+        serde_json::Value::String(s) => s.parse::<i64>().map(Some).map_err(D::Error::custom),
+        serde_json::Value::Null => Ok(None),
+        _ => Err(D::Error::custom(
+            "expected a number or string for fips_code",
+        )),
+    }
+}
+
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Property {
     pub source: Source,
     pub location: Location,
-    pub description: Description,
+    pub description: Option<Description>,
 
     pub status: Option<String>,
     pub list_price: Option<i64>,
     pub price_reduced: Option<i64>,
     pub sold_price: Option<i64>,
-
     pub flags: Option<Flags>,
+    pub currency: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -67,7 +83,7 @@ pub struct Address {
 #[derive(Debug, Deserialize, Serialize)]
 pub struct County {
     pub name: Option<String>,
-    #[serde(rename = "fips_code")]
+    #[serde(rename = "fips_code", deserialize_with = "string_or_int")]
     pub fips_code: Option<i64>,
 }
 
