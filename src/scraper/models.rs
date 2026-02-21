@@ -41,6 +41,12 @@ where
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+pub struct OpenHouse {
+    pub start_date: Option<String>,
+    pub end_date: Option<String>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Property {
     pub source: Source,
     pub location: Location,
@@ -48,10 +54,12 @@ pub struct Property {
 
     pub status: Option<String>,
     pub list_price: Option<i64>,
+    pub list_date: Option<String>,
     pub price_reduced: Option<i64>,
     pub sold_price: Option<i64>,
     pub flags: Option<Flags>,
     pub currency: Option<String>,
+    pub open_houses: Option<Vec<OpenHouse>>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -101,6 +109,13 @@ pub struct Description {
     pub lot_sqft: Option<i64>,
     #[serde(rename = "type")]
     pub property_type: Option<String>,
+    pub year_built: Option<i64>,
+    pub heating: Option<String>,
+    pub cooling: Option<String>,
+    pub garage: Option<i64>,
+    pub stories: Option<i64>,
+    pub subdivision: Option<String>,
+    pub sold_date: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]

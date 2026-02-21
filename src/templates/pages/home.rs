@@ -6,7 +6,7 @@ use maud::{html, Markup};
 
 pub fn home_page(is_admin: bool) -> Markup {
     desktop_layout(
-        "Download Listings",
+        "Property Status Changes",
         is_admin,
         html! {
             main class="container" {

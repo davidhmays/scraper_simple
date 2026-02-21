@@ -1,16 +1,12 @@
-use crate::domain::listing::ListingWithProperty;
+use crate::domain::changes::ChangeViewModel;
 use maud::{html, Markup};
 
-pub fn preview_table(
-    listings: &[ListingWithProperty],
-    total_count: usize,
-    is_paid: bool,
-) -> Markup {
+pub fn preview_table(listings: &[ChangeViewModel], total_count: usize, is_paid: bool) -> Markup {
     html! {
         div class="mt-6 fade-in" {
             div class="flex items-center justify-between mb-3" {
                 p class="text-gray-700" {
-                    "Found " strong { (total_count) } " records."
+                    "Found " strong { (total_count) } " recent changes."
                 }
                 @if !is_paid {
                     span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full font-medium" { "Preview Mode" }
@@ -35,15 +31,13 @@ pub fn preview_table(
                                         (listing.address_line)
                                     } @else {
                                         span class="blur-sm select-none text-transparent bg-gray-200 rounded px-1" style="filter: blur(4px); user-select: none;" { (listing.address_line) }
-                                        // Also show partial text for context if blur is too aggressive or fails to load CSS
-                                        span class="ml-2 text-gray-400 font-mono text-xs" { (listing.redacted_address()) }
                                     }
                                 }
                                 td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500" { (listing.city) }
-                                td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500" { "$" (listing.list_price) }
+                                td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500" { "$" (listing.price.unwrap_or(0)) }
                                 td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500" {
                                     span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800" {
-                                        (listing.status)
+                                        (listing.canonical_status)
                                     }
                                 }
                             }

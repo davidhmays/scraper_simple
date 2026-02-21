@@ -8,7 +8,7 @@ mod db;
 mod domain;
 mod errors;
 mod geos;
-mod mailings;
+mod mailer;
 mod responses;
 mod router;
 mod scraper;

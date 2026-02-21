@@ -1,16 +1,14 @@
 use crate::db::connection::Database;
-use crate::db::listings::get_counties_by_state;
-use crate::db::listings::get_listings_by_state;
 
 use crate::errors::ServerError;
-use crate::mailings::BrevoMailer;
+use crate::mailer::BrevoMailer;
 use crate::responses::{html_response, ResultResp};
 use crate::scraper::RealtorScraper;
-use crate::spreadsheets::export_listings_xlsx;
+use crate::spreadsheets::export_changes_xlsx;
 
 use crate::templates;
 use crate::templates::pages::admin::AdminVm;
-use crate::templates::pages::dashboard::DashboardVm;
+
 use crate::templates::pages::preview::preview_table;
 
 use astra::{Body, Request, ResponseBuilder};
@@ -93,33 +91,6 @@ fn body_to_bytes(req: &mut Request) -> Result<Vec<u8>, ServerError> {
 
 fn form_first(pairs: &[(String, String)], key: &str) -> Option<String> {
     pairs.iter().find(|(k, _)| k == key).map(|(_, v)| v.clone())
-}
-
-fn fetch_dashboard_vm(
-    conn: &rusqlite::Connection,
-    user_id: i64,
-    email: String,
-    now: i64,
-    last_state: Option<String>,
-) -> Result<DashboardVm, ServerError> {
-    let plan_info = crate::db::plans::get_user_plan(conn, user_id)
-        .map_err(|e| ServerError::DbError(e.to_string()))?;
-
-    let usage = crate::db::downloads::count_downloads_this_month(conn, user_id, now)
-        .map_err(|e| ServerError::DbError(e.to_string()))?;
-
-    let is_admin = crate::db::users::is_user_admin(conn, user_id)
-        .map_err(|e| ServerError::DbError(e.to_string()))?;
-
-    Ok(DashboardVm {
-        email,
-        plan_code: plan_info.code,
-        plan_name: plan_info.name,
-        download_limit: plan_info.download_limit,
-        usage,
-        is_admin,
-        last_state,
-    })
 }
 
 pub fn handle(mut req: Request, db: &Database) -> ResultResp {
@@ -283,23 +254,8 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 .unwrap())
         }
 
-        ("GET", "/campaigns") => {
-            let mut state = "UT".to_string();
-            if let Some(q) = req.uri().query() {
-                for (k, v) in url::form_urlencoded::parse(q.as_bytes()) {
-                    if k == "state" {
-                        state = v.to_string().to_uppercase();
-                    }
-                }
-            }
-            let counties = get_counties_by_state(db, &state)?;
-            html_response(templates::pages::campaigns_page(
-                &state, &counties, is_admin,
-            ))
-        }
-
         // Support for /export?state=XX (Form submission)
-        ("GET", "/export") => {
+        ("GET", "/export/changes") => {
             // 1. Authenticate
             let user = current_user(&req, db, now)?;
             let Some((user_id, _)) = user else {
@@ -310,58 +266,32 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                     .unwrap());
             };
 
-            // 2. Check limits
-            let allowed = db.with_conn(|conn| {
-                let plan = crate::db::plans::get_user_plan(conn, user_id)?;
-                if let Some(limit) = plan.download_limit {
-                    let usage =
-                        crate::db::downloads::count_downloads_this_month(conn, user_id, now)?;
-                    if usage >= limit {
-                        return Ok(false);
-                    }
-                }
-                Ok(true)
-            })?;
-
-            if !allowed {
-                return Err(ServerError::BadRequest(
-                    "Download limit reached for this month.".into(),
-                ));
-            }
-
+            // 2. Parse and validate query parameters
             let state = query_param(&req, "state")
                 .ok_or_else(|| ServerError::BadRequest("state is required".into()))?
                 .to_uppercase();
 
-            let listings = get_listings_by_state(db, &state)?;
-            let mut resp = export_listings_xlsx(&listings, &state)?;
+            let year_str = query_param(&req, "year")
+                .ok_or_else(|| ServerError::BadRequest("year is required".into()))?;
+            let year = year_str
+                .parse::<i32>()
+                .map_err(|_| ServerError::BadRequest("Invalid year".into()))?;
 
-            // 3. Record Download
+            // 3. Fetch data
+            let events = db.with_conn(|conn| {
+                crate::db::properties::get_change_events_for_export(conn, &state, year)
+            })?;
+
+            // 4. Record Download Event
             db.with_conn(|conn| crate::db::downloads::record_download(conn, user_id, &state, now))?;
 
-            resp.headers_mut().insert(
-                "Set-Cookie",
-                format!(
-                    "last_state={}; Max-Age=31536000; SameSite=Lax; Path=/",
-                    state
-                )
-                .parse()
-                .unwrap(),
-            );
-
-            Ok(resp)
+            // 5. Generate and return spreadsheet
+            export_changes_xlsx(&events, &state, year)
         }
-
-        // Legacy /export/UT support (can share logic but keeping separate for now to minimize churn)
-        ("GET", path) if path.starts_with("/export/") => {
-            let state = path.trim_start_matches("/export/").to_uppercase();
-            let listings = get_listings_by_state(db, &state)?;
-            export_listings_xlsx(&listings, &state)
-        }
-
         ("GET", "/dashboard") => {
             let user = current_user(&req, db, now)?;
-            let Some((user_id, email)) = user else {
+            let Some((_user_id, _email)) = user else {
+                // Not logged in, redirect to home.
                 return Ok(ResponseBuilder::new()
                     .status(302)
                     .header("Location", "/")
@@ -369,32 +299,14 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                     .unwrap());
             };
 
-            let last_state = get_cookie(&req, "last_state");
-            let dashboard_vm =
-                db.with_conn(|conn| fetch_dashboard_vm(conn, user_id, email, now, last_state))?;
+            // Fetch the last 7 days of changes for the dashboard.
+            // Fetch data for the dashboard view
+            let changes =
+                db.with_conn(|conn| crate::db::properties::get_recent_changes(conn, 7))?;
+            let years =
+                db.with_conn(|conn| crate::db::properties::get_distinct_change_years(conn))?;
 
-            html_response(templates::pages::dashboard_page(&dashboard_vm))
-        }
-
-        ("GET", "/dashboard/export-card") => {
-            let user = current_user(&req, db, now)?;
-            let Some((user_id, email)) = user else {
-                return Ok(ResponseBuilder::new()
-                    .status(302)
-                    .header("Location", "/login")
-                    .body(Body::empty())
-                    .unwrap());
-            };
-
-            let last_state = get_cookie(&req, "last_state");
-            let dashboard_vm =
-                db.with_conn(|conn| fetch_dashboard_vm(conn, user_id, email, now, last_state))?;
-
-            let mut resp =
-                html_response(templates::pages::dashboard::export_card(&dashboard_vm)).unwrap();
-            resp.headers_mut()
-                .insert("Cache-Control", "no-store".parse().unwrap());
-            Ok(resp)
+            html_response(templates::pages::dashboard_page(&changes, &years))
         }
 
         ("GET", "/dashboard/preview") => {
@@ -414,15 +326,19 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 return html_response(html! {});
             }
 
-            let listings = get_listings_by_state(db, &state)?;
-            let total_count = listings.len();
+            // TODO: Re-implement this with the new change-tracking data model.
+            // This will query for recent changes to preview.
+            // This preview now shows the 5 most recent changes from the last 30 days.
+            let changes =
+                db.with_conn(|conn| crate::db::properties::get_recent_changes(conn, 30))?;
+            let total_count = changes.len();
 
             let is_paid = db.with_conn(|conn| {
                 let plan = crate::db::plans::get_user_plan(conn, user_id)?;
                 Ok(plan.download_limit.is_none())
             })?;
 
-            html_response(preview_table(&listings, total_count, is_paid))
+            html_response(preview_table(&changes, total_count, is_paid))
         }
 
         ("GET", "/auth/magic") => {
@@ -676,6 +592,7 @@ mod router_auth_tests {
                 r#"
                 PRAGMA foreign_keys = ON;
 
+                -- This is a subset of the main schema, only for auth tests.
                 create table if not exists users (
                   id            integer primary key,
                   email         text not null unique,
@@ -693,8 +610,18 @@ mod router_auth_tests {
                   used_at     integer,
                   foreign key(user_id) references users(id) on delete cascade
                 );
-
                 create index if not exists idx_magic_links_hash on magic_links(token_hash);
+
+                create table if not exists sessions (
+                    id          integer primary key,
+                    user_id     integer not null,
+                    token_hash  blob not null unique,
+                    created_at  integer not null,
+                    expires_at  integer not null,
+                    revoked_at  integer,
+                    foreign key(user_id) references users(id) on delete cascade
+                );
+                create index if not exists idx_sessions_user on sessions(user_id);
 
                 create table if not exists plans (
                   id             integer primary key,
@@ -715,8 +642,8 @@ mod router_auth_tests {
                   foreign key(plan_code) references plans(code)
                 );
 
-                insert or ignore into plans (code, name, price_cents, download_limit, trial_days, limit_window)
-                values ('free', 'Free', 0, 4, 0, 'month');
+                -- Seed with a basic plan for testing
+                insert or ignore into plans (code, name, download_limit) values ('free', 'Free', 4);
                 "#,
             )
             .unwrap();

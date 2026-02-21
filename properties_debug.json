@@ -1,32 +1,290 @@
 [
   {
     "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2077646"
+      "name": "IvoryHomes",
+      "id": "IVHB",
+      "listing_id": "16771821178"
     },
     "location": {
       "address": {
-        "line": "155 S Last Chance Dr",
-        "city": "Laketown",
+        "line": "6568 W Raynolds Peak Way",
+        "city": "West Jordan",
         "state_code": "UT",
-        "postal_code": "84038",
+        "postal_code": "84081",
         "country": null
       },
       "county": {
-        "name": "Rich",
-        "fips_code": 49033
+        "name": "Salt Lake",
+        "fips_code": 49035
       },
       "coordinate": null
     },
     "description": {
-      "beds": 6,
+      "beds": 2,
       "baths": null,
-      "lot_sqft": 43996,
-      "type": "single_family"
+      "lot_sqft": 1558,
+      "type": "condos",
+      "year_built": null,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
     },
     "status": "for_sale",
-    "list_price": 239000,
+    "list_price": 439620,
+    "list_date": "2026-02-17T00:00:38.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": true,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "DestinationHomes",
+      "id": "DH2B",
+      "listing_id": "68f134a54db048664bfb592a"
+    },
+    "location": {
+      "address": {
+        "line": "6618 W Gosling Dr",
+        "city": "South Jordan",
+        "state_code": "UT",
+        "postal_code": "84009",
+        "country": null
+      },
+      "county": {
+        "name": "Salt Lake",
+        "fips_code": 49035
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": null,
+      "type": "townhomes",
+      "year_built": null,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 504990,
+    "list_date": "2026-01-23T00:05:20.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": true,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "RichmondAmericanHomes",
+      "id": "RAHB",
+      "listing_id": "29130000-0163"
+    },
+    "location": {
+      "address": {
+        "line": "5442 N Saddle Stone Dr",
+        "city": "Eagle Mountain",
+        "state_code": "UT",
+        "postal_code": "84005",
+        "country": null
+      },
+      "county": {
+        "name": "Utah",
+        "fips_code": null
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 4,
+      "baths": null,
+      "lot_sqft": null,
+      "type": "single_family",
+      "year_built": 2026,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 629990,
+    "list_date": "2026-02-16T13:30:50.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": true,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "IvoryHomes",
+      "id": "IVHB",
+      "listing_id": "16351799755"
+    },
+    "location": {
+      "address": {
+        "line": "6628 W Spring Snow Ln",
+        "city": "Herriman",
+        "state_code": "UT",
+        "postal_code": "84096",
+        "country": null
+      },
+      "county": {
+        "name": "Salt Lake",
+        "fips_code": 49035
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 2534,
+      "type": "single_family",
+      "year_built": null,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 634500,
+    "list_date": "2026-02-11T00:00:38.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": true,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "25-266199"
+    },
+    "location": {
+      "address": {
+        "line": "4544 W 150 N Lot 166",
+        "city": "Cedar City",
+        "state_code": "UT",
+        "postal_code": "84720",
+        "country": null
+      },
+      "county": {
+        "name": "Iron",
+        "fips_code": 49021
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 11761,
+      "type": "single_family",
+      "year_built": 2025,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 494900,
+    "list_date": "2025-10-22T19:04:26.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2100006"
+    },
+    "location": {
+      "address": {
+        "line": null,
+        "city": "Spanish Fork",
+        "state_code": "UT",
+        "postal_code": "84660",
+        "country": null
+      },
+      "county": {
+        "name": "Utah",
+        "fips_code": null
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": null,
+      "baths": null,
+      "lot_sqft": 238273,
+      "type": "land",
+      "year_built": null,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 300000,
+    "list_date": "2025-07-21T19:47:26.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
@@ -38,99 +296,18 @@
       "is_pending": null,
       "is_price_reduced": false
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2092716"
+      "name": "VisionaryHomes",
+      "id": "VSHB",
+      "listing_id": "190-8507-101391-1726741"
     },
     "location": {
       "address": {
-        "line": "703 S Coyote Tracks Cir",
-        "city": "Garden City",
-        "state_code": "UT",
-        "postal_code": "84028",
-        "country": null
-      },
-      "county": {
-        "name": "Rich",
-        "fips_code": 49033
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": 38768,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 210000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2135580"
-    },
-    "location": {
-      "address": {
-        "line": "1189 W 6710 S",
-        "city": "Hyrum",
-        "state_code": "UT",
-        "postal_code": "84319",
-        "country": null
-      },
-      "county": {
-        "name": "Cache",
-        "fips_code": 49005
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 8,
-      "baths": null,
-      "lot_sqft": 558004,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 2825000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2117027"
-    },
-    "location": {
-      "address": {
-        "line": "22 805 S River Rd Unit 22",
+        "line": "907 W Bright Ridge Cv",
         "city": "Saint George",
         "state_code": "UT",
         "postal_code": "84790",
@@ -145,1182 +322,43 @@
     "description": {
       "beds": 3,
       "baths": null,
-      "lot_sqft": 3485,
-      "type": "single_family"
+      "lot_sqft": null,
+      "type": "townhomes",
+      "year_built": null,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
     },
     "status": "for_sale",
-    "list_price": 364999,
+    "list_price": 419990,
+    "list_date": "2026-01-31T00:00:00.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
       "is_coming_soon": null,
       "is_contingent": null,
       "is_foreclosure": null,
-      "is_new_construction": null,
+      "is_new_construction": true,
       "is_new_listing": false,
       "is_pending": null,
-      "is_price_reduced": true
+      "is_price_reduced": null
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
       "name": "UtahRealEstate",
       "id": "SAUT",
-      "listing_id": "2137221"
+      "listing_id": "2121066"
     },
     "location": {
       "address": {
-        "line": "4462 S Vernal Ave",
-        "city": "Vernal",
-        "state_code": "UT",
-        "postal_code": "84078",
-        "country": null
-      },
-      "county": {
-        "name": "Uintah",
-        "fips_code": 49047
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": 19166,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 335000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2136142"
-    },
-    "location": {
-      "address": {
-        "line": "777 E S Temple Unit 5I",
-        "city": "Salt Lake City",
-        "state_code": "UT",
-        "postal_code": "84102",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 2,
-      "baths": null,
-      "lot_sqft": 436,
-      "type": "condos"
-    },
-    "status": "for_sale",
-    "list_price": 275000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": true,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "StGeorge",
-      "id": "SGUT",
-      "listing_id": "26-268754"
-    },
-    "location": {
-      "address": {
-        "line": "150 N Snow Canyon Dr Unit 10",
-        "city": "Ivins",
-        "state_code": "UT",
-        "postal_code": "84738",
-        "country": null
-      },
-      "county": {
-        "name": "Washington",
-        "fips_code": 49053
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": 3920,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 895000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "PerryHomesUtah",
-      "id": "PHUB",
-      "listing_id": "248"
-    },
-    "location": {
-      "address": {
-        "line": "5628 W 7340 S",
-        "city": "West Jordan",
-        "state_code": "UT",
-        "postal_code": "84081",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 647400,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2136399"
-    },
-    "location": {
-      "address": {
-        "line": "288 S 800 W",
-        "city": "Orem",
-        "state_code": "UT",
-        "postal_code": "84058",
-        "country": null
-      },
-      "county": {
-        "name": "Utah",
-        "fips_code": 49049
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": 9148,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 339999,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "ConsolidatedBuilderFeed",
-      "id": "BDLB",
-      "listing_id": "Dexter- The Gallery at Bullion"
-    },
-    "location": {
-      "address": {
-        "line": "950 W Coalburn Way",
-        "city": "Salt Lake City",
-        "state_code": "UT",
-        "postal_code": "84123",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 689900,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "DestinationHomes",
-      "id": "DH2B",
-      "listing_id": "696a80f34db048772087554f"
-    },
-    "location": {
-      "address": {
-        "line": "7076 W Lake Ave",
-        "city": "South Jordan",
-        "state_code": "UT",
-        "postal_code": "84009",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 899990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "DestinationHomes",
-      "id": "DH2B",
-      "listing_id": "673b79464db04803526f148a"
-    },
-    "location": {
-      "address": {
-        "line": "11382 S Watercourse Rd # 386",
-        "city": "South Jordan",
-        "state_code": "UT",
-        "postal_code": "84009",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "condos"
-    },
-    "status": "for_sale",
-    "list_price": 544990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": false
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2120746"
-    },
-    "location": {
-      "address": {
-        "line": "3209 S Dyami Vw",
-        "city": "Hurricane",
-        "state_code": "UT",
-        "postal_code": "84737",
-        "country": null
-      },
-      "county": {
-        "name": "Washington",
-        "fips_code": 49053
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": 5227,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 295000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2126787"
-    },
-    "location": {
-      "address": {
-        "line": "253 White Pine Canyon Rd",
-        "city": "Park City",
-        "state_code": "UT",
-        "postal_code": "84060",
-        "country": null
-      },
-      "county": {
-        "name": "Summit",
-        "fips_code": 49043
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 6,
-      "baths": null,
-      "lot_sqft": 216493,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 60000000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2136925"
-    },
-    "location": {
-      "address": {
-        "line": "1686 W 2425 S",
-        "city": "Syracuse",
-        "state_code": "UT",
-        "postal_code": "84075",
-        "country": null
-      },
-      "county": {
-        "name": "Davis",
-        "fips_code": 49011
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": 13504,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 669000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "DestinationHomes",
-      "id": "DH2B",
-      "listing_id": "68b755814db048664ffb320e"
-    },
-    "location": {
-      "address": {
-        "line": "11048 S Paddle Board Way",
-        "city": "South Jordan",
-        "state_code": "UT",
-        "postal_code": "84009",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 5,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 1739990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": false
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "VisionaryHomes",
-      "id": "VSHB",
-      "listing_id": "190-8315-101348"
-    },
-    "location": {
-      "address": {
-        "line": "960 W 800 N",
-        "city": "Tremonton",
-        "state_code": "UT",
-        "postal_code": "84337",
-        "country": null
-      },
-      "county": {
-        "name": "Box Elder",
-        "fips_code": 49003
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 339990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "IvoryHomes",
-      "id": "IVHB",
-      "listing_id": "Plan1887"
-    },
-    "location": {
-      "address": {
-        "line": "1822 S 2475 W",
-        "city": "West Haven",
-        "state_code": "UT",
-        "postal_code": "84401",
-        "country": null
-      },
-      "county": {
-        "name": "Weber",
-        "fips_code": 49057
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 655000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2122485"
-    },
-    "location": {
-      "address": {
-        "line": "7143 W 8130 S",
-        "city": "West Jordan",
-        "state_code": "UT",
-        "postal_code": "84081",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 6,
-      "baths": null,
-      "lot_sqft": 6970,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 655000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": true
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "IronCounty",
-      "id": "ICUT",
-      "listing_id": "114052"
-    },
-    "location": {
-      "address": {
-        "line": "842 E Main St",
-        "city": "Pine Valley",
-        "state_code": "UT",
-        "postal_code": "84781",
-        "country": null
-      },
-      "county": {
-        "name": "Washington",
-        "fips_code": 49053
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 2,
-      "baths": null,
-      "lot_sqft": 21780,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 499999,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2137190"
-    },
-    "location": {
-      "address": {
-        "line": "1120 E Canyon Rd S Unit 16",
-        "city": "Ogden",
-        "state_code": "UT",
-        "postal_code": "84404",
-        "country": null
-      },
-      "county": {
-        "name": "Weber",
-        "fips_code": 49057
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 5,
-      "baths": null,
-      "lot_sqft": 1307,
-      "type": "condos"
-    },
-    "status": "for_sale",
-    "list_price": 340000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": null,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "AlpineHomes",
-      "id": "APHB",
-      "listing_id": "tnjb-X5HSS-EFsXfOgPGS"
-    },
-    "location": {
-      "address": {
-        "line": "5368 S 1050 W",
-        "city": "Riverdale",
-        "state_code": "UT",
-        "postal_code": "84405",
-        "country": null
-      },
-      "county": {
-        "name": "Weber",
-        "fips_code": 49057
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 599950,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2095826"
-    },
-    "location": {
-      "address": {
-        "line": "3438 W 500 S",
-        "city": "Vernal",
-        "state_code": "UT",
-        "postal_code": "84078",
-        "country": null
-      },
-      "county": {
-        "name": "Uintah",
-        "fips_code": 49047
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": 19166,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 250000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": true,
-      "is_new_construction": null,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "ConsolidatedBuilderFeed",
-      "id": "BDLB",
-      "listing_id": "OQH_Bruin"
-    },
-    "location": {
-      "address": {
-        "line": "7242 N Bald Eagle Way",
-        "city": "Eagle Mountain",
-        "state_code": "UT",
-        "postal_code": "84005",
-        "country": null
-      },
-      "county": {
-        "name": "Utah",
-        "fips_code": 49049
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 434900,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "WoodsideHomes",
-      "id": "WOOB",
-      "listing_id": "1203"
-    },
-    "location": {
-      "address": {
-        "line": "6882 W Holly Lake Dr.",
-        "city": "West Jordan",
-        "state_code": "UT",
-        "postal_code": "84081",
-        "country": null
-      },
-      "county": {
-        "name": "Salt Lake",
-        "fips_code": 49035
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 496990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "EdgeHomes",
-      "id": "EH1B",
-      "listing_id": "29972"
-    },
-    "location": {
-      "address": {
-        "line": "S Alder H302 Dr Lots 302 & 4655",
-        "city": "Mapleton",
-        "state_code": "UT",
-        "postal_code": "84664",
-        "country": null
-      },
-      "county": {
-        "name": "Utah",
-        "fips_code": 49049
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 327900,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "DRHorton",
-      "id": "DRHB",
-      "listing_id": "9945"
-    },
-    "location": {
-      "address": {
-        "line": "2861 E Riggs Loop Drive",
-        "city": "WASHINGTON",
-        "state_code": "UT",
-        "postal_code": "84780",
-        "country": null
-      },
-      "county": {
-        "name": "Washington",
-        "fips_code": 49053
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "townhouse"
-    },
-    "status": "ready_to_build",
-    "list_price": 499990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "SierraHomes",
-      "id": "SIHB",
-      "listing_id": "283-14138-204274"
-    },
-    "location": {
-      "address": {
-        "line": "1200 W 2200 S",
-        "city": "Nibley",
-        "state_code": "UT",
-        "postal_code": "84321",
-        "country": null
-      },
-      "county": {
-        "name": "Cache",
-        "fips_code": 49005
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 500000,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "DavidWeekley",
-      "id": "DWHB",
-      "listing_id": "A131"
-    },
-    "location": {
-      "address": {
-        "line": "1034 W Fallow Drive",
-        "city": "Saratoga Springs",
-        "state_code": "UT",
-        "postal_code": "84045",
-        "country": null
-      },
-      "county": {
-        "name": "Utah",
-        "fips_code": 49049
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "ready_to_build",
-    "list_price": 729990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "VisionaryHomes",
-      "id": "VSHB",
-      "listing_id": "190-8325-110126"
-    },
-    "location": {
-      "address": {
-        "line": "6051 S Silver Birch Lane",
-        "city": "St. George",
-        "state_code": "UT",
-        "postal_code": "84790",
-        "country": null
-      },
-      "county": {
-        "name": "Washington",
-        "fips_code": 49053
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "condo"
-    },
-    "status": "ready_to_build",
-    "list_price": 339990,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "IvoryHomes",
-      "id": "IVHB",
-      "listing_id": "16031754D179"
-    },
-    "location": {
-      "address": {
-        "line": "6637 N Bald Knl",
-        "city": "Eagle Mountain",
-        "state_code": "UT",
-        "postal_code": "84005",
-        "country": null
-      },
-      "county": {
-        "name": "Utah",
-        "fips_code": 49049
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": 3327,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 541600,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": true,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "RichmondAmericanHomes",
-      "id": "RAHB",
-      "listing_id": "34280000-0038"
-    },
-    "location": {
-      "address": {
-        "line": "3103 E 1000 S",
-        "city": "Spanish Fork",
-        "state_code": "UT",
-        "postal_code": "84660",
-        "country": null
-      },
-      "county": {
-        "name": "Utah",
-        "fips_code": null
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 4,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
-    },
-    "status": "for_sale",
-    "list_price": 857123,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "DRHorton",
-      "id": "DRHB",
-      "listing_id": "1081"
-    },
-    "location": {
-      "address": {
-        "line": "244 E Sophie Place",
-        "city": "HEBER CITY",
+        "line": "189 E 600 S",
+        "city": "Heber City",
         "state_code": "UT",
         "postal_code": "84032",
         "country": null
@@ -1334,11 +372,178 @@
     "description": {
       "beds": 4,
       "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
+      "lot_sqft": 9148,
+      "type": "single_family",
+      "year_built": 1920,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
     },
-    "status": "ready_to_build",
-    "list_price": 717690,
+    "status": "for_sale",
+    "list_price": 545000,
+    "list_date": "2025-11-04T02:23:46.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2136810"
+    },
+    "location": {
+      "address": {
+        "line": "335 N 400 W",
+        "city": "Logan",
+        "state_code": "UT",
+        "postal_code": "84321",
+        "country": null
+      },
+      "county": {
+        "name": "Cache",
+        "fips_code": 49005
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 4,
+      "baths": null,
+      "lot_sqft": 7405,
+      "type": "single_family",
+      "year_built": 1939,
+      "heating": null,
+      "cooling": null,
+      "garage": 1,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 399000,
+    "list_date": "2026-02-13T06:48:12.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2130465"
+    },
+    "location": {
+      "address": {
+        "line": "304 N Sherwood Dr",
+        "city": "Providence",
+        "state_code": "UT",
+        "postal_code": "84332",
+        "country": null
+      },
+      "county": {
+        "name": "Cache",
+        "fips_code": 49005
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 16553,
+      "type": "single_family",
+      "year_built": 2025,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 599900,
+    "list_date": "2026-01-13T19:36:12.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": [
+      {
+        "start_date": "2026-02-19T11:30:00",
+        "end_date": "2026-02-19T13:30:00"
+      },
+      {
+        "start_date": "2026-02-20T12:00:00",
+        "end_date": "2026-02-20T13:30:00"
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "ParkCity",
+      "id": "PCUT",
+      "listing_id": "12600581"
+    },
+    "location": {
+      "address": {
+        "line": "5734 E Lewis Point Cir",
+        "city": "Huntsville",
+        "state_code": "UT",
+        "postal_code": "84317",
+        "country": null
+      },
+      "county": {
+        "name": "Weber",
+        "fips_code": 49057
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 8,
+      "baths": null,
+      "lot_sqft": 243936,
+      "type": "single_family",
+      "year_built": 2025,
+      "heating": null,
+      "cooling": null,
+      "garage": 8,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 16900000,
+    "list_date": "2026-02-15T22:02:39.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
@@ -1346,21 +551,122 @@
       "is_contingent": null,
       "is_foreclosure": null,
       "is_new_construction": true,
-      "is_new_listing": false,
+      "is_new_listing": true,
       "is_pending": null,
       "is_price_reduced": null
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "UtahRealEstate",
-      "id": "SAUT",
-      "listing_id": "2108753"
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "25-267799"
     },
     "location": {
       "address": {
-        "line": "5399 E Cerulean Ln Unit 103",
+        "line": "250 E 970 N",
+        "city": "Hurricane",
+        "state_code": "UT",
+        "postal_code": "84737",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 10890,
+      "type": "single_family",
+      "year_built": 1999,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 490000,
+    "list_date": "2026-02-11T01:10:40.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "IronCounty",
+      "id": "ICUT",
+      "listing_id": "111478"
+    },
+    "location": {
+      "address": {
+        "line": "5550 W North Fork Rd",
+        "city": "Duck Creek Village",
+        "state_code": "UT",
+        "postal_code": "84762",
+        "country": null
+      },
+      "county": {
+        "name": "Kane",
+        "fips_code": 49025
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 1,
+      "baths": null,
+      "lot_sqft": 26136,
+      "type": "single_family",
+      "year_built": 1991,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 169900,
+    "list_date": "2025-05-23T01:52:39.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "25-267505"
+    },
+    "location": {
+      "address": {
+        "line": "671 W Crystal Dr",
         "city": "Saint George",
         "state_code": "UT",
         "postal_code": "84790",
@@ -1375,11 +681,19 @@
     "description": {
       "beds": 3,
       "baths": null,
-      "lot_sqft": 436,
-      "type": "townhomes"
+      "lot_sqft": 10019,
+      "type": "single_family",
+      "year_built": 1991,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2004-06-02"
     },
     "status": "for_sale",
-    "list_price": 110000,
+    "list_price": 485000,
+    "list_date": "2025-12-17T17:49:35.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
@@ -1389,63 +703,23 @@
       "is_new_construction": null,
       "is_new_listing": false,
       "is_pending": null,
-      "is_price_reduced": null
-    },
-    "currency": null
-  },
-  {
-    "source": {
-      "name": "VisionaryHomes",
-      "id": "VSHB",
-      "listing_id": "190-14630-209135-1726221"
-    },
-    "location": {
-      "address": {
-        "line": "551 S 1215 W",
-        "city": "Logan",
-        "state_code": "UT",
-        "postal_code": "84321",
-        "country": null
-      },
-      "county": {
-        "name": "Cache",
-        "fips_code": 49005
-      },
-      "coordinate": null
-    },
-    "description": {
-      "beds": 3,
-      "baths": null,
-      "lot_sqft": null,
-      "type": "townhomes"
-    },
-    "status": "for_sale",
-    "list_price": 309900,
-    "price_reduced": null,
-    "sold_price": null,
-    "flags": {
-      "is_coming_soon": null,
-      "is_contingent": null,
-      "is_foreclosure": null,
-      "is_new_construction": true,
-      "is_new_listing": false,
-      "is_pending": null,
       "is_price_reduced": true
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "DavidWeekley",
-      "id": "DWHB",
-      "listing_id": "53310048"
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2136731"
     },
     "location": {
       "address": {
-        "line": "2868 S Ritter Row",
-        "city": "West Valley City",
+        "line": "7106 S Angelsea Dr W",
+        "city": "West Jordan",
         "state_code": "UT",
-        "postal_code": "84128",
+        "postal_code": "84084",
         "country": null
       },
       "county": {
@@ -1455,120 +729,247 @@
       "coordinate": null
     },
     "description": {
-      "beds": 3,
+      "beds": 5,
       "baths": null,
-      "lot_sqft": null,
-      "type": "townhomes"
+      "lot_sqft": 10019,
+      "type": "single_family",
+      "year_built": 1978,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2018-07-17"
     },
     "status": "for_sale",
-    "list_price": 414990,
+    "list_price": 574900,
+    "list_date": "2026-02-12T14:46:22.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
       "is_coming_soon": null,
       "is_contingent": null,
       "is_foreclosure": null,
-      "is_new_construction": true,
+      "is_new_construction": null,
       "is_new_listing": true,
       "is_pending": null,
       "is_price_reduced": null
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "DRHorton",
-      "id": "DRHB",
-      "listing_id": "798-79810-798100000-0039"
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2130838"
     },
     "location": {
       "address": {
-        "line": "1325 N 1250 E # 39",
-        "city": "Logan",
+        "line": "5808 S Duck Pond Ln W",
+        "city": "Taylorsville",
         "state_code": "UT",
-        "postal_code": "84341",
+        "postal_code": "84123",
         "country": null
       },
       "county": {
-        "name": "Cache",
-        "fips_code": 49005
+        "name": "Salt Lake",
+        "fips_code": 49035
       },
       "coordinate": null
     },
     "description": {
-      "beds": 4,
+      "beds": 5,
       "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
+      "lot_sqft": 5663,
+      "type": "single_family",
+      "year_built": 1996,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2018-03-22"
     },
     "status": "for_sale",
-    "list_price": 694990,
+    "list_price": 499000,
+    "list_date": "2026-01-15T01:25:39.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
       "is_coming_soon": null,
       "is_contingent": null,
       "is_foreclosure": null,
-      "is_new_construction": true,
+      "is_new_construction": null,
       "is_new_listing": false,
       "is_pending": null,
-      "is_price_reduced": null
+      "is_price_reduced": true
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "SierraHomes",
-      "id": "SIHB",
-      "listing_id": "283-14145-175539"
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2137560"
     },
     "location": {
       "address": {
-        "line": "500 W 1325 N",
-        "city": "BRIGHAM CITY",
+        "line": "148 E 1430 S",
+        "city": "Nephi",
         "state_code": "UT",
-        "postal_code": "84302",
+        "postal_code": "84648",
         "country": null
       },
       "county": {
-        "name": "Box Elder",
-        "fips_code": 49003
+        "name": "Juab",
+        "fips_code": 49023
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 6,
+      "baths": null,
+      "lot_sqft": 15682,
+      "type": "single_family",
+      "year_built": 2006,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 595000,
+    "list_date": "2026-02-17T06:42:53.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "26-269353"
+    },
+    "location": {
+      "address": {
+        "line": "3089 E 2110 St S",
+        "city": "Saint George",
+        "state_code": "UT",
+        "postal_code": "84790",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 5,
+      "baths": null,
+      "lot_sqft": 10019,
+      "type": "single_family",
+      "year_built": 2026,
+      "heating": null,
+      "cooling": null,
+      "garage": 4,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 1149900,
+    "list_date": "2026-02-16T00:28:41.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2118951"
+    },
+    "location": {
+      "address": {
+        "line": "6700 S 1655 E",
+        "city": "Cottonwood Heights",
+        "state_code": "UT",
+        "postal_code": "84121",
+        "country": null
+      },
+      "county": {
+        "name": "Salt Lake",
+        "fips_code": 49035
       },
       "coordinate": null
     },
     "description": {
       "beds": 4,
       "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
+      "lot_sqft": 8276,
+      "type": "single_family",
+      "year_built": 1890,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
     },
-    "status": "ready_to_build",
-    "list_price": 510000,
+    "status": "for_sale",
+    "list_price": 460000,
+    "list_date": "2025-10-22T22:17:07.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
       "is_coming_soon": null,
       "is_contingent": null,
       "is_foreclosure": null,
-      "is_new_construction": true,
+      "is_new_construction": null,
       "is_new_listing": false,
       "is_pending": null,
-      "is_price_reduced": null
+      "is_price_reduced": false
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "RichmondAmericanHomes",
-      "id": "RAHB",
-      "listing_id": "35100000-001-Z729-A"
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "26-268190"
     },
     "location": {
       "address": {
-        "line": "612 S 230 W",
-        "city": "Ivins",
+        "line": "1194 N 1560 West Cir",
+        "city": "Saint George",
         "state_code": "UT",
-        "postal_code": "84738",
+        "postal_code": "84770",
         "country": null
       },
       "county": {
@@ -1580,23 +981,32 @@
     "description": {
       "beds": 3,
       "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
+      "lot_sqft": 9583,
+      "type": "single_family",
+      "year_built": 1997,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2019-12-20"
     },
-    "status": "ready_to_build",
-    "list_price": 590990,
+    "status": "for_sale",
+    "list_price": 579000,
+    "list_date": "2026-01-21T18:10:35.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
       "is_coming_soon": null,
       "is_contingent": null,
       "is_foreclosure": null,
-      "is_new_construction": true,
+      "is_new_construction": null,
       "is_new_listing": false,
       "is_pending": null,
       "is_price_reduced": null
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
@@ -1622,10 +1032,18 @@
       "beds": 4,
       "baths": null,
       "lot_sqft": 10454,
-      "type": "single_family"
+      "type": "single_family",
+      "year_built": 1977,
+      "heating": null,
+      "cooling": null,
+      "garage": 4,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2025-11-14"
     },
     "status": "for_sale",
     "list_price": 549900,
+    "list_date": "2026-02-13T23:25:47.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
@@ -1637,61 +1055,576 @@
       "is_pending": null,
       "is_price_reduced": null
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "DavidWeekley",
-      "id": "DWHB",
-      "listing_id": "A114"
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2129430"
     },
     "location": {
       "address": {
-        "line": "1354 E Hollyhock Wy",
-        "city": "Layton",
+        "line": "4294 S Fortuna Way",
+        "city": "Salt Lake City",
         "state_code": "UT",
-        "postal_code": "84040",
+        "postal_code": "84124",
         "country": null
       },
       "county": {
-        "name": "Davis",
-        "fips_code": 49011
+        "name": "Salt Lake",
+        "fips_code": 49035
       },
       "coordinate": null
     },
     "description": {
       "beds": 4,
       "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
+      "lot_sqft": 8712,
+      "type": "single_family",
+      "year_built": 1957,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2016-01-20"
     },
-    "status": "ready_to_build",
-    "list_price": 812990,
+    "status": "for_sale",
+    "list_price": 1299900,
+    "list_date": "2026-01-07T23:15:57.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
       "is_coming_soon": null,
       "is_contingent": null,
       "is_foreclosure": null,
-      "is_new_construction": true,
+      "is_new_construction": null,
       "is_new_listing": false,
       "is_pending": null,
       "is_price_reduced": null
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
   },
   {
     "source": {
-      "name": "DRHorton",
-      "id": "DRHB",
-      "listing_id": "1063"
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2135993"
     },
     "location": {
       "address": {
-        "line": "3660 W Bladen St",
-        "city": "CEDAR CITY",
+        "line": "1711 N Sage Cir",
+        "city": "Saint George",
         "state_code": "UT",
-        "postal_code": "84720",
+        "postal_code": "84770",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 4,
+      "baths": null,
+      "lot_sqft": 6534,
+      "type": "single_family",
+      "year_built": 2003,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 625000,
+    "list_date": "2026-02-09T18:26:30.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2136399"
+    },
+    "location": {
+      "address": {
+        "line": "288 S 800 W",
+        "city": "Orem",
+        "state_code": "UT",
+        "postal_code": "84058",
+        "country": null
+      },
+      "county": {
+        "name": "Utah",
+        "fips_code": 49049
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 9148,
+      "type": "single_family",
+      "year_built": 1946,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2012-02-24"
+    },
+    "status": "for_sale",
+    "list_price": 339999,
+    "list_date": "2026-02-11T02:45:56.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "26-269350"
+    },
+    "location": {
+      "address": {
+        "line": "150 N Arrowhead Ln",
+        "city": "Ivins",
+        "state_code": "UT",
+        "postal_code": "84738",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 4,
+      "baths": null,
+      "lot_sqft": 13939,
+      "type": "single_family",
+      "year_built": 2026,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 1699000,
+    "list_date": "2026-02-15T21:19:30.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "26-268942"
+    },
+    "location": {
+      "address": {
+        "line": "4 W 960 S",
+        "city": "Hurricane",
+        "state_code": "UT",
+        "postal_code": "84737",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 94525,
+      "type": "single_family",
+      "year_built": 1966,
+      "heating": null,
+      "cooling": null,
+      "garage": 1,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 550000,
+    "list_date": "2026-02-09T17:58:47.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2124816"
+    },
+    "location": {
+      "address": {
+        "line": "39 N Valley View Dr Unit 99",
+        "city": "Saint George",
+        "state_code": "UT",
+        "postal_code": "84770",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 2,
+      "baths": null,
+      "lot_sqft": 3920,
+      "type": "single_family",
+      "year_built": 1994,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 339500,
+    "list_date": "2025-11-28T04:55:28.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2136903"
+    },
+    "location": {
+      "address": {
+        "line": "2428 W Van St",
+        "city": "West Jordan",
+        "state_code": "UT",
+        "postal_code": "84088",
+        "country": null
+      },
+      "county": {
+        "name": "Salt Lake",
+        "fips_code": 49035
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 5,
+      "baths": null,
+      "lot_sqft": 14375,
+      "type": "single_family",
+      "year_built": 1978,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2018-03-01"
+    },
+    "status": "for_sale",
+    "list_price": 575000,
+    "list_date": "2026-02-13T06:48:12.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": [
+      {
+        "start_date": "2026-02-21T11:00:00",
+        "end_date": "2026-02-21T13:00:00"
+      }
+    ]
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2125414"
+    },
+    "location": {
+      "address": {
+        "line": "1734 N Fruitland Dr E",
+        "city": "Ogden",
+        "state_code": "UT",
+        "postal_code": "84414",
+        "country": null
+      },
+      "county": {
+        "name": "Weber",
+        "fips_code": 49057
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 2,
+      "baths": null,
+      "lot_sqft": 33977,
+      "type": "single_family",
+      "year_built": 1923,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2021-06-02"
+    },
+    "status": "for_sale",
+    "list_price": 400000,
+    "list_date": "2025-12-03T23:06:34.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2113375"
+    },
+    "location": {
+      "address": {
+        "line": "328 S Carbon Ave",
+        "city": "Price",
+        "state_code": "UT",
+        "postal_code": "84501",
+        "country": null
+      },
+      "county": {
+        "name": "Carbon",
+        "fips_code": 49007
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 10890,
+      "type": "single_family",
+      "year_built": 1924,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 205000,
+    "list_date": "2025-09-24T03:06:17.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2092381"
+    },
+    "location": {
+      "address": {
+        "line": null,
+        "city": "Spanish Fork",
+        "state_code": "UT",
+        "postal_code": "84660",
+        "country": null
+      },
+      "county": {
+        "name": "Utah",
+        "fips_code": null
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 1,
+      "baths": null,
+      "lot_sqft": 173369,
+      "type": "single_family",
+      "year_built": 1981,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 200000,
+    "list_date": "2025-06-14T17:25:35.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": true,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "26-268090"
+    },
+    "location": {
+      "address": {
+        "line": "3967 W Hillside Way",
+        "city": "Santa Clara",
+        "state_code": "UT",
+        "postal_code": "84765",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 4,
+      "baths": null,
+      "lot_sqft": 20038,
+      "type": "single_family",
+      "year_built": 2024,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 1200000,
+    "list_date": "2026-01-16T19:34:35.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "StGeorge",
+      "id": "SGUT",
+      "listing_id": "25-265046"
+    },
+    "location": {
+      "address": {
+        "line": "4509 N Gold Dust Trl",
+        "city": "Enoch",
+        "state_code": "UT",
+        "postal_code": "84721",
         "country": null
       },
       "county": {
@@ -1701,24 +1634,492 @@
       "coordinate": null
     },
     "description": {
-      "beds": 3,
+      "beds": 4,
       "baths": null,
-      "lot_sqft": null,
-      "type": "single_family"
+      "lot_sqft": 19166,
+      "type": "single_family",
+      "year_built": 2018,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2018-02-09"
     },
-    "status": "ready_to_build",
-    "list_price": 499990,
+    "status": "for_sale",
+    "list_price": 504000,
+    "list_date": "2025-09-13T23:25:33.000000Z",
     "price_reduced": null,
     "sold_price": null,
     "flags": {
       "is_coming_soon": null,
       "is_contingent": null,
       "is_foreclosure": null,
-      "is_new_construction": true,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2136887"
+    },
+    "location": {
+      "address": {
+        "line": null,
+        "city": "Morgan",
+        "state_code": "UT",
+        "postal_code": "84050",
+        "country": null
+      },
+      "county": {
+        "name": "Morgan",
+        "fips_code": 49029
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": null,
+      "baths": null,
+      "lot_sqft": 838966,
+      "type": "land",
+      "year_built": null,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 250000,
+    "list_date": "2026-02-12T21:27:43.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2135567"
+    },
+    "location": {
+      "address": {
+        "line": "4571 S Stonewood Dr",
+        "city": "West Valley City",
+        "state_code": "UT",
+        "postal_code": "84119",
+        "country": null
+      },
+      "county": {
+        "name": "Salt Lake",
+        "fips_code": 49035
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 4,
+      "baths": null,
+      "lot_sqft": 2178,
+      "type": "single_family",
+      "year_built": 1996,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2023-01-24"
+    },
+    "status": "for_sale",
+    "list_price": 460000,
+    "list_date": "2026-02-06T20:35:32.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": true,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2127620"
+    },
+    "location": {
+      "address": {
+        "line": "10205 W 10400 N",
+        "city": "Tremonton",
+        "state_code": "UT",
+        "postal_code": "84337",
+        "country": null
+      },
+      "county": {
+        "name": "Box Elder",
+        "fips_code": 49003
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 5,
+      "baths": null,
+      "lot_sqft": 43560,
+      "type": "single_family",
+      "year_built": 1921,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2021-12-01"
+    },
+    "status": "for_sale",
+    "list_price": 479500,
+    "list_date": "2025-12-19T20:46:47.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2121947"
+    },
+    "location": {
+      "address": {
+        "line": "217 White Pine Canyon Rd",
+        "city": "Park City",
+        "state_code": "UT",
+        "postal_code": "84060",
+        "country": null
+      },
+      "county": {
+        "name": "Summit",
+        "fips_code": 49043
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 8,
+      "baths": null,
+      "lot_sqft": 196020,
+      "type": "single_family",
+      "year_built": 2016,
+      "heating": null,
+      "cooling": null,
+      "garage": 3,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2015-11-16"
+    },
+    "status": "for_sale",
+    "list_price": 30000000,
+    "list_date": "2025-11-08T00:56:04.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
       "is_new_listing": false,
       "is_pending": null,
       "is_price_reduced": null
     },
-    "currency": null
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2131122"
+    },
+    "location": {
+      "address": {
+        "line": "142 S Eccles Ave",
+        "city": "Ogden",
+        "state_code": "UT",
+        "postal_code": "84404",
+        "country": null
+      },
+      "county": {
+        "name": "Weber",
+        "fips_code": 49057
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 4,
+      "baths": null,
+      "lot_sqft": 6534,
+      "type": "single_family",
+      "year_built": 1979,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2021-05-26"
+    },
+    "status": "for_sale",
+    "list_price": 460000,
+    "list_date": "2026-01-16T05:15:34.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2086019"
+    },
+    "location": {
+      "address": {
+        "line": "39 N 3850 W",
+        "city": "Hurricane",
+        "state_code": "UT",
+        "postal_code": "84737",
+        "country": null
+      },
+      "county": {
+        "name": "Washington",
+        "fips_code": 49053
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 3,
+      "baths": null,
+      "lot_sqft": 5227,
+      "type": "single_family",
+      "year_built": 1994,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2000-09-05"
+    },
+    "status": "for_sale",
+    "list_price": 274900,
+    "list_date": "2025-05-19T19:07:45.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": true
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2136317"
+    },
+    "location": {
+      "address": {
+        "line": "11360 Skyline Dr Unit 170",
+        "city": "Echo",
+        "state_code": "UT",
+        "postal_code": "84024",
+        "country": null
+      },
+      "county": {
+        "name": "Summit",
+        "fips_code": null
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 2,
+      "baths": null,
+      "lot_sqft": 920858,
+      "type": "single_family",
+      "year_built": 1998,
+      "heating": null,
+      "cooling": null,
+      "garage": null,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 399999,
+    "list_date": "2026-02-10T22:16:11.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2071214"
+    },
+    "location": {
+      "address": {
+        "line": "8272 Left Fork Hobble Creek Rd",
+        "city": "Springville",
+        "state_code": "UT",
+        "postal_code": "84663",
+        "country": null
+      },
+      "county": {
+        "name": "Utah",
+        "fips_code": 49049
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 6,
+      "baths": null,
+      "lot_sqft": 6534000,
+      "type": "single_family",
+      "year_built": 2010,
+      "heating": null,
+      "cooling": null,
+      "garage": 8,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": null
+    },
+    "status": "for_sale",
+    "list_price": 12900000,
+    "list_date": "2025-03-19T16:16:43.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": false,
+      "is_pending": null,
+      "is_price_reduced": false
+    },
+    "currency": null,
+    "open_houses": null
+  },
+  {
+    "source": {
+      "name": "UtahRealEstate",
+      "id": "SAUT",
+      "listing_id": "2137531"
+    },
+    "location": {
+      "address": {
+        "line": "662 N 100 E",
+        "city": "Farmington",
+        "state_code": "UT",
+        "postal_code": "84025",
+        "country": null
+      },
+      "county": {
+        "name": "Davis",
+        "fips_code": 49011
+      },
+      "coordinate": null
+    },
+    "description": {
+      "beds": 5,
+      "baths": null,
+      "lot_sqft": 10454,
+      "type": "single_family",
+      "year_built": 1978,
+      "heating": null,
+      "cooling": null,
+      "garage": 2,
+      "stories": null,
+      "subdivision": null,
+      "sold_date": "2022-02-28"
+    },
+    "status": "for_sale",
+    "list_price": 799998,
+    "list_date": "2026-02-17T06:42:53.000000Z",
+    "price_reduced": null,
+    "sold_price": null,
+    "flags": {
+      "is_coming_soon": null,
+      "is_contingent": null,
+      "is_foreclosure": null,
+      "is_new_construction": null,
+      "is_new_listing": true,
+      "is_pending": null,
+      "is_price_reduced": null
+    },
+    "currency": null,
+    "open_houses": [
+      {
+        "start_date": "2026-02-18T09:30:00",
+        "end_date": "2026-02-18T12:00:00"
+      },
+      {
+        "start_date": "2026-02-21T11:00:00",
+        "end_date": "2026-02-21T13:00:00"
+      }
+    ]
   }
 ]

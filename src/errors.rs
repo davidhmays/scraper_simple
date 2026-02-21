@@ -1,4 +1,5 @@
 // src/errors.rs
+use rust_xlsxwriter::XlsxError;
 use std::error::Error;
 use std::fmt;
 
@@ -29,3 +30,15 @@ impl fmt::Display for ServerError {
 }
 
 impl Error for ServerError {}
+
+impl From<rusqlite::Error> for ServerError {
+    fn from(err: rusqlite::Error) -> Self {
+        ServerError::DbError(err.to_string())
+    }
+}
+
+impl From<XlsxError> for ServerError {
+    fn from(err: XlsxError) -> Self {
+        ServerError::XlsxError(err.to_string())
+    }
+}

@@ -1,0 +1,110 @@
+{
+  "property_id": "2388013993",
+  "list_price": 43000000,
+  // "rmn_listing_attribution": false,
+  // "search_promotions": null,
+  // "primary_photo": {
+  //   "href": "https://ap.rdcpix.com/1755c20b1450351252c20048935497f4l-m2202394463s.jpg"
+  // },
+  "listing_id": "2987868803",
+  // "matterport": false,
+  // "virtual_tours": [{ "href": "https://u.listvt.com/mls/214387471" }],
+  "status": "for_sale",
+  // "products": {
+  //   "products": ["core.agent", "core.broker", "co_broke"],
+  //   "brand_name": "essentials"
+  // },
+  "source": {
+    "id": "SAUT",
+    "name": "UtahRealEstate",
+    "type": "mls",
+    "spec_id": null,
+    "plan_id": null,
+    "listing_id": "2120390"
+  },
+  // "lead_attributes": {
+  //   "show_contact_an_agent": true,
+  //   "market_type": "unity",
+  //   "lead_type": "co_broke"
+  // },
+  "community": null,
+  // "permalink": "5618-Southfork-Rd_Provo_UT_84604_M23880-13993",
+  "price_reduced_amount": null,
+  "description": {
+    "name": null,
+    "beds": 6,
+    "baths_consolidated": "7.5+",
+    "sqft": 22958,
+    "lot_sqft": 1287634,
+    // "baths_max": null,
+    // "baths_min": null,
+    // "beds_min": null,
+    // "beds_max": null,
+    // "sqft_min": null,
+    // "sqft_max": null,
+    "type": "single_family",
+    "sub_type": null,
+    "sold_price": null,
+    "sold_date": null,
+    "year_built": 2014,
+    "garage": 8
+  },
+  "location": {
+    "street_view_url": "https://maps.googleapis.com/maps/api/streetview?channel=rdc-streetview\u0026client=gme-movesalesinc\u0026location=5618%20E%20South%20Fork%20Rd%2C%20Provo%2C%20UT%2084604\u0026size=640x480\u0026source=outdoor\u0026signature=XovvwfqHL8U7r17pOsucoW2SovI=",
+    "address": {
+      "line": "5618 E South Fork Rd",
+      "postal_code": "84604",
+      "state": "Utah",
+      "state_code": "UT",
+      "city": "Provo",
+      "coordinate": { "lat": 40.336022, "lon": -111.530071 }
+    },
+    "county": { "name": "Utah", "fips_code": "49049" }
+  },
+  "open_houses": null,
+  "branding": [
+    {
+      "type": "Office",
+      "name": "Summit Sotheby's International Realty - Draper",
+      "photo": null
+    }
+  ],
+  "flags": {
+    "is_coming_soon": null,
+    "is_new_listing": false,
+    "is_price_reduced": null,
+    "is_foreclosure": null,
+    "is_new_construction": null,
+    "is_pending": null,
+    "is_contingent": null
+  },
+  "list_date": "2025-10-30T19:55:55.000000Z",
+  "photos": [
+    {
+      "href": "https://ap.rdcpix.com/1755c20b1450351252c20048935497f4l-m2202394463s.jpg"
+    },
+    {
+      "href": "https://ap.rdcpix.com/1755c20b1450351252c20048935497f4l-m2038945948s.jpg"
+    },
+    {
+      "href": "https://ap.rdcpix.com/1755c20b1450351252c20048935497f4l-m388842871s.jpg"
+    }
+  ],
+  "advertisers": [
+    {
+      "type": "seller",
+      "fulfillment_id": "1234570",
+      "name": "Kerry Oman",
+      "builder": null,
+      "email": "kerryoman@gmail.com",
+      "office": {
+        "name": "Summit Sotheby's International Realty - Draper"
+      },
+      "phones": [
+        { "number": "8014672100" },
+        { "number": "8013692507" },
+        { "number": "8006411884" }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 // scraper.rs
 use crate::db::connection::Database;
-use crate::db::listings::save_properties;
+use crate::db::properties::save_scraped_properties;
 use crate::scraper::Property;
 use crate::scraper::ScraperError;
 use rand::Rng;
@@ -73,7 +73,7 @@ impl RealtorScraper {
                 total_props += properties.len();
                 pages += 1;
                 // 🧠 DB LOGIC LIVES HERE
-                save_properties(&db, &properties, &base_url)
+                save_scraped_properties(&db, &properties)
                     .map_err(|e| ScraperError::Network(e.to_string()))?;
                 Ok(())
             });

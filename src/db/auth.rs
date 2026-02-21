@@ -1,5 +1,6 @@
 // src/db/auth.rs
 use rusqlite::{params, Connection, OptionalExtension};
+use std::env;
 
 use crate::errors::ServerError;
 
@@ -28,6 +29,26 @@ pub fn get_or_create_user(conn: &Connection, email: &str, now: i64) -> Result<i6
             |row| row.get(0),
         )
         .map_err(|e| ServerError::DbError(format!("select user id failed: {e}")))?;
+
+    // Make default user an admin and grant them the 'lifetime' plan.
+    // In production, you'd likely use a proper admin interface.
+    let admin_email = env::var("ADMIN_EMAIL").unwrap_or_else(|_| "dave@dave-mays.com".to_string());
+    if email == admin_email {
+        conn.execute("update users set is_admin = 1 where id = ?", params![id])
+            .map_err(|e| ServerError::DbError(format!("update admin failed: {e}")))?;
+
+        conn.execute(
+            r#"
+            insert into entitlements (user_id, plan_code, granted_at)
+            values (?1, 'lifetime', ?2)
+            on conflict(user_id) do update set
+                plan_code = excluded.plan_code,
+                granted_at = excluded.granted_at
+            "#,
+            params![id, now],
+        )
+        .map_err(|e| ServerError::DbError(format!("upsert admin entitlement failed: {e}")))?;
+    }
 
     Ok(id)
 }
