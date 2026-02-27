@@ -11,6 +11,9 @@ use crate::templates::pages::admin::AdminVm;
 
 use crate::templates::pages::preview::preview_table;
 
+use crate::domain::campaign::{NewCampaign, NewMedia};
+use crate::domain::mailing::{NewList, NewMailing};
+
 use astra::{Body, Request, ResponseBuilder};
 use maud::html;
 use rusqlite::params;
@@ -252,6 +255,300 @@ pub fn handle(mut req: Request, db: &Database) -> ResultResp {
                 .header("Location", "/admin")
                 .body(Body::empty())
                 .unwrap())
+        }
+
+        // --- Campaigns ---
+        ("GET", "/campaigns") => {
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let campaigns =
+                db.with_conn(|conn| crate::db::campaigns::get_campaigns_for_user(conn, user_id))?;
+            html_response(templates::pages::campaigns_index_page(&campaigns))
+        }
+
+        ("GET", "/campaigns/new") => {
+            let user = current_user(&req, db, now)?;
+            let Some((_user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+            html_response(templates::pages::new_campaign_page())
+        }
+
+        ("POST", "/campaigns") => {
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let body_bytes = body_to_bytes(&mut req)?;
+            let pairs: Vec<(String, String)> =
+                form_urlencoded::parse(&body_bytes).into_owned().collect();
+
+            let name = form_first(&pairs, "name")
+                .ok_or_else(|| ServerError::BadRequest("name is required".into()))?;
+
+            let new_campaign = NewCampaign { user_id, name };
+
+            db.with_conn(|conn| crate::db::campaigns::create_campaign(conn, &new_campaign))?;
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", "/campaigns")
+                .body(Body::empty())
+                .unwrap())
+        }
+
+        ("GET", path) if path.starts_with("/campaigns/") && path.ends_with("/media/new") => {
+            let user = current_user(&req, db, now)?;
+            let Some((_user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let parts: Vec<&str> = path.split('/').collect();
+            let campaign_id = parts
+                .get(2)
+                .and_then(|s| s.parse::<i64>().ok())
+                .ok_or(ServerError::BadRequest("Invalid campaign id".into()))?;
+
+            html_response(templates::pages::new_media_page(campaign_id))
+        }
+
+        ("POST", path) if path.starts_with("/campaigns/") && path.ends_with("/media") => {
+            let user = current_user(&req, db, now)?;
+            let Some((_user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let parts: Vec<&str> = path.split('/').collect();
+            let campaign_id = parts
+                .get(2)
+                .and_then(|s| s.parse::<i64>().ok())
+                .ok_or(ServerError::BadRequest("Invalid campaign id".into()))?;
+
+            let body_bytes = body_to_bytes(&mut req)?;
+            let pairs: Vec<(String, String)> =
+                form_urlencoded::parse(&body_bytes).into_owned().collect();
+
+            let name = form_first(&pairs, "name")
+                .ok_or_else(|| ServerError::BadRequest("name is required".into()))?;
+            let media_type = form_first(&pairs, "media_type")
+                .ok_or_else(|| ServerError::BadRequest("media_type is required".into()))?;
+            let description = form_first(&pairs, "description");
+
+            let new_media = NewMedia {
+                campaign_id,
+                name,
+                description,
+                media_type,
+            };
+
+            db.with_conn(|conn| crate::db::campaigns::create_media(conn, &new_media))?;
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", format!("/campaigns/{}", campaign_id))
+                .body(Body::empty())
+                .unwrap())
+        }
+
+        // --- Lists ---
+        ("GET", "/lists") => {
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let lists =
+                db.with_conn(|conn| crate::db::mailings::get_lists_for_user(conn, user_id))?;
+            html_response(templates::pages::lists_index_page(&lists))
+        }
+
+        ("GET", "/lists/new") => {
+            let user = current_user(&req, db, now)?;
+            let Some((_user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+            html_response(templates::pages::new_list_page())
+        }
+
+        ("POST", "/lists") => {
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let body_bytes = body_to_bytes(&mut req)?;
+            let pairs: Vec<(String, String)> =
+                form_urlencoded::parse(&body_bytes).into_owned().collect();
+
+            let name = form_first(&pairs, "name")
+                .ok_or_else(|| ServerError::BadRequest("name is required".into()))?;
+            let source_type = form_first(&pairs, "source_type")
+                .ok_or_else(|| ServerError::BadRequest("source_type is required".into()))?;
+
+            let new_list = NewList {
+                user_id,
+                name,
+                source_type,
+            };
+
+            db.with_conn(|conn| crate::db::mailings::create_list(conn, &new_list))?;
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", "/lists")
+                .body(Body::empty())
+                .unwrap())
+        }
+
+        // --- Mailings ---
+        ("GET", "/mailings") => {
+            let user = current_user(&req, db, now)?;
+            let Some((_user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            // TODO: Implement get_all_mailings_for_user in db/mailings.rs
+            // For now, rendering with empty list.
+            let mailings = Vec::new();
+            html_response(templates::pages::mailings_index_page(&mailings))
+        }
+
+        ("GET", "/mailings/new") => {
+            let user = current_user(&req, db, now)?;
+            let Some((user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let campaigns =
+                db.with_conn(|conn| crate::db::campaigns::get_campaigns_for_user(conn, user_id))?;
+            let lists =
+                db.with_conn(|conn| crate::db::mailings::get_lists_for_user(conn, user_id))?;
+
+            html_response(templates::pages::new_mailing_page(&campaigns, &lists))
+        }
+
+        ("POST", "/mailings") => {
+            let user = current_user(&req, db, now)?;
+            let Some((_user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let body_bytes = body_to_bytes(&mut req)?;
+            let pairs: Vec<(String, String)> =
+                form_urlencoded::parse(&body_bytes).into_owned().collect();
+
+            let campaign_id_str = form_first(&pairs, "campaign_id")
+                .ok_or_else(|| ServerError::BadRequest("campaign_id is required".into()))?;
+            let campaign_id = campaign_id_str
+                .parse::<i64>()
+                .map_err(|_| ServerError::BadRequest("Invalid campaign_id".into()))?;
+
+            let list_id_str = form_first(&pairs, "list_id")
+                .ok_or_else(|| ServerError::BadRequest("list_id is required".into()))?;
+            let list_id = list_id_str
+                .parse::<i64>()
+                .map_err(|_| ServerError::BadRequest("Invalid list_id".into()))?;
+
+            let scheduled_at_str = form_first(&pairs, "scheduled_at");
+            let scheduled_at = if let Some(s) = scheduled_at_str {
+                if s.is_empty() {
+                    None
+                } else {
+                    chrono::NaiveDateTime::parse_from_str(&s, "%Y-%m-%dT%H:%M").ok()
+                }
+            } else {
+                None
+            };
+
+            let new_mailing = NewMailing {
+                campaign_id,
+                list_id,
+                status: "draft".to_string(),
+                scheduled_at,
+            };
+
+            db.with_conn(|conn| crate::db::mailings::create_mailing(conn, &new_mailing))?;
+
+            Ok(ResponseBuilder::new()
+                .status(302)
+                .header("Location", "/mailings")
+                .body(Body::empty())
+                .unwrap())
+        }
+
+        ("GET", path) if path.starts_with("/campaigns/") => {
+            let user = current_user(&req, db, now)?;
+            let Some((_user_id, _)) = user else {
+                return Ok(ResponseBuilder::new()
+                    .status(302)
+                    .header("Location", "/login")
+                    .body(Body::empty())
+                    .unwrap());
+            };
+
+            let parts: Vec<&str> = path.split('/').collect();
+            let campaign_id = parts
+                .get(2)
+                .and_then(|s| s.parse::<i64>().ok())
+                .ok_or(ServerError::BadRequest("Invalid campaign id".into()))?;
+
+            let campaign = db
+                .with_conn(|conn| crate::db::campaigns::get_campaign_by_id(conn, campaign_id))?
+                .ok_or(ServerError::NotFound)?;
+
+            let media = db.with_conn(|conn| {
+                crate::db::campaigns::get_media_for_campaign(conn, campaign_id)
+            })?;
+
+            html_response(templates::pages::campaign_details_page(&campaign, &media))
         }
 
         // Support for /export?state=XX (Form submission)

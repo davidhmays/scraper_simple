@@ -243,9 +243,11 @@ impl RealtorScraper {
         //params.insert("custom_headers", "true".to_string());
         params.insert("url", url.to_string());
         params.insert("apikey", api_key);
-        // params.insert("js_render", "true".to_string());
-        // params.insert("premium_proxy", "true".to_string());
-        // params.insert("proxy_country", "us".to_string());
+        //params.insert("js_render", "true".to_string());
+        //params.insert("premium_proxy", "true".to_string());
+        params.insert("proxy_country", "us".to_string());
+        // params.insert("wait_for", "script#__NEXT_DATA__".to_string());
+        // params.insert("wait", "5000".to_string()); // 5 second delay
         // params.insert("wait_for", "script#__NEXT_DATA__".to_string());
         params.insert("original_status", "true".to_string());
         params.insert("mode", "auto".to_string());

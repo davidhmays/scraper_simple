@@ -41,8 +41,10 @@ pub fn desktop_layout(title: &str, is_admin: bool, content: Markup) -> Markup {
                           li { a href="/" { "Home" } }
                           @if is_admin {
                               li { a href="/admin" { "Admin" } }
+                              li { a href="/campaigns" { "Campaigns" } }
+                              li { a href="/lists" { "Lists" } }
+                              li { a href="/mailings" { "Mailings" } }
                           }
-                          // li { a href="/campaigns" { "Campaigns" } }
                       }
                   }
 

@@ -1,22 +1,18 @@
 -- =================================================================
--- Property-Centric, Change-Tracking Schema
---
--- This schema pivots from a listing-centric model to a property-centric one,
--- focusing on tracking changes to key fields over time, which is the core
--- business requirement.
+-- Direct Mail Attribution Platform Schema
 -- =================================================================
 
 -- Clean slate: remove old tables that are being replaced.
 -- In a real migration, you would use an ALTER TABLE script.
--- PRAGMA foreign_keys = OFF;
--- DROP TABLE IF EXISTS listing_observations;
--- DROP TABLE IF EXISTS listings;
--- DROP TABLE IF EXISTS properties;
--- PRAGMA foreign_keys = ON;
+PRAGMA foreign_keys = OFF;
+DROP TABLE IF EXISTS listing_observations;
+DROP TABLE IF EXISTS listings;
+DROP TABLE IF EXISTS properties;
+PRAGMA foreign_keys = ON;
 
 
 -- ===============================
--- Properties Table (New)
+-- Properties Table (Source Data)
 -- ===============================
 -- This is the central table, representing a unique physical property.
 -- It holds the CURRENT state of the fields we track.
@@ -56,7 +52,7 @@ CREATE INDEX IF NOT EXISTS idx_properties_last_seen ON properties(last_seen_at);
 
 
 -- ===============================
--- Property History Table (New)
+-- Property History Table (Source Data)
 -- ===============================
 -- This is the audit log. Every time a tracked field on a property changes,
 -- a new row is inserted here. This table is the source of truth for deltas.
@@ -78,7 +74,7 @@ CREATE INDEX IF NOT EXISTS idx_property_history_observed_at ON property_history(
 
 
 -- ===============================
--- Property Sources Table (New)
+-- Property Sources Table (Source Data)
 -- ===============================
 -- This table links our internal property record back to one or more source
 -- listings (e.g., from Realtor.com). This handles the M:1 listing-to-property
@@ -97,6 +93,99 @@ CREATE TABLE IF NOT EXISTS property_sources (
 );
 
 CREATE INDEX IF NOT EXISTS idx_property_sources_property_id ON property_sources(property_id);
+
+
+-- =================================================================
+-- Direct Mail Platform Schema (Campaigns, Media, Lists, Mailings)
+-- =================================================================
+
+-- Campaigns (Strategic)
+CREATE TABLE IF NOT EXISTS campaigns (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'draft', -- draft, active, archived
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Media (Creative)
+CREATE TABLE IF NOT EXISTS media (
+    id INTEGER PRIMARY KEY,
+    campaign_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT,
+    media_type TEXT NOT NULL, -- e.g., 'postcard_4x6', 'letter_8.5x11'
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (campaign_id) REFERENCES campaigns(id)
+);
+
+-- Lists (Data)
+CREATE TABLE IF NOT EXISTS lists (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    source_type TEXT NOT NULL, -- 'system_snapshot', 'upload', 'marketplace'
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- List Rows (Recipients)
+-- This links back to our properties if it's a system list,
+-- or holds raw data if it's an upload.
+CREATE TABLE IF NOT EXISTS list_rows (
+    id INTEGER PRIMARY KEY,
+    list_id INTEGER NOT NULL,
+    property_id INTEGER, -- Optional link to our scraped properties
+
+    -- Snapshot data (in case property changes later, we know what we mailed)
+    address_line TEXT NOT NULL,
+    city TEXT NOT NULL,
+    state_abbr TEXT NOT NULL,
+    postal_code TEXT NOT NULL,
+    name TEXT, -- "Current Resident" or specific name
+
+    FOREIGN KEY (list_id) REFERENCES lists(id),
+    FOREIGN KEY (property_id) REFERENCES properties(id)
+);
+
+-- Mailings (Operational)
+CREATE TABLE IF NOT EXISTS mailings (
+    id INTEGER PRIMARY KEY,
+    campaign_id INTEGER NOT NULL,
+    list_id INTEGER NOT NULL,
+    status TEXT NOT NULL DEFAULT 'draft', -- draft, pending_print, sent
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    scheduled_at DATETIME,
+
+    FOREIGN KEY (campaign_id) REFERENCES campaigns(id),
+    FOREIGN KEY (list_id) REFERENCES lists(id)
+);
+
+-- Recipient Instances (Atomic Tracking)
+CREATE TABLE IF NOT EXISTS recipient_instances (
+    id INTEGER PRIMARY KEY,
+    mailing_id INTEGER NOT NULL,
+    list_row_id INTEGER NOT NULL,
+    media_id INTEGER NOT NULL, -- Which creative variant did they get?
+
+    qr_token TEXT NOT NULL UNIQUE, -- The magic string in the QR code
+
+    FOREIGN KEY (mailing_id) REFERENCES mailings(id),
+    FOREIGN KEY (list_row_id) REFERENCES list_rows(id),
+    FOREIGN KEY (media_id) REFERENCES media(id)
+);
+
+-- Click Events (Analytics)
+CREATE TABLE IF NOT EXISTS click_events (
+    id INTEGER PRIMARY KEY,
+    recipient_instance_id INTEGER NOT NULL,
+    scanned_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    ip_address TEXT,
+    user_agent TEXT,
+
+    FOREIGN KEY (recipient_instance_id) REFERENCES recipient_instances(id)
+);
 
 
 -- =================================================================
@@ -213,52 +302,6 @@ create table if not exists sessions (
 );
 create index if not exists idx_sessions_user on sessions(user_id);
 create index if not exists idx_sessions_expires on sessions(expires_at);
-
--- ===============================
--- Mailings (Adapted for new schema)
--- ===============================
-create table if not exists mailings (
-  id integer primary key,
-  property_id integer not null, -- Changed to INTEGER to match new properties.id
-  campaign text not null,
-  variant text not null,
-  description text,
-  media_type text not null,
-  media_size text not null,
-  template_key text,
-  address_line text not null,
-  city text not null,
-  state_abbr text not null,
-  postal_code text not null,
-  country text not null,
-  qr_token text not null unique,
-  scanned_count integer not null default 0,
-  first_scanned_at datetime,
-  last_scanned_at datetime,
-  created_at datetime default current_timestamp,
-  printed_at datetime,
-  sent_at datetime,
-  status text not null default 'created',
-  check (state_abbr = upper(state_abbr) and length(state_abbr) = 2),
-  foreign key (state_abbr) references states(abbr),
-  foreign key (property_id) references properties(id)
-);
-CREATE UNIQUE INDEX IF NOT EXISTS idx_mailings_property_campaign_variant ON mailings(property_id, campaign, variant);
-create index if not exists idx_mailings_property_id on mailings(property_id);
-create index if not exists idx_mailings_campaign_variant on mailings(campaign, variant);
-create index if not exists idx_mailings_status on mailings(status);
-
-create table if not exists  mailing_events (
-  id integer primary key,
-  mailing_id integer not null,
-  event_type text not null,
-  occurred_at datetime not null,
-  user_agent text,
-  referrer text,
-  foreign key (mailing_id) references mailings(id)
-);
-create index if not exists idx_mailing_events_mailing_id on mailing_events(mailing_id);
-create index if not exists idx_mailing_events_occurred_at on mailing_events(occurred_at);
 
 
 -- Seed plans (idempotent)
